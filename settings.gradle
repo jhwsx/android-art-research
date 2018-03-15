@@ -1,1 +1,3 @@
 include ':chapter_2'
+include ':chapter_2_supplement_client'
+include ':chapter_2_supplement_service'

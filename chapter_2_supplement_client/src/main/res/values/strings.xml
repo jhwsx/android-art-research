@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">chapter_2_supplement</string>
+    <string name="register">Register callback</string>
+    <string name="unregister">Unregister callback</string>
+    <string name="leave">Leave</string>
+    <string name="join">Join</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">Unbind</string>
+    <string name="call">Call</string>
+    <string name="get_participators">Get participators</string>
+</resources>
