@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.wzc.chapter_2">
+
+    <uses-permission android:name="com.wzc.chapter_2_common_lib.permission.ACCESS_BOOK_SERVICE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.wzc.chapter_2_provider.WRITE"/>
+    <uses-permission android:name="com.wzc.chapter_2_provider.READ"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.wzc.chapter_2.bundle.MainActivity"
+            android:configChanges="orientation|screenSize">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity
+            android:name="com.wzc.chapter_2.bundle.SecondActivity"
+            android:configChanges="screenLayout"
+            android:label="SecondActivity"
+            android:process=":remote"/>
+
+        <activity
+            android:name="com.wzc.chapter_2.bundle.ThirdActivity"
+            android:configChanges="screenLayout"
+            android:label="ThirdActivity"
+            android:process="com.wzc.chapter_2.remote">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".bundle.MyIntentService"
+            android:process="com.wzc.chapter_2.remote"/>
+
+
+        <activity android:name=".fileshare.MainActvity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".fileshare.SecondActivity"
+            android:process=":remote"/>
+        <activity
+            android:name=".aidl.BookManagerActivity"
+            android:label="BookManagerActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".messenger.MessengerActivity"
+            android:label="MessengerActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <service
+            android:name=".messenger.MessengerService"
+            android:process="com.wzc.chapter_2.messenger.remote"/>
+
+        <activity android:name=".contentprovider.ProviderActivity"
+            android:label="ProviderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

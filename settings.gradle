@@ -1,3 +1,5 @@
-include ':chapter_2', ':chapter_1'
+include ':chapter_1', ':chapter_2_common_lib', ':chapter_2_provider'
+include ':chapter_2_client'
+include ':chapter_2_service'
 include ':chapter_2_supplement_client'
 include ':chapter_2_supplement_service'

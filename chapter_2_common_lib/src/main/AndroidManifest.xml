@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.wzc.chapter_2_common_lib">
+
+    <permission
+        android:name="com.wzc.chapter_2_common_lib.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal"/>
+</manifest>

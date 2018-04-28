@@ -15,9 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name=".RemoteService"
-                 android:enabled="true"
-                 android:exported="true">
+        <!--android:exported="true"表示可以让其他进程绑定-->
+        <service
+            android:name=".RemoteService"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.wzc.chapter_2_supplement.IRemoteService"/>
             </intent-filter>

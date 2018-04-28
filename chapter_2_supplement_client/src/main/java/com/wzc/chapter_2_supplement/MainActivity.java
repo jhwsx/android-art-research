@@ -93,6 +93,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bind:
+                // 在Android 5.0以后，就不允许使用非特定的Intent来绑定Service了
                 Intent intent = new Intent(IRemoteService.class.getName());
                 intent.setClassName("com.wzc.chapter_2_supplement.service", "com.wzc.chapter_2_supplement.RemoteService");
                 bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
@@ -101,6 +102,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.unbind:
                 if (mIsBound) {
                     unbindService(mServiceConnection);
+                    mService = null;
                     mIsBound = false;
                 }
                 break;

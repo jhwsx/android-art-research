@@ -25,7 +25,7 @@ public class RemoteService extends Service {
             Log.d(TAG, "called RemoteService someOperate()");
             return a + b;
         }
-
+        // 加入游戏
         @Override
         public void join(IBinder token, String username) throws RemoteException {
             int idx = findClient(token);
@@ -43,7 +43,7 @@ public class RemoteService extends Service {
             // 通知client加入
             notifyParticipate(username, true);
         }
-
+        // 退出游戏
         @Override
         public void leave(IBinder token) throws RemoteException {
             int idx = findClient(token);
@@ -61,7 +61,7 @@ public class RemoteService extends Service {
             // 通知client离开
             notifyParticipate(client.mName, false);
         }
-
+        // 获取当前参与进来的成员列表
         @Override
         public List<String> getParticipators() throws RemoteException {
             ArrayList<String> names = new ArrayList<>();
@@ -98,7 +98,7 @@ public class RemoteService extends Service {
     // 这个类用来保存Client的信息
     // 让Client实现IBinder.DeathRecipient接口的原因是每个IBinder都要注册一个IBinder.DeathRecipient的回调
     private final class Client implements IBinder.DeathRecipient {
-        public final IBinder mToken;
+        public final IBinder mToken; // 作为客户端的唯一标识
         public final String mName;
 
         public Client(IBinder token, String name) {
