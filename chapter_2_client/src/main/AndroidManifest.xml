@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="com.wzc.chapter_2_provider.WRITE"/>
     <uses-permission android:name="com.wzc.chapter_2_provider.READ"/>
+    <!--socket必须-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--socket必须-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,9 +63,9 @@
             android:name=".aidl.BookManagerActivity"
             android:label="BookManagerActivity">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
             <!--</intent-filter>-->
         </activity>
 
@@ -78,15 +82,34 @@
             android:name=".messenger.MessengerService"
             android:process="com.wzc.chapter_2.messenger.remote"/>
 
-        <activity android:name=".contentprovider.ProviderActivity"
+        <activity
+            android:name=".contentprovider.ProviderActivity"
             android:label="ProviderActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
 
+        <activity
+            android:name=".socket.TCPClientActivity"
+            android:label="TCPClientActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".binderpool.BinderPoolActivity"
+            android:label="BinderPoolActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
