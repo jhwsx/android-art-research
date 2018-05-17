@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Scroller"/>
+    <com.wzc.chapter_3.elasticslide.ScrollerLayout
+        android:id="@+id/scrollerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4400ff00">
+        <ImageView
+            android:src="@drawable/ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+    </com.wzc.chapter_3.elasticslide.ScrollerLayout>
+    <Button
+        android:id="@+id/btn_anim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通过动画"/>
+
+    <com.wzc.chapter_3.elasticslide.AnimLayout
+        android:id="@+id/animlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#440000ff">
+        <ImageView
+            android:src="@drawable/ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+    </com.wzc.chapter_3.elasticslide.AnimLayout>
+
+    <Button
+        android:id="@+id/btn_delay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用延时策略"/>
+
+    <com.wzc.chapter_3.elasticslide.DelayStrategyLayout
+        android:id="@+id/delayLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#44ff0000">
+        <ImageView
+            android:src="@drawable/ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+    </com.wzc.chapter_3.elasticslide.DelayStrategyLayout>
+</LinearLayout>
+</ScrollView>
