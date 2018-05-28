@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wzc.chapter_3.elasticslide.ElasticSlideActivity;
+import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
 import com.wzc.chapter_3.viewslide.DragActivity;
 import com.wzc.chapter_3.viewslide.ViewSlideActivity;
 
@@ -31,6 +32,12 @@ public class MainActivity extends Activity {
              @Override
              public void onClick(View v) {
                  startActivity(new Intent(MainActivity.this, ElasticSlideActivity.class));
+             }
+         });
+         findViewById(R.id.btn_event_dispatch).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, EventDispatchActivity.class));
              }
          });
     }

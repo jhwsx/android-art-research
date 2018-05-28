@@ -20,6 +20,7 @@
         <activity android:name=".viewslide.DragActivity"/>
         <activity android:name=".elasticslide.ScrollerActivitiy"/>
         <activity android:name=".elasticslide.ElasticSlideActivity"/>
+        <activity android:name=".eventdispatch.EventDispatchActivity"/>
     </application>
 
 </manifest>
