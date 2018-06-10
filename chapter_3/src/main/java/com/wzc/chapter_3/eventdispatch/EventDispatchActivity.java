@@ -2,11 +2,9 @@ package com.wzc.chapter_3.eventdispatch;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.wzc.chapter_3.R;
 
@@ -23,22 +21,21 @@ public class EventDispatchActivity extends Activity {
 
         View decorView = getWindow().getDecorView();
         ViewGroup viewGroup = (ViewGroup) decorView.findViewById(android.R.id.content);
-        View childAt = viewGroup.getChildAt(0);
-//        childAt.setEnabled(false);
-//        childAt.setOnTouchListener(new View.OnTouchListener() {
+        MyViewGroup myViewGroup = (MyViewGroup) viewGroup.getChildAt(0);
+//        myViewGroup.setEnabled(false);
+//        myViewGroup.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
 //            public boolean onTouch(View v, MotionEvent event) {
-//                return true;
+//                return false;
 //            }
 //        });
-        childAt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(EventDispatchActivity.this, "onClick", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onClick: ");
-            }
-        });
-        Log.d(TAG, "onCreate: ");
+//        myViewGroup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(EventDispatchActivity.this, "onClick", Toast.LENGTH_SHORT).show();
+//                Log.d(TAG, "onClick: ");
+//            }
+//        });
     }
 
     @Override

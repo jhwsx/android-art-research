@@ -24,7 +24,7 @@ public class MyView extends Button {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
+        return true;
     }
 
     @Override

@@ -18,9 +18,9 @@
 
         <activity android:name=".viewslide.ViewSlideActivity"/>
         <activity android:name=".viewslide.DragActivity"/>
-        <activity android:name=".elasticslide.ScrollerActivitiy"/>
         <activity android:name=".elasticslide.ElasticSlideActivity"/>
         <activity android:name=".eventdispatch.EventDispatchActivity"/>
+        <activity android:name=".slideconflict.SlideConflit1ExActivity"/>
     </application>
 
 </manifest>

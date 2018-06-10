@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 public class MyViewGroup extends LinearLayout {
     private static final String TAG = MyViewGroup.class.getSimpleName();
+
     public MyViewGroup(Context context) {
         super(context);
     }
@@ -35,19 +36,22 @@ public class MyViewGroup extends LinearLayout {
             case MotionEvent.ACTION_DOWN:
                 Log.d(TAG, "onTouchEvent: ");
                 return true;
-//            case MotionEvent.ACTION_MOVE:
-//                Log.d(TAG, "onTouchEvent: ");
-//                return true;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "onTouchEvent: ");
+                return true;
             case MotionEvent.ACTION_UP:
                 Log.d(TAG, "onTouchEvent: ");
                 performClick();
-                return false;
+                return true;
+            default:
+                break;
+
         }
         return super.onTouchEvent(event);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return false;
+        return true;
     }
 }
