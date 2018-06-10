@@ -53,6 +53,11 @@ public class HorizontalScrollViewEx extends ViewGroup {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 intercepted = false;
+                // 参考任玉刚老师代码修改: 在弹性滚动没有结束时, 按下手指, 停止滚动, 立即拦截
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                    intercepted = true;
+                }
                 break;
             }
             case MotionEvent.ACTION_MOVE: {
@@ -96,7 +101,9 @@ public class HorizontalScrollViewEx extends ViewGroup {
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN: {
-
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                }
                 break;
             }
 
@@ -152,18 +159,25 @@ public class HorizontalScrollViewEx extends ViewGroup {
     private int mChildWidth;
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        // 记录子 View 的左边界值
+        int childLeft = 0;
         mChildCount = getChildCount();
         mChildWidth = getChildAt(0).getMeasuredWidth();
         for (int i = 0; i < mChildCount; i++) {
             View childView = getChildAt(i);
-            childView.layout(mChildWidth * i, 0, mChildWidth * (i + 1), childView.getMeasuredHeight());
+            // 参考任玉刚老师代码修改: 考虑到子 View 不可见的情况下, 就不进行布局了.
+            if (childView.getVisibility() != View.GONE) {
+                childView.layout(childLeft, 0, childLeft + mChildWidth, childView.getMeasuredHeight());
+                childLeft += mChildWidth;
+            }
+
         }
 
     }
 
 
     private void smoothScrollTo(int destX) {
-        mScroller.startScroll(getScrollX(),0,destX - getScrollX(),300);
+        mScroller.startScroll(getScrollX(),0,destX - getScrollX(),500);
         invalidate();
     }
 
@@ -174,7 +188,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
             postInvalidate();
         }
     }
-
+    // 在 View 和 Window 分离时, 回收内存
     @Override
     protected void onDetachedFromWindow() {
         mVelocityTracker.recycle();
