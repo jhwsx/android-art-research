@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.wzc.chapter_3.elasticslide.ElasticSlideActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
+import com.wzc.chapter_3.slideconflict.SlideConflict1InActivity;
+import com.wzc.chapter_3.slideconflict.SlideConflict2ExActivity;
 import com.wzc.chapter_3.slideconflict.SlideConflit1ExActivity;
 import com.wzc.chapter_3.slideconflict_practice1.SlideConflict1ExPractice1Activity;
 import com.wzc.chapter_3.viewslide.DragActivity;
@@ -52,6 +54,18 @@ public class MainActivity extends Activity {
              @Override
              public void onClick(View v) {
                  startActivity(new Intent(MainActivity.this, SlideConflict1ExPractice1Activity.class));
+             }
+         });
+         findViewById(R.id.btn_slide_conflict_1_in).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, SlideConflict1InActivity.class));
+             }
+         });
+         findViewById(R.id.btn_slide_conflict_2_ex).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, SlideConflict2ExActivity.class));
              }
          });
     }

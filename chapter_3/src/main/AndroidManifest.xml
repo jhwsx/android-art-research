@@ -24,6 +24,8 @@
         <activity android:name=".eventdispatch.EventDispatchActivity"/>
         <activity android:name=".slideconflict.SlideConflit1ExActivity"/>
         <activity android:name=".slideconflict_practice1.SlideConflict1ExPractice1Activity"/>
+        <activity android:name=".slideconflict.SlideConflict1InActivity"/>
+        <activity android:name=".slideconflict.SlideConflict2ExActivity"/>
     </application>
 
 </manifest>

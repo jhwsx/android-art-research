@@ -51,4 +51,18 @@
         android:layout_height="wrap_content"
         android:text="SlideConflict1-ExternalIntercept-Practice1"/>
 
+    <Button
+        android:id="@+id/btn_slide_conflict_1_in"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SlideConflict1-InternalIntercept"/>
+
+    <Button
+        android:id="@+id/btn_slide_conflict_2_ex"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SlideConflict2-ExternalIntercept"/>
+
 </LinearLayout>
