@@ -44,4 +44,11 @@
         android:layout_height="wrap_content"
         android:text="SlideConflict1-ExternalIntercept"/>
 
+    <Button
+        android:id="@+id/btn_slide_conflit_1_ex_practice_1"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SlideConflict1-ExternalIntercept-Practice1"/>
+
 </LinearLayout>
