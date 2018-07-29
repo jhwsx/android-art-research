@@ -6,5 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    <com.wzc.chapter_4.MyView
+        android:id="@+id/myview"
+        android:layout_width="wrap_content"
+        android:background="#44ff0000"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
