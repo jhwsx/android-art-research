@@ -1,8 +1,10 @@
 package com.wzc.chapter_4;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -51,4 +53,7 @@ public class MainActivity extends Activity {
     }
 
 
+    public void labelview(View view) {
+        startActivity(new Intent(MainActivity.this, LabelViewActivity.class));
+    }
 }
