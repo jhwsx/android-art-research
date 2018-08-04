@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+    <com.wzc.chapter_4.LabelView
+        android:background="#8800ff00"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:paddingBottom="5dp"
+        app:paddingTop="5dp"
+        app:paddingLeft="2dp"
+        app:paddingRight="2dp"
+        app:text="Hello"
+        app:textColor="@color/colorPrimary"
+        app:textSize="20dp"/>
+    <com.wzc.chapter_4.LabelView
+        android:background="#88ff0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:paddingBottom="8dp"
+        app:paddingTop="8dp"
+        app:paddingLeft="8dp"
+        app:paddingRight="8dp"
+        app:text="Hello Android"
+        app:textColor="#000000"
+        app:textSize="40dp"/>
+    <com.wzc.chapter_4.LabelView
+        android:background="#880000ff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:paddingBottom="5dp"
+        app:paddingTop="5dp"
+        app:paddingLeft="2dp"
+        app:paddingRight="2dp"
+        app:text="Hello World"
+        app:textSize="32dp"/>
 </LinearLayout>
