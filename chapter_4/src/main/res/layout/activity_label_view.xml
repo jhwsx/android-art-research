@@ -7,7 +7,7 @@
     <com.wzc.chapter_4.LabelView
         android:background="#8800ff00"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:paddingBottom="5dp"
         app:paddingTop="5dp"
         app:paddingLeft="2dp"
@@ -27,6 +27,7 @@
         app:textColor="#000000"
         app:textSize="40dp"/>
     <com.wzc.chapter_4.LabelView
+        android:id="@+id/labelview_3"
         android:background="#880000ff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -15,6 +15,27 @@ import android.view.View;
 public class LabelView extends View {
 
     private Paint mPaint;
+
+    public void setTextColor(int textColor) {
+        mTextColor = textColor;
+        mPaint.setColor(mTextColor);
+        requestLayout();
+        invalidate();
+    }
+
+    public void setTextSize(float textSize) {
+        mTextSize = textSize;
+        mPaint.setTextSize(mTextSize);
+        requestLayout();
+        invalidate();
+    }
+
+    public void setText(String text) {
+        mText = text;
+        requestLayout();
+        invalidate();
+    }
+
     private int mTextColor;
     private float mTextSize;
     private String mText;
