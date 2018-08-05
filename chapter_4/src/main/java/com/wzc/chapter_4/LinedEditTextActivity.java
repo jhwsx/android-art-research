@@ -2,7 +2,6 @@ package com.wzc.chapter_4;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,10 +16,7 @@ import android.widget.EditText;
  * @date 2018/8/5
  */
 public class LinedEditTextActivity extends Activity {
-    public static void start(Context context) {
-        Intent starter = new Intent(context, LinedEditTextActivity.class);
-        context.startActivity(starter);
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

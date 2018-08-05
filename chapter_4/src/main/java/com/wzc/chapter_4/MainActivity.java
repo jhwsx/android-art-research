@@ -3,65 +3,46 @@ package com.wzc.chapter_4;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private MyView mMyView;
+    private LinkedHashMap<String, Class<?>> mLinkedHashMap = new LinkedHashMap<>();
+    private Class[] mClassArr;
 
+    {
+        mLinkedHashMap.put("Extending a View-LabelView", LabelViewActivity.class);
+        mLinkedHashMap.put("Extending LinearLayout-ExpandableLayout", ExpandableLayoutActivity.class);
+        mLinkedHashMap.put("Extending EditText-LinedEditText", LinedEditTextActivity.class);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        mMyView = (MyView) findViewById(R.id.myview);
 
-//        getSize();
+        Set<String> keySet = mLinkedHashMap.keySet();
+        String[] names = new String[keySet.size()];
+        names = keySet.toArray(names);
 
-//        mMyView.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                getSize();
-//            }
-//        });
-
-//        final ViewTreeObserver observer = mMyView.getViewTreeObserver();
-//        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                getSize();
-//                mMyView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//            }
-//        });
+        Collection<Class<?>> values = mLinkedHashMap.values();
+        mClassArr = new Class[values.size()];
+        mClassArr = values.toArray(mClassArr);
+        ListView listview = (ListView) findViewById(R.id.listview);
+     
+        listview.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names));
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(MainActivity.this, mClassArr[position]));
+            }
+        });
     }
 
-//    @Override
-//    public void onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-//        if (hasFocus) {
-//            getSize();
-//        }
-//    }
-
-    private void getSize() {
-        int width = mMyView.getWidth();
-        int height = mMyView.getHeight();
-        int measuredWidth = mMyView.getMeasuredWidth();
-        int measuredHeight = mMyView.getMeasuredHeight();
-        Log.d(TAG, "width = " + width + ", height = " + height
-                + ", measuredWidth = " + measuredWidth + ", measuredHeight = " + measuredHeight);
-    }
-
-
-    public void labelview(View view) {
-        startActivity(new Intent(MainActivity.this, LabelViewActivity.class));
-    }
-
-    public void expandablelayout(View view) {
-        ExpandableLayoutActivity.start(MainActivity.this);
-    }
-
-    public void linededittext(View view) {
-        LinedEditTextActivity.start(MainActivity.this);
-    }
 }

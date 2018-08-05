@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ListView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-   <Button
-       android:text="Extending a View-LabelView"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:onClick="labelview"/>
-   <Button
-       android:text="Extending LinearLayout-ExpandableLayout"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:onClick="expandablelayout"/>
-
-   <Button
-       android:text="Extending EditText-LinedEditText"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:onClick="linededittext"/>
-</LinearLayout>
+    android:id="@+id/listview"
+    android:listSelector="@android:color/transparent"
+    android:scrollbars="vertical"
+    android:cacheColorHint="@null"
+    tools:context=".MainActivity"/>

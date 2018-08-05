@@ -2,7 +2,6 @@ package com.wzc.chapter_4;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
@@ -22,11 +21,6 @@ public class ExpandableLayoutActivity extends Activity {
     private ListView mListView;
     private boolean[] mExpandArr = new boolean[Shakespeare.TITLES.length];
     private MyAdapter mAdapter;
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, ExpandableLayoutActivity.class);
-        context.startActivity(starter);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
