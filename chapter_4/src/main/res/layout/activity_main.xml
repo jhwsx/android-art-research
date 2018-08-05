@@ -16,4 +16,10 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:onClick="expandablelayout"/>
+
+   <Button
+       android:text="Extending EditText-LinedEditText"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="linededittext"/>
 </LinearLayout>

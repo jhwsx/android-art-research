@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".LabelViewActivity"/>
         <activity android:name=".ExpandableLayoutActivity"/>
+        <activity android:name=".LinedEditTextActivity"/>
     </application>
 
 </manifest>

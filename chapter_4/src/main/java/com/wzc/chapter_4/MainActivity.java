@@ -60,4 +60,8 @@ public class MainActivity extends Activity {
     public void expandablelayout(View view) {
         ExpandableLayoutActivity.start(MainActivity.this);
     }
+
+    public void linededittext(View view) {
+        LinedEditTextActivity.start(MainActivity.this);
+    }
 }
