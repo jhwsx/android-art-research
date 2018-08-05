@@ -18,6 +18,7 @@
         <activity android:name=".LabelViewActivity"/>
         <activity android:name=".ExpandableLayoutActivity"/>
         <activity android:name=".LinedEditTextActivity"/>
+        <activity android:name=".CircleViewActivity"/>
     </application>
 
 </manifest>
