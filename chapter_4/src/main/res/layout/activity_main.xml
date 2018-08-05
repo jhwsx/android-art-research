@@ -11,4 +11,9 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:onClick="labelview"/>
+   <Button
+       android:text="Extending LinearLayout-ExpandableLayout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="expandablelayout"/>
 </LinearLayout>

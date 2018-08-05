@@ -56,4 +56,8 @@ public class MainActivity extends Activity {
     public void labelview(View view) {
         startActivity(new Intent(MainActivity.this, LabelViewActivity.class));
     }
+
+    public void expandablelayout(View view) {
+        ExpandableLayoutActivity.start(MainActivity.this);
+    }
 }

@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LabelViewActivity"/>
+        <activity android:name=".ExpandableLayoutActivity"/>
     </application>
 
 </manifest>
