@@ -19,6 +19,7 @@
         <activity android:name=".ExpandableLayoutActivity"/>
         <activity android:name=".LinedEditTextActivity"/>
         <activity android:name=".CircleViewActivity"/>
+        <activity android:name=".HorizontalScrollViewExActivity"/>
     </application>
 
 </manifest>
