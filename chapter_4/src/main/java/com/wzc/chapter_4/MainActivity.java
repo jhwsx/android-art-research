@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
         mLinkedHashMap.put("Extending EditText-LinedEditText", LinedEditTextActivity.class);
         mLinkedHashMap.put("Extending a View-CircleView", CircleViewActivity.class);
         mLinkedHashMap.put("Extending a ViewGroup-HorizontalScrollViewEx", HorizontalScrollViewExActivity.class);
+        mLinkedHashMap.put("ExpanableListViewDemo", ExpandableListViewDemo.class);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,6 +20,7 @@
         <activity android:name=".LinedEditTextActivity"/>
         <activity android:name=".CircleViewActivity"/>
         <activity android:name=".HorizontalScrollViewExActivity"/>
+        <activity android:name=".ExpandableListViewDemo"/>
     </application>
 
 </manifest>
