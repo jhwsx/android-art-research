@@ -33,8 +33,10 @@ public class HorizontalScrollViewEx extends ViewGroup {
     }
 
     private void init() {
-        mScroller = new Scroller(getContext());
-        mVelocityTracker = VelocityTracker.obtain();
+        if (mScroller == null) {
+            mScroller = new Scroller(getContext());
+            mVelocityTracker = VelocityTracker.obtain();
+        }
     }
 
     private int mLastInterceptX;
@@ -98,6 +100,9 @@ public class HorizontalScrollViewEx extends ViewGroup {
         mVelocityTracker.addMovement(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 int deltaX = x - mLastX;
@@ -106,7 +111,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
             case MotionEvent.ACTION_UP:
                 int scrollX = getScrollX();
                 mVelocityTracker.computeCurrentVelocity(1000);
-                int xVelocity = (int) mVelocityTracker.getXVelocity();
+                float xVelocity = mVelocityTracker.getXVelocity();
                 Log.d(TAG, "mCurrentIndex:" + mCurrentIndex);
                 if (Math.abs(xVelocity) >= 50) {
                     Log.d(TAG, "xVelocity >= 50");
@@ -204,10 +209,10 @@ public class HorizontalScrollViewEx extends ViewGroup {
 
     @Override
     protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
         if (mVelocityTracker != null) {
             mVelocityTracker.recycle();
         }
+        super.onDetachedFromWindow();
     }
 
     @Override
