@@ -1,4 +1,4 @@
-package com.deep.read.util;
+package com.wzc.chapter_11;
 
 import java.io.Closeable;
 import java.io.IOException;
