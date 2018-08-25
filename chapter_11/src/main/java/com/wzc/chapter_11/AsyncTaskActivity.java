@@ -23,22 +23,30 @@ import java.net.URL;
 public class AsyncTaskActivity extends Activity {
     private static final String TAG = AsyncTaskActivity.class.getSimpleName();
     private static final String url = "https://github.com/jhwsx/android-art-research/raw/"
-            +"f6257e9f1e46848400f7ff2635991fd5a850d4f8/chapter_11/app-debug.apk";
+            + "f6257e9f1e46848400f7ff2635991fd5a850d4f8/chapter_11/app-debug.apk";
     private TextView mTvProgress;
     private TextView mTvLength;
+    private DownloadTask mDownloadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asynctask);
         Button btnStartDownload = (Button) findViewById(R.id.btn_start_download);
+        Button btnCancelDownload = (Button) findViewById(R.id.btn_cancel_download);
         mTvProgress = (TextView) findViewById(R.id.tv_download_progress);
         mTvLength = (TextView) findViewById(R.id.tv_download_length);
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DownloadTask downloadTask = new DownloadTask();
-                downloadTask.execute(url);
+                mDownloadTask = new DownloadTask();
+                mDownloadTask.execute(url);
+            }
+        });
+        btnCancelDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDownloadTask.cancel(false);
             }
         });
     }
@@ -46,6 +54,7 @@ public class AsyncTaskActivity extends Activity {
     public class DownloadTask extends AsyncTask<String, Integer, Long> {
 
         private ProgressDialog mProgressDialog;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -63,7 +72,7 @@ public class AsyncTaskActivity extends Activity {
                 mProgressDialog.dismiss();
                 mProgressDialog = null;
             }
-            Log.d(TAG, "onProgressUpdate: threadName=" + Thread.currentThread().getName());
+            Log.d(TAG, "onProgressUpdate: progress=" + values[0] + ", threadName=" + Thread.currentThread().getName());
             mTvProgress.setText("下载进度: " + values[0] + "%");
         }
 
@@ -90,6 +99,9 @@ public class AsyncTaskActivity extends Activity {
                 while ((length = inputStream.read(buffer)) != -1) {
                     total += length;
                     final int progress = (int) (total * 100f / contentLength);
+                    if (isCancelled()) {
+                        break;
+                    }
                     publishProgress(progress);
                     outputStream.write(buffer, 0, length);
                 }
@@ -104,13 +116,20 @@ public class AsyncTaskActivity extends Activity {
             return contentLength;
         }
 
-
         @Override
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
             Log.d(TAG, "onPostExecute: threadName=" + Thread.currentThread().getName());
             mTvLength.setText("下载字节数: " + aLong);
             mTvLength.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d(TAG, "onCancelled: " + Thread.currentThread().getName());
+            mTvLength.setVisibility(View.VISIBLE);
+            mTvLength.setText("任务已取消");
         }
     }
 }
