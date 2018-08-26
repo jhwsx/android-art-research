@@ -16,4 +16,12 @@ public class MainActivity extends Activity {
     public void asynctask(View view) {
         startActivity(new Intent(MainActivity.this, AsyncTaskActivity.class));
     }
+
+    public void intentservice(View view) {
+        Intent service = new Intent(MainActivity.this, MyIntentService.class);
+        for (int i = 0; i < 5; i++) {
+            service.putExtra(MyIntentService.EXTRA_TASK, "task " + i);
+            startService(service);
+        }
+    }
 }
