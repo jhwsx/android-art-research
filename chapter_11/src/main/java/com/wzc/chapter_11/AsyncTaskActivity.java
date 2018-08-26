@@ -15,6 +15,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author wzc
@@ -32,6 +34,7 @@ public class AsyncTaskActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asynctask);
+        Button btnVersionEvolution = (Button) findViewById(R.id.btn_version_evolution);
         Button btnStartDownload = (Button) findViewById(R.id.btn_start_download);
         Button btnCancelDownload = (Button) findViewById(R.id.btn_cancel_download);
         mTvProgress = (TextView) findViewById(R.id.tv_download_progress);
@@ -49,8 +52,43 @@ public class AsyncTaskActivity extends Activity {
                 mDownloadTask.cancel(false);
             }
         });
+        btnVersionEvolution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MyAsyncTask("AsyncTask#1").execute("");
+                new MyAsyncTask("AsyncTask#2").execute("");
+                new MyAsyncTask("AsyncTask#3").execute("");
+                new MyAsyncTask("AsyncTask#4").execute("");
+                new MyAsyncTask("AsyncTask#5").execute("");
+            }
+        });
     }
 
+    private static class MyAsyncTask extends AsyncTask<String, Integer, String> {
+
+        private String mName = "AsyncTask";
+
+        public MyAsyncTask(String name) {
+            super();
+            mName = name;
+        }
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return mName;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Log.d(TAG, s + " finished at " + simpleDateFormat.format(new Date()));
+        }
+    }
     public class DownloadTask extends AsyncTask<String, Integer, Long> {
 
         private ProgressDialog mProgressDialog;
