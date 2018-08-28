@@ -8,7 +8,11 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    <Button
+        android:id="@+id/btn_version_evolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试版本演进"/>
     <Button
         android:id="@+id/btn_start_download"
         android:layout_width="wrap_content"

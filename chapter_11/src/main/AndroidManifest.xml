@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AsyncTaskActivity"/>
+
+        <service
+            android:name=".MyIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>
