@@ -7,13 +7,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.wzc.chapter_5.MainActivity">
-
+   <Spinner
+       android:id="@+id/spinner"
+       android:layout_width="match_parent"
+       android:entries="@array/pendingintent_flags"
+       android:layout_height="wrap_content"/>
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="Input id"
+       android:inputType="number"
+       android:id="@+id/et_id"/>
    <Button
        android:text="Standard Notification"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:onClick="standard_notification"/>
 
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="@android:color/black"/>
    <Button
        android:text="Custom Notification"
        android:layout_width="match_parent"

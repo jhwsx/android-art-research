@@ -19,6 +19,16 @@
         </activity>
         <activity android:name=".Demo2Activity">
         </activity>
+        <receiver android:name=".MyAppWidgetProvider">
+            <intent-filter>
+                <!--这个 action 是必须声明的-->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.wzc.chapter_5.click_action"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info"/>
+        </receiver>
     </application>
 
 </manifest>

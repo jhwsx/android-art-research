@@ -7,15 +7,44 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.RemoteViews;
+import android.widget.Spinner;
 
 public class MainActivity extends Activity {
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private Spinner mSpinner;
+    private int flag = PendingIntent.FLAG_ONE_SHOT;
+    private EditText mEtId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mEtId = (EditText) findViewById(R.id.et_id);
+        mSpinner = (Spinner) findViewById(R.id.spinner);
+        mSpinner.setSelection(0, true);
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    flag = PendingIntent.FLAG_ONE_SHOT;
+                } else if (position == 1) {
+                    flag = PendingIntent.FLAG_CANCEL_CURRENT;
+                } else if (position == 2) {
+                    flag = PendingIntent.FLAG_UPDATE_CURRENT;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void standard_notification(View view) {
@@ -25,13 +54,17 @@ public class MainActivity extends Activity {
         notification.when = System.currentTimeMillis();
         notification.flags = Notification.FLAG_AUTO_CANCEL;
         Intent intent = new Intent(MainActivity.this, Demo1Activity.class);
+        Log.d(TAG, "send intent = " + intent.hashCode());
+        String string = mEtId.getText().toString();
+        string = TextUtils.isEmpty(string) ? "0" : string;
+        intent.putExtra(Demo1Activity.EXTRA_TEXT, "text " + string);
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,
-                0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                0, intent, flag);
         notification.setLatestEventInfo(MainActivity.this,
-                "chapter_5", "this is notification", pendingIntent);
+                "chapter_5", "this is notification " + string, pendingIntent);
         NotificationManager manager
                 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(1,notification);
+        manager.notify(Integer.parseInt(string),notification);
 
     }
 
