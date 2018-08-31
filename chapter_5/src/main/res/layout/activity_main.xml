@@ -15,6 +15,12 @@
    <EditText
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:inputType="number"
+       android:hint="Input Extra number"
+       android:id="@+id/et_extra_num"/>
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
        android:hint="Input id"
        android:inputType="number"
        android:id="@+id/et_id"/>
@@ -33,5 +39,13 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:onClick="custom_notification"/>
-
+   <Button
+       android:text="Simulated Notification"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="simulated_notification"/>
+   <FrameLayout
+       android:id="@+id/fl"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
 </LinearLayout>
