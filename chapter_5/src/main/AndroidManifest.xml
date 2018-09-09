@@ -10,11 +10,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
             android:process=":remote">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".Demo1Activity">
         </activity>
@@ -30,6 +30,19 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info"/>
         </receiver>
+        <activity android:name=".BlogActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".DemoAActivity"
+            android:label="DemoAActivity">
+        </activity>
+        <activity android:name=".DemoBActivity"
+            android:label="DemoBActivity">
+        </activity>
     </application>
 
 </manifest>
