@@ -30,4 +30,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LevelListDrawable"/>
+    <Button
+        android:id="@+id/btn_transitiondrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TransitionDrawable"/>
+    <Button
+        android:id="@+id/btn_insetdrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="InsetDrawable"/>
+    <Button
+        android:id="@+id/btn_clipdrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ClipDrawable"/>
+    <Button
+        android:id="@+id/btn_scaledrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ScaleDrawable"/>
 </LinearLayout>
