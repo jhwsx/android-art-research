@@ -50,4 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ScaleDrawable"/>
+    <Button
+        android:id="@+id/btn_shapedrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ShapeDrawable"/>
 </LinearLayout>

@@ -19,6 +19,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Button btn_insetdrawable = (Button) findViewById(R.id.btn_insetdrawable);
         Button btn_clipdrawable = (Button) findViewById(R.id.btn_clipdrawable);
         Button btn_scaledrawable = (Button) findViewById(R.id.btn_scaledrawable);
+        Button btn_shapedrawable = (Button) findViewById(R.id.btn_shapedrawable);
         btnBitmapDrawable.setOnClickListener(this);
         btn_layerdrawable.setOnClickListener(this);
         btn_statelistdrawable.setOnClickListener(this);
@@ -27,6 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_insetdrawable.setOnClickListener(this);
         btn_clipdrawable.setOnClickListener(this);
         btn_scaledrawable.setOnClickListener(this);
+        btn_shapedrawable.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +57,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btn_scaledrawable:
                 ScaleDrawableActivity.start(MainActivity.this);
+                break;
+            case R.id.btn_shapedrawable:
+                ShapeDrawableActivity.start(MainActivity.this);
                 break;
                 default:
                     break;
