@@ -1,58 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.wzc.chapter_6.MainActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_bitmapdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BitmapDrawable"/>
 
-    <Button
-        android:id="@+id/btn_bitmapdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BitmapDrawable"/>
+        <Button
+            android:id="@+id/btn_layerdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LayerDrawable"/>
 
-    <Button
-        android:id="@+id/btn_layerdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LayerDrawable"/>
+        <Button
+            android:id="@+id/btn_statelistdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="StateListDrawable"/>
 
-    <Button
-        android:id="@+id/btn_statelistdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="StateListDrawable"/>
+        <Button
+            android:id="@+id/btn_levellistdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LevelListDrawable"/>
+        <Button
+            android:id="@+id/btn_transitiondrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TransitionDrawable"/>
+        <Button
+            android:id="@+id/btn_insetdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="InsetDrawable"/>
+        <Button
+            android:id="@+id/btn_clipdrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ClipDrawable"/>
+        <Button
+            android:id="@+id/btn_scaledrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ScaleDrawable"/>
+        <Button
+            android:id="@+id/btn_shapedrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ShapeDrawable"/>
 
-    <Button
-        android:id="@+id/btn_levellistdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LevelListDrawable"/>
-    <Button
-        android:id="@+id/btn_transitiondrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TransitionDrawable"/>
-    <Button
-        android:id="@+id/btn_insetdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="InsetDrawable"/>
-    <Button
-        android:id="@+id/btn_clipdrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ClipDrawable"/>
-    <Button
-        android:id="@+id/btn_scaledrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ScaleDrawable"/>
-    <Button
-        android:id="@+id/btn_shapedrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ShapeDrawable"/>
-</LinearLayout>
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Drawable Example"/>
+        <Button
+            android:id="@+id/btn_circleimagedrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CircleImageDrawable"/>
+    </LinearLayout>
+
+</ScrollView>

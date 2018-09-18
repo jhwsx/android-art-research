@@ -25,6 +25,7 @@
         <activity android:name=".ClipDrawableActivity"/>
         <activity android:name=".ScaleDrawableActivity"/>
         <activity android:name=".ShapeDrawableActivity"/>
+        <activity android:name=".CircleImageDrawableActivity"/>
     </application>
 
 </manifest>
