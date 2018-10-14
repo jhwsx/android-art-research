@@ -15,6 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ViewAnimationActivity"/>
+        <activity android:name=".ViewAnimationUsageActivity"/>
+        <activity android:name=".PropertyAnimationActivity"/>
+        <activity android:name=".Activity1"/>
+        <activity android:name=".Activity2"/>
+        <activity android:name=".Activity3"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
     </application>
 
 </manifest>
