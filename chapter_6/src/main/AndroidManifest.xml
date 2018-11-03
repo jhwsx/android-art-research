@@ -26,6 +26,8 @@
         <activity android:name=".ScaleDrawableActivity"/>
         <activity android:name=".ShapeDrawableActivity"/>
         <activity android:name=".CircleImageDrawableActivity"/>
+        <activity android:name=".CircleProgressDrawableActivity"/>
+        <activity android:name=".CircleProgressDrawable2Activity"/>
     </application>
 
 </manifest>

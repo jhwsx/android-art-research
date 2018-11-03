@@ -21,6 +21,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Button btn_scaledrawable = (Button) findViewById(R.id.btn_scaledrawable);
         Button btn_shapedrawable = (Button) findViewById(R.id.btn_shapedrawable);
         Button btn_circleimagedrawable = (Button) findViewById(R.id.btn_circleimagedrawable);
+        Button btn_circleprogressdrawable = (Button) findViewById(R.id.btn_circleprogressdrawable);
+        Button btn_circleprogressdrawable2 = (Button) findViewById(R.id.btn_circleprogressdrawable2);
         btnBitmapDrawable.setOnClickListener(this);
         btn_layerdrawable.setOnClickListener(this);
         btn_statelistdrawable.setOnClickListener(this);
@@ -31,6 +33,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_scaledrawable.setOnClickListener(this);
         btn_shapedrawable.setOnClickListener(this);
         btn_circleimagedrawable.setOnClickListener(this);
+        btn_circleprogressdrawable.setOnClickListener(this);
+        btn_circleprogressdrawable2.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +69,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btn_circleimagedrawable:
                 CircleImageDrawableActivity.start(MainActivity.this);
+                break;
+            case R.id.btn_circleprogressdrawable:
+                CircleProgressDrawableActivity.start(MainActivity.this);
+                break;
+            case R.id.btn_circleprogressdrawable2:
+                CircleProgressDrawable2Activity.start(MainActivity.this);
                 break;
                 default:
                     break;
