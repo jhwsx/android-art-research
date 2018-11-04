@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -31,9 +32,15 @@ public class MainActivity extends Activity {
     }
 
     public void toast(View view) {
-        Toast toast = new Toast(getApplicationContext());
-        toast.setView(LayoutInflater.from(MainActivity.this).inflate(R.layout.toast_content, null));
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.show();
+//        for (int i = 0; i < 100; i++) {
+            Toast toast = new Toast(getApplicationContext());
+            View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.toast_content, null);
+            TextView textView = (TextView) inflate.findViewById(R.id.tv);
+            textView.setText("This is a toast " + 0);
+            toast.setView(inflate);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.show();
+//        }
+
     }
 }

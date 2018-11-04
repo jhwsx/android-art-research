@@ -12,12 +12,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 /**
- * 问：
- * Caused by: android.view.WindowManager$BadTokenException:
- * Unable to add window android.view.ViewRootImpl$W@e24f6a1 -- permission denied for window type 2010
- * 答：
- * 需要权限  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
- *
+ * https://blog.csdn.net/zhangweiwtmdbf/article/details/71172319
+ * https://blog.csdn.net/qq_33275597/article/details/78429818
+ * https://blog.csdn.net/zyjzyj2/article/details/53819964
  * @author wzc
  * @date 2018/10/20
  */
@@ -55,11 +52,18 @@ public class WindowActivity extends Activity implements View.OnTouchListener {
         mFloatingButton.setText("click me");
         mLayoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
+        // 如果不写下面这行，那么锁屏后竟然无法解锁了。
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
-        // 不加下面这行会报错：Caused by: android.view.WindowManager$InvalidDisplayException:
-        // Unable to add window android.view.ViewRootImpl$W@93fb623 -- the specified window type 0 is not valid
+        // 1，声明 SYSTEM_ALERT_WINDOW 权限，但不指定下面这行，会报错：Caused by: android.view.WindowManager$InvalidDisplayException:
+        // Unable to add window android.view.ViewRootImpl$W@dda8c68 -- the specified window type is not valid
+        // 2, 不声明 SYSTEM_ALERT_WINDOW 权限，但指定下面这行，会报错: Caused by: android.view.WindowManager$BadTokenException:
+        // Unable to add window android.view.ViewRootImpl$W@dda8c68 -- permission denied for this window type
+        // 3，如果不声明 SYSTEM_ALERT_WINDOW 权限，也不指定下面这行也会报错：Caused by: android.view.WindowManager$InvalidDisplayException:
+        // Unable to add window android.view.ViewRootImpl$W@dda8c68 -- the specified window type is not valid
+        // 4，如果不声明 SYSTEM_ALERT_WINDOW 权限，下面这行指定为 TYPE_APPLICATION, 不会报错
+        // 5，如果声明 SYSTEM_ALERT_WINDOW 权限，下面这行指定为 TYPE_APPLICATION, 不会报错
         mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
         mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP;
         mLayoutParams.x = 100;
