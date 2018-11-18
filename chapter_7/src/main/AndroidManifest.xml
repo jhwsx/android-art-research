@@ -22,6 +22,7 @@
         <activity android:name=".Activity2"/>
         <activity android:name=".Activity3"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".CustomFlipAnimationActivity"/>
     </application>
 
 </manifest>
