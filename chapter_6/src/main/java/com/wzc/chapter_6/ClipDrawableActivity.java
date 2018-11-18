@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class ClipDrawableActivity extends Activity {
         final ImageView iv = (ImageView) findViewById(R.id.iv);
         final SeekBar sb = (SeekBar) findViewById(R.id.sb);
         final TextView tv = (TextView) findViewById(R.id.tv);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.pb);
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -34,6 +36,7 @@ public class ClipDrawableActivity extends Activity {
                 ClipDrawable clipDrawable = (ClipDrawable) iv.getBackground();
                 clipDrawable.setLevel((int) (percent * 10000f));
                 tv.setText(Integer.toString(progress));
+                progressBar.setProgress(progress);
             }
 
             @Override
