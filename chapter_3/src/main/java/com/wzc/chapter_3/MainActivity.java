@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.wzc.chapter_3.elasticslide.ElasticSlideActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
+import com.wzc.chapter_3.eventdispatch.EventDispatchInterviewActivity;
 import com.wzc.chapter_3.slideconflict.SlideConflict1InActivity;
 import com.wzc.chapter_3.slideconflict.SlideConflict2ExActivity;
 import com.wzc.chapter_3.slideconflict.SlideConflit1ExActivity;
@@ -42,6 +43,12 @@ public class MainActivity extends Activity {
              @Override
              public void onClick(View v) {
                  startActivity(new Intent(MainActivity.this, EventDispatchActivity.class));
+             }
+         });
+         findViewById(R.id.btn_event_dispatch_interview).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, EventDispatchInterviewActivity.class));
              }
          });
          findViewById(R.id.btn_slide_conflit_1_ex).setOnClickListener(new View.OnClickListener() {

@@ -79,7 +79,9 @@ public class MainActivity extends Activity {
 
     }
 
+    int count;
     public void custom_notification(View view) {
+        count++;
         Notification notification = new Notification();
         notification.icon = R.mipmap.ic_launcher;
         notification.tickerText = "hello world";
@@ -88,7 +90,7 @@ public class MainActivity extends Activity {
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,
                 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification);
-        remoteViews.setTextViewText(R.id.tv_title, "chapter_5");
+        remoteViews.setTextViewText(R.id.tv_title, "chapter_5 "+count);
         remoteViews.setImageViewResource(R.id.iv, R.drawable.icon);
         PendingIntent openActivity2PendingIntent = PendingIntent.getActivity(MainActivity.this, 2,
                 new Intent(MainActivity.this, Demo2Activity.class),
@@ -98,7 +100,7 @@ public class MainActivity extends Activity {
         notification.contentIntent = pendingIntent;
         NotificationManager manager
                 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(2, notification);
+        manager.notify(count, notification);
     }
 
     public void simulated_notification(View view) {
