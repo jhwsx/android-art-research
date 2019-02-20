@@ -31,7 +31,7 @@ public class CircleImageDrawableActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_image_drawable);
         ImageView iv = (ImageView) findViewById(R.id.iv);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.touxiang);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
         iv.setImageDrawable(new CircleImageDrawable(bitmap));
     }
 

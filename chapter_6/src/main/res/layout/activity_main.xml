@@ -78,6 +78,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CircleProgressDrawable2"/>
+        <Button
+            android:id="@+id/btn_roundBitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="roundBitmap"/>
     </LinearLayout>
 
 </ScrollView>

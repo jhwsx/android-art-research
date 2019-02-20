@@ -28,6 +28,7 @@
         <activity android:name=".CircleImageDrawableActivity"/>
         <activity android:name=".CircleProgressDrawableActivity"/>
         <activity android:name=".CircleProgressDrawable2Activity"/>
+        <activity android:name=".RoundBitmapActivity"/>
     </application>
 
 </manifest>
