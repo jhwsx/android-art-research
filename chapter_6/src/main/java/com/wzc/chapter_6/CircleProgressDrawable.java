@@ -1,6 +1,5 @@
 package com.wzc.chapter_6;
 
-import android.annotation.ColorRes;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -22,7 +21,7 @@ public class CircleProgressDrawable extends Drawable {
     private int mProgress;
     private RectF mArcRectF = new RectF();
 
-    public CircleProgressDrawable(Context context, @ColorRes int color, int progress) {
+    public CircleProgressDrawable(Context context, int color, int progress) {
         mPaint.setColor(context.getResources().getColor(android.R.color.background_dark));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setTextAlign(Paint.Align.CENTER);
