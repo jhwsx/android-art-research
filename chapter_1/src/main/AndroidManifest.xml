@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wzc.chapter_1">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wzc.chapter_1">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ActivityA"
             android:configChanges="orientation|screenSize"
@@ -25,48 +27,89 @@
             android:launchMode="singleTask"
             android:taskAffinity="com.wzc.my">
             <intent-filter>
-                <action android:name="com.wzc.chapter_1.action.c"/>
-                <action android:name="com.wzc.chapter_1.action.d"/>
+                <action android:name="com.wzc.chapter_1.action.c" />
+                <action android:name="com.wzc.chapter_1.action.d" />
 
-                <category android:name="com.wzc.chapter_1.category.c"/>
-                <category android:name="com.wzc.chapter_1.category.d"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.wzc.chapter_1.category.c" />
+                <category android:name="com.wzc.chapter_1.category.d" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ActivityC"
             android:label="ActivityC"
             android:launchMode="singleTask"
-            android:taskAffinity="com.wzc.my">
-        </activity>
+            android:taskAffinity="com.wzc.my"></activity>
         <activity
             android:name=".ActivityD"
             android:label="ActivityD"
             android:launchMode="singleTask"
-            android:taskAffinity="com.my">
-        </activity>
+            android:taskAffinity="com.my"></activity>
 
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN"/>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"
-            android:launchMode="singleTask">
-        </activity>
+            android:launchMode="singleTask"></activity>
 
         <activity
             android:name=".SecondActivity"
-            android:label="SecondActivity"/>
+            android:label="SecondActivity" />
 
         <activity
             android:name=".ThirdActivity"
-            android:label="ThirdActivity"/>
+            android:label="ThirdActivity" />
+
+        <activity android:name=".activity36.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity36.part01_lifecycle.LifecycleActivity" />
+        <activity android:name=".activity36.part01_lifecycle.DialogActivity" />
+        <activity
+            android:name=".activity36.part01_lifecycle.DialogThemeActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".activity36.part01_lifecycle.TranslucentThemeActivity"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name=".activity36.part01_lifecycle.ConfigChangeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="ConfigChangeActivity" />
+        <activity
+            android:name=".activity36.part02_launchmode.LaunchModeActivity"
+            android:label="LaunchModeActivity" />
+        <activity
+            android:name=".activity36.part02_launchmode.StandardActivity"
+            android:label="StandardActivity" />
+        <activity
+            android:name=".activity36.part02_launchmode.SingleTopActivity"
+            android:label="SingleTopActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity36.part02_launchmode.SingleTaskActivity"
+            android:label="SingleTaskActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity36.part02_launchmode.SingleInstanceActivity"
+            android:label="SingleInstanceActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".activity36.part03_data.DataActivity"
+            android:label="DataActivity" />
+        <activity
+            android:name=".activity36.part03_data.TransactionTooLargeExceptionActivity"
+            android:label="TransactionTooLargeExceptionActivity" />
     </application>
 
 </manifest>

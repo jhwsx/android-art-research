@@ -95,7 +95,7 @@ public class LabelView extends View {
             result = heightSize;
         } else {
             result = (int) (mPaint.descent() - mPaint.ascent() + getPaddingTop() + getPaddingBottom());
-            if (heightMeasureSpec == MeasureSpec.AT_MOST) {
+            if (heightMode == MeasureSpec.AT_MOST) {
                 // 要求的高度不能超过父类给的高度
                 result = Math.min(result, heightSize);
             }
