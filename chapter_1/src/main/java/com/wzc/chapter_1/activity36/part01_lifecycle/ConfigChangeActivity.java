@@ -8,6 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 
 /**
+ * 横竖屏切换时
+ * 1,不设置 Activity 的 android:configChanges 属性时,切屏会重新调用各个生命周期, 以及 onSaveInstanceState, onRestoreInstanceState 方法,
+ * 但不会调用 onConfigurationChanged 方法;
+ * 2,设置 Activity 的 android:configChanges 属性的值为 "orientation" 时, 切换屏幕时,
+ * 在 Xiaomi Redmi Note 8 Pro Android 9, API 28 上不走生命周期方法,只走 onConfigurationChanged 方法
+ * 在 HUAWEI H60-L01 Android 6.0, API 23 上在切横屏幕时会走各个生命周期方法以及 onSaveInstanceState,
+ * onRestoreInstanceState onConfigurationChanged方法,,但切换回竖屏幕时,只走 onConfigurationChanged 方法
+ * 3, 设置 Activity 的 android:configChanges 属性的值为 "orientation|keyboardHidden" 时, 切换屏幕时,
+ * 与 2 相同的效果
+ * 4, 3, 设置 Activity 的 android:configChanges 属性的值为 "orientation|keyboardHidden|screenSize" 时, 切换屏幕时,
+ * 只会走 onConfigurationChanged 方法
+ * 当 API >12 时，需要加入 screenSize 属性，否则屏幕切换时即使你设置了 orientation 系统也会重建 Activity
  * @author wangzhichao
  * @since 2020/01/10
  */

@@ -11,15 +11,20 @@ import android.view.View;
 import com.wzc.chapter_1.R;
 
 /**
+ * 单实例模式
+ * 是一种加强版的栈内复用模式, 栈内只有一个实例
+ *
  * @author wangzhichao
  * @since 2020/01/13
  */
 public class SingleInstanceActivity extends Activity {
     private static final String TAG = "SingleInstanceActivity";
+
     public static void start(Context context) {
         Intent starter = new Intent(context, SingleInstanceActivity.class);
         context.startActivity(starter);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

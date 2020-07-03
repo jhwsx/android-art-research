@@ -1,53 +1,29 @@
 package com.wzc.chapter_1.activity36.part01_lifecycle;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import com.wzc.chapter_1.R;
+import android.widget.Button;
 
 /**
- * 弹出 Dialog 时, DialogActivity 不走任何生命周期方法
- * 弹出 Dialog 主题的 Activity 时, DialogActivity 会走 onPause 方法
- * 弹出透明主题的 Activity 时, DialogActivity 会走 onPause 方法
  * @author wangzhichao
- * @since 2020/01/09
+ * @since 20-7-2
  */
-public class DialogActivity extends Activity {
-    private static final String TAG = "DialogActivity";
-    public static void start(Context context) {
-        Intent starter = new Intent(context, DialogActivity.class);
-        context.startActivity(starter);
-    }
-
+public class HandleCrashActivity extends Activity {
+    private static final String TAG = "HandleCrashActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_activity);
+        Button button = new Button(this);
+        setContentView(button);
         Log.d(TAG, "onCreate: ");
-        findViewById(R.id.btn_show_dialog).setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               new  AlertDialog.Builder(DialogActivity.this)
-                        .setTitle("Dialog标题")
-                       .setMessage("这是一段消息")
-                       .create().show();
-            }
-        });
-        findViewById(R.id.btn_dialog_theme_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogThemeActivity.start(DialogActivity.this);
-            }
-        });
-        findViewById(R.id.btn_tranlucent_theme_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TranslucentThemeActivity.start(DialogActivity.this);
+                throw new NullPointerException();
             }
         });
     }
@@ -104,5 +80,11 @@ public class DialogActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy: ");
+    }
+
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, HandleCrashActivity.class);
+        context.startActivity(starter);
     }
 }

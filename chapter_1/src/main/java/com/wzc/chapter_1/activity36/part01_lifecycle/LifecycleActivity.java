@@ -34,5 +34,18 @@ public class LifecycleActivity extends Activity {
                 ConfigChangeActivity.start(LifecycleActivity.this);
             }
         });
+        findViewById(R.id.btn_activity_enter_exit_anim).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EnterExitAnimActivity.start(LifecycleActivity.this);
+//                overridePendingTransition();
+            }
+        });
+        findViewById(R.id.btn_handle_crash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandleCrashActivity.start(LifecycleActivity.this);
+            }
+        });
     }
 }

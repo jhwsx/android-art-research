@@ -11,6 +11,9 @@ import android.view.View;
 import com.wzc.chapter_1.R;
 
 /**
+ * 栈顶复用模式
+ * 栈顶的 Activity 被直接复用时, 生命周期是 onPause -> onNewIntent -> onResume, 不会走 onCreate, onStart 方法
+ * 栈顶的 Activity 没有被直接复用时, 生命周期同标准模式.
  * @author wangzhichao
  * @since 2020/01/10
  */

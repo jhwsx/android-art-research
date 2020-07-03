@@ -11,6 +11,12 @@ import android.view.View;
 import com.wzc.chapter_1.R;
 
 /**
+ * 栈内复用模式
+ * 从别的应用启动这个 Activity, 那么会新建一个 task, 并在该 task 中启动这个 Activity
+ * 从本应用启动这个 Activity,
+ *  若已经位于栈顶,则不会创建新的 Activity: 生命周期: onPause -> onNewIntent -> onResume;
+ *  若不位于栈顶,那么会把这个 Activity 上面的页面都销毁掉, 生命周期: onRestart -> onStart -> onNewIntent -> onResume
+ *
  * @author wangzhichao
  * @since 2020/01/13
  */

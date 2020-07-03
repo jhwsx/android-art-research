@@ -14,4 +14,16 @@
         android:text="1.2, 横竖屏切换时"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_activity_enter_exit_anim"
+        android:text="1.7, 修改 Activity 进入退出动画"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_handle_crash"
+        android:text="1.9, 如何处理异常退出"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -44,5 +44,11 @@ public class DataActivity extends Activity {
                 TransactionTooLargeExceptionActivity.start(DataActivity.this, bitmap);
             }
         });
+        findViewById(R.id.btn_intentfilter).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentFilterActivity.start(DataActivity.this);
+            }
+        });
     }
 }

@@ -12,6 +12,7 @@ import android.view.View;
 import com.wzc.chapter_1.R;
 
 /**
+ * 默认模式
  * @author wangzhichao
  * @since 2020/01/10
  */
