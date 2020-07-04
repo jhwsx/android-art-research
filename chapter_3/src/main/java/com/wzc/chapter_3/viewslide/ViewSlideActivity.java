@@ -31,7 +31,7 @@ public class ViewSlideActivity extends Activity {
         mLlParent = (LinearLayout) findViewById(R.id.ll_parent);
         mBtnScrollTo = (Button) findViewById(R.id.btn_scrollto);
         mBtnScrollBy = (Button) findViewById(R.id.btn_scrollby);
-
+        // 注意： scrollTo/scrollBy 滑动的是 View 的内容。所以，如果要实现 View 本身的滑动，就要调用它父控件的 scrollTo/scrollBy 方法。
         mBtnScrollTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,7 +3,9 @@ package com.wzc.chapter_3;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.wzc.chapter_3.elasticslide.ElasticSlideActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
@@ -16,11 +18,12 @@ import com.wzc.chapter_3.viewslide.DragActivity;
 import com.wzc.chapter_3.viewslide.ViewSlideActivity;
 
 public class MainActivity extends Activity {
-
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final ImageView iv = (ImageView) findViewById(R.id.iv);
          findViewById(R.id.btn_view_slide).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -72,7 +75,22 @@ public class MainActivity extends Activity {
          findViewById(R.id.btn_slide_conflict_2_ex).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(MainActivity.this, SlideConflict2ExActivity.class));
+//                 startActivity(new Intent(MainActivity.this, SlideConflict2ExActivity.class));
+                 iv.setTranslationX(16);
+                 iv.setTranslationY(16);
+                 Log.d(TAG, "onClick: iv.getLeft()=" + iv.getLeft());
+                 Log.d(TAG, "onClick: iv.getRight()=" + iv.getRight());
+                 Log.d(TAG, "onClick: iv.getTop()=" + iv.getTop());
+                 Log.d(TAG, "onClick: iv.getBottom()=" + iv.getBottom());
+                 Log.d(TAG, "onClick: iv.getWidth()=" + iv.getWidth());
+                 Log.d(TAG, "onClick: iv.getHeight()=" + iv.getHeight());
+                 Log.d(TAG, "onClick: iv.getX()=" + iv.getX());
+                 Log.d(TAG, "onClick: iv.getY()=" + iv.getY());
+                 Log.d(TAG, "onClick: iv.getTranslationX()=" + iv.getTranslationX());
+                 Log.d(TAG, "onClick: iv.getTranslationY()=" + iv.getTranslationY());
+
+
+
              }
          });
     }

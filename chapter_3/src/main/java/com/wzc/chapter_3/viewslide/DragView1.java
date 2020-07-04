@@ -45,7 +45,7 @@ public class DragView1 extends TextView {
                 setTranslationX(newTranslationX);
                 setTranslationY(newTranslationY);
 
-                // 输出的值是不变化的
+                // 输出的值是不变化的， 没有改变 View 的位置参数。
                 Log.d(TAG, "onTouchEvent: getLeft() = " + getLeft()
                         +", getTop() = " + getTop()
                         +", getRight() = " + getRight()

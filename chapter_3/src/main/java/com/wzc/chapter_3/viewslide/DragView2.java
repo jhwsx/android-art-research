@@ -45,7 +45,7 @@ public class DragView2 extends TextView {
                         getBottom() + dy
                 );
 
-                // 输出的值是变化的
+                // 输出的值是变化的， 真正改变了 View 的位置参数
                 Log.d(TAG, "onTouchEvent: getLeft() = " + getLeft()
                         + ", getTop() = " + getTop()
                         + ", getRight() = " + getRight()

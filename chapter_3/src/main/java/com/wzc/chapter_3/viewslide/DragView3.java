@@ -33,7 +33,8 @@ public class DragView3 extends TextView {
 
                 int dx = x - mLastX;
                 int dy = y - mLastY;
-
+                // scrollBy 滑动的是 View 的内容，所以这里使用父控件的 scrollBy 方法实现 View 的滑动。
+                // 但是，它滑动的是父控件的所有内容，而不单单是 View 一个。
                 ((View) getParent()).scrollBy(-dx, -dy);
 
                 mLastX = x;

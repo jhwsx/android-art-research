@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
+ * TODO 为什么滑动这个控件时，会导致 DragView2 马上回到初始位置？
  * @author wzc
  * @date 2018/11/11
  */
@@ -26,7 +27,7 @@ public class DragView4 extends TextView {
                 mLastX = x;
                 mLastY = y;
                 break;
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_MOVE:
                 int offsetX = x - mLastX;
                 int offsetY = y - mLastY;
                 ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) getLayoutParams();
