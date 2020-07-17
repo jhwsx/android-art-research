@@ -1,4 +1,4 @@
-package com.wzc.chapter_3.slideconflict;
+package com.wzc.chapter_3.slideconflict.type1.external;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -10,21 +10,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wzc.chapter_3.R;
-import com.wzc.chapter_3.slideconflict.view.HorizontalScrollViewEx;
 import com.wzc.chapter_3.util.Utils;
 
 /**
  * @author wzc
  * @date 2018/6/9
  */
-public class SlideConflit1ExActivity extends Activity {
+public class SlideConflictExActivity extends Activity {
 
     private HorizontalScrollViewEx mHorizontalScrollViewEx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slideconflit_1_ex);
+        setContentView(R.layout.activity_slideconflict_ex);
 
         mHorizontalScrollViewEx = (HorizontalScrollViewEx) findViewById(R.id.horizontalScrollViewEx);
 

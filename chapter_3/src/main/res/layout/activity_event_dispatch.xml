@@ -8,7 +8,7 @@
 
     <com.wzc.chapter_3.eventdispatch.MyButton
         android:id="@+id/myview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button"/>
 </com.wzc.chapter_3.eventdispatch.MyLinearLayout>

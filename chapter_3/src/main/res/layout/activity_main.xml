@@ -52,31 +52,11 @@
         android:text="SlideConflict1-ExternalIntercept"/>
 
     <Button
-        android:id="@+id/btn_slide_conflit_1_ex_practice_1"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SlideConflict1-ExternalIntercept-Practice1"/>
-
-    <Button
         android:id="@+id/btn_slide_conflict_1_in"
         android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SlideConflict1-InternalIntercept"/>
 
-    <Button
-        android:id="@+id/btn_slide_conflict_2_ex"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SlideConflict2-ExternalIntercept"/>
-
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_gravity="center_horizontal"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -12,12 +12,13 @@ import android.widget.LinearLayout;
 
 public class MyLinearLayout extends LinearLayout {
 
+
     public MyLinearLayout(Context context) {
-        this(context,null);
+        super(context);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -26,7 +27,6 @@ public class MyLinearLayout extends LinearLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        requestDisallowInterceptTouchEvent(true);
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
@@ -46,6 +46,7 @@ public class MyLinearLayout extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean intercepted = super.onInterceptTouchEvent(ev);
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
@@ -60,12 +61,14 @@ public class MyLinearLayout extends LinearLayout {
             default:
                 break;
         }
-        return super.onInterceptTouchEvent(ev);
+        Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: intercepted = " + intercepted);
+        return intercepted;
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        boolean handled = super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_DOWN");
@@ -80,13 +83,14 @@ public class MyLinearLayout extends LinearLayout {
                 break;
 
         }
-        return super.onTouchEvent(event);
+        Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: handled = " + handled);
+        return handled;
     }
 
     @Override
     public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         Log.d(EventDispatchActivity.TAG, "MyLinearLayout:requestDisallowInterceptTouchEvent: " +
-                "disallowIntercept="+disallowIntercept);
+                "disallowIntercept = " + disallowIntercept);
         super.requestDisallowInterceptTouchEvent(disallowIntercept);
     }
 }

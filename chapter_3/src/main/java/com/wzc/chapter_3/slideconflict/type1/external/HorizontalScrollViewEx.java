@@ -1,4 +1,4 @@
-package com.wzc.chapter_3.slideconflict.view;
+package com.wzc.chapter_3.slideconflict.type1.external;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,25 +10,27 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 /**
+ * 外部拦截法
+ *
  * @author wzc
  * @date 2018/6/9
  */
-public class HorizontalScrollViewEx2 extends ViewGroup {
+public class HorizontalScrollViewEx extends ViewGroup {
 
-    private static final String TAG = HorizontalScrollViewEx2.class.getSimpleName();
+    private static final String TAG = HorizontalScrollViewEx.class.getSimpleName();
     private VelocityTracker mVelocityTracker;
     private Scroller mScroller;
     private int mChildCount;
 
-    public HorizontalScrollViewEx2(Context context) {
+    public HorizontalScrollViewEx(Context context) {
         this(context, null);
     }
 
-    public HorizontalScrollViewEx2(Context context, AttributeSet attrs) {
+    public HorizontalScrollViewEx(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public HorizontalScrollViewEx2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HorizontalScrollViewEx(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -40,25 +42,56 @@ public class HorizontalScrollViewEx2 extends ViewGroup {
         mScroller = new Scroller(getContext());
     }
 
+    private int mLastInterceptX;
+    private int mLastInterceptY;
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
+        boolean intercepted = false;
+
         int x = (int) event.getX();
         int y = (int) event.getY();
-        int action = event.getAction();
-        // 父元素要默认拦截除了 ACTION_DOWN 以外的其他事件
-        if (action == MotionEvent.ACTION_DOWN) {
-            mLastX = x;
-            mLastY = y;
-//            if (!mScroller.isFinished()) {
-//                mScroller.abortAnimation();
-//                return true;
-//            }
-            Log.d(TAG, "onInterceptTouchEvent: ACTION_DOWN don't intercept");
-            return false;
-        } else {
-            Log.d(TAG, "onInterceptTouchEvent: not ACTION_DOWN, so intercept");
-            return true;
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                intercepted = false;
+                // 参考任玉刚老师代码修改: 在弹性滚动没有结束时, 按下手指, 停止滚动, 立即拦截
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                    // 如果不加下面这句代码, 那么在进行水平滑动时, 还未结束水平滑动松开手指,另一手指就马上进行
+                    // 竖直滑动, 则水平方向的滑动已经被 abort 了, 新的滑动是竖直滑动. 这时,
+                    // 屏幕上的情况是水平方向没有滑到终点, 而竖直方向可以滚动. 见书上 p164页.
+
+                    // 加上这句代码, 那么当水平滑动正在进行时(进入这个 if 语句,就说明水平滑动正在进行),
+                    // 那么直接拦截(即新的点击事件仍然交给父容器处理).
+                    intercepted = true;
+                }
+                break;
+            }
+            case MotionEvent.ACTION_MOVE: {
+                int deltaX = x - mLastInterceptX;
+                int deltaY = y - mLastInterceptY;
+//                Log.d(TAG, "onInterceptHoverEvent: dx = " + dx + ", dy = " + dy);
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    intercepted = true;
+                } else {
+                    intercepted = false;
+                }
+                break;
+            }
+            case MotionEvent.ACTION_UP: {
+                intercepted = false;
+                break;
+            }
+            default:
         }
+
+        mLastInterceptX = x;
+        mLastInterceptY = y;
+        mLastX = x;
+        mLastY = y;
+        Log.d(TAG, "onInterceptHoverEvent: intercepted = " + intercepted);
+        return intercepted;
     }
 
     private int mLastX;

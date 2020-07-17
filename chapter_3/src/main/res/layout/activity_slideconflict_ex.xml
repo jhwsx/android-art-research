@@ -3,8 +3,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.wzc.chapter_3.slideconflict.view.HorizontalScrollViewEx2
-        android:id="@+id/container"
+    <com.wzc.chapter_3.slideconflict.type1.external.HorizontalScrollViewEx
+        android:id="@+id/horizontalScrollViewEx"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
 </LinearLayout>
