@@ -8,9 +8,11 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,14 @@ public class HorizontalScrollViewExActivity extends Activity {
             TextView tv = (TextView) view.findViewById(R.id.tv_page);
             tv.setText("Page " + i);
             ListView listView = (ListView) view.findViewById(R.id.listview);
-            listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, createList()));
+            final List<String> list = createList();
+            listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(HorizontalScrollViewExActivity.this, "click " + list.get(position), Toast.LENGTH_SHORT).show();
+                }
+            });
             mHorizontalScrollViewEx.addView(view);
         }
     }

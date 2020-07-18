@@ -4,15 +4,43 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <!--
+    android:groupIndicator="@null" 取消默认的组指示器图片
+    android:listSelector="@android:color/transparent" 修改默认的按压效果, 包括组和子
+    android:childDivider="@drawable/child_bg" 设置子的分割线, 可以设置 color 或者 drawable
+    android:cacheColorHint="@null"
+    -->
     <ExpandableListView
         android:id="@+id/expandablelistview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:childDivider="@drawable/child_bg"
         android:childIndicatorLeft="0dp"
         android:divider="#BEBEBE"
         android:listSelector="@android:color/transparent"
         android:dividerHeight="1dp"
-        android:cacheColorHint="@null"
         android:groupIndicator="@null"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/et"
+            android:hint="输入数字"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn"
+            android:text="执行"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

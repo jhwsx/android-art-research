@@ -57,6 +57,10 @@ public class ListViewEx extends ListView {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG, "dispatchTouchEvent: ACTION_UP");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;

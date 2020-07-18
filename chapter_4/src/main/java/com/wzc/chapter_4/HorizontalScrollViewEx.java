@@ -10,14 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 /**
+ * 假设所有子元素的宽和高都是一样的.
+ *
  * @author wzc
  * @date 2018/8/11
  */
 public class HorizontalScrollViewEx extends ViewGroup {
     private static final String TAG = HorizontalScrollViewEx.class.getSimpleName();
     private int mChildWidth;
-    private Scroller mScroller;
-    private VelocityTracker mVelocityTracker;
+    private VelocityTracker velocityTracker;
+    private Scroller scroller;
 
     public HorizontalScrollViewEx(Context context) {
         this(context, null);
@@ -33,121 +35,14 @@ public class HorizontalScrollViewEx extends ViewGroup {
     }
 
     private void init() {
-        if (mScroller == null) {
-            mScroller = new Scroller(getContext());
-            mVelocityTracker = VelocityTracker.obtain();
-        }
+        velocityTracker = VelocityTracker.obtain();
+        scroller = new Scroller(getContext());
     }
 
-    private int mLastInterceptX;
-    private int mLastInterceptY;
-    private int mLastX;
-    private int mLastY;
-
-    /**
-     * 外部拦截法, 重写父容器的 onInterceptTouchEvent() 方法
-     *
-     * @param ev
-     * @return
-     */
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        boolean intercepted = false;
-        int x = (int) ev.getX();
-        int y = (int) ev.getY();
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                intercepted = false;
-                if (!mScroller.isFinished()) {
-                    // 如果新的 down 事件来到时, 弹性滑动还没结束, 就中断动画, 这样用户体验较好
-                    mScroller.abortAnimation();
-                    // 但是, 要记得加上这句拦截
-                    intercepted = true;
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                int deltaX = x - mLastInterceptX;
-                int deltaY = y - mLastInterceptY;
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    // 当水平方向的距离大于竖直方向的距离时, 让父容器拦截事件
-                    intercepted = true;
-                } else {
-                    // 当水平方向的距离小于竖直方法的距离时, 父容器不拦截事件
-                    intercepted = false;
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                intercepted = false;
-                break;
-            default:
-                break;
-        }
-        Log.d(TAG, "intercepted:" + intercepted);
-        mLastX = x;
-        mLastY = y;
-        mLastInterceptX = x;
-        mLastInterceptY = y;
-        return intercepted;
-    }
-
-    private int mCurrentIndex;
-    private int mTargetIndex;
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int x = (int) event.getX();
-        int y = (int) event.getY();
-        mVelocityTracker.addMovement(event);
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                if (!mScroller.isFinished()) {
-                    mScroller.abortAnimation();
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                int deltaX = x - mLastX;
-                scrollBy(-deltaX, 0);
-                break;
-            case MotionEvent.ACTION_UP:
-                int scrollX = getScrollX();
-                mVelocityTracker.computeCurrentVelocity(1000);
-                float xVelocity = mVelocityTracker.getXVelocity();
-                Log.d(TAG, "mCurrentIndex:" + mCurrentIndex);
-                if (Math.abs(xVelocity) >= 50) {
-                    Log.d(TAG, "xVelocity >= 50");
-                    mTargetIndex = xVelocity > 0 /*大于 0, 表示从左向右滑*/ ? mCurrentIndex - 1 : mCurrentIndex + 1;
-                } else {
-                    Log.d(TAG, "xVelocity < 50");
-                    mTargetIndex = (scrollX + mChildWidth / 2) / mChildWidth;
-                }
-                Log.d(TAG, "mTargetIndex:" + mTargetIndex);
-                // 控制边界
-                mTargetIndex = Math.min(Math.max(0, mTargetIndex), mChildrenSize - 1);
-                Log.d(TAG, "mTargetIndex fine-tune : " + mTargetIndex);
-                // 开始弹性滑动
-                smoothScrollTo(mTargetIndex * mChildWidth);
-                // 更新当前页索引
-                mCurrentIndex = mTargetIndex;
-                mVelocityTracker.clear();
-                break;
-            default:
-                break;
-        }
-        mLastX = x;
-        mLastY = y;
-        return true;
-    }
-
-    private void smoothScrollTo(int destX) {
-        int scrollX = getScrollX();
-        int delta = destX - scrollX;
-        mScroller.startScroll(scrollX, 0, delta, 0, 1000);
-        invalidate();
-    }
-
+    // 测量
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int measuredWidth = 0;
         int measuredHeight = 0;
         int childCount = getChildCount();
@@ -186,11 +81,14 @@ public class HorizontalScrollViewEx extends ViewGroup {
             measuredWidth = widthSize;
             measuredHeight = childMeasuredHeight;
             setMeasuredDimension(measuredWidth, measuredHeight);
+        } else {
+            setMeasuredDimension(widthSize, heightSize);
         }
     }
 
     private int mChildrenSize;
 
+    // 布局
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         final int childCount = getChildCount();
@@ -207,20 +105,124 @@ public class HorizontalScrollViewEx extends ViewGroup {
         }
     }
 
+    // 交互
+    // 可以左右滑动
+    private int lastX;
+    private int lastY;
+    /**
+     * 当前显示的子元素的索引
+     */
+    private int currChildIndex;
     @Override
-    protected void onDetachedFromWindow() {
-        if (mVelocityTracker != null) {
-            mVelocityTracker.recycle();
+    public boolean onTouchEvent(MotionEvent event) {
+        velocityTracker.addMovement(event);
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (!scroller.isFinished()) {
+                    scroller.abortAnimation();
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = lastX - x;
+                int deltaY = lastY - y;
+                Log.d(TAG, "onTouchEvent: ACTION_MOVE, deltaX=" + deltaX + ",deltaY=" + deltaY);
+                // deltaX 大于 0, 则 View 的内容向左滑动
+                scrollBy(deltaX, 0);
+                break;
+            case MotionEvent.ACTION_UP:
+                int scrollX = getScrollX();
+                // 进行页面控制, 只能停在某一个子元素上
+                // 设置时间间隔: 设置为 1000ms
+                velocityTracker.computeCurrentVelocity(1000);
+                int targetChildIndex;
+                // 获取速度: 就是在上一步代码中设置的时间间隔内滑动的像素数目.
+                int xVelocity = (int) velocityTracker.getXVelocity();
+                if (Math.abs(xVelocity) > 50) {
+                    // 如果速度大于 50, 就滑动到下一个页面或上一个页面
+                    targetChildIndex = xVelocity > 0 ? currChildIndex - 1 : currChildIndex + 1;
+                } else {
+                    // 如果速度小于 50,
+                    // 加上 mChildWidth / 2 ,是为了处理当前页面已经滑过去了大于一半的宽度, UP 后就应该滑动到下一个页面的情况.
+                    targetChildIndex = (scrollX + mChildWidth / 2) / mChildWidth;
+                }
+                // 进行边界控制:
+                // 向左滑动: View 内容的左边缘位于 View 左边缘的左边, 距离最多只能是 (子 View 个数 - 1)) 个子 View 的宽度
+                // 向右滑动: View 内容的左边缘最多是和 View 左边缘重合
+                targetChildIndex = Math.max(0, Math.min(targetChildIndex, mChildrenSize - 1));
+                int dx = targetChildIndex * mChildWidth - scrollX;
+                // dx 大于 0, 则 View 的内容向左滑动
+                // scrollBy(dx, 0);
+                smoothScrollBy(dx); // 增加弹性滑动,使用 Scroller 来实现
+                velocityTracker.clear();
+                currChildIndex = targetChildIndex;
+                break;
         }
-        super.onDetachedFromWindow();
+        lastX = x;
+        lastY = y;
+        return true;
+    }
+
+    private void smoothScrollBy(int dx) {
+        scroller.startScroll(getScrollX(), 0, dx, 0);
+        invalidate();
     }
 
     @Override
     public void computeScroll() {
         super.computeScroll();
-        if (mScroller.computeScrollOffset()) {
-            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+        if (scroller.computeScrollOffset()) {
+            scrollTo(scroller.getCurrX(), 0);
             postInvalidate();
         }
+    }
+
+    // 解决滑动冲突
+    // 使用外部拦截法
+    private int lastInterceptedX;
+    private int lastInterceptedY;
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        int x = (int) ev.getX();
+        int y = (int) ev.getY();
+        boolean intercepted = false;
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                intercepted = false;
+                if (!scroller.isFinished()) {
+                    scroller.abortAnimation();
+                    intercepted = true;
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = lastInterceptedX - x;
+                int deltaY = lastInterceptedY - y;
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // 是左右滑动, 父 View 需要, 进行拦截
+                    intercepted = true;
+                } else {
+                    // 是上下滑动, 子 View 需要, 不进行拦截
+                    intercepted = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                intercepted = false;
+                break;
+            default:
+                break;
+        }
+        lastInterceptedX = x;
+        lastInterceptedY = y;
+        // 这个代码必须有
+        lastX = x;
+        lastY = y;
+        return intercepted;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        velocityTracker.recycle();
     }
 }

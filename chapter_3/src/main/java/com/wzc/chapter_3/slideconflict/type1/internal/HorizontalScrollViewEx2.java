@@ -51,16 +51,22 @@ public class HorizontalScrollViewEx2 extends ViewGroup {
         if (action == MotionEvent.ACTION_DOWN) {
             mLastX = x;
             mLastY = y;
-//            if (!mScroller.isFinished()) {
-//                mScroller.abortAnimation();
-//                return true;
-//            }
+            if (!mScroller.isFinished()) {
+                mScroller.abortAnimation();
+                return true;
+            }
             Log.d(TAG, "onInterceptTouchEvent: ACTION_DOWN don't intercept");
             return false;
         } else {
-            Log.d(TAG, "onInterceptTouchEvent: not ACTION_DOWN, so intercept");
+            Log.d(TAG, "onInterceptTouchEvent: "+MotionEvent.actionToString(action)+", so intercept");
             return true;
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d(TAG, "dispatchTouchEvent: " + MotionEvent.actionToString(ev.getAction()));
+        return super.dispatchTouchEvent(ev);
     }
 
     private int mLastX;
@@ -154,7 +160,7 @@ public class HorizontalScrollViewEx2 extends ViewGroup {
 
 
     private void smoothScrollTo(int destX) {
-        mScroller.startScroll(getScrollX(),0,destX - getScrollX(),500);
+        mScroller.startScroll(getScrollX(),0,destX - getScrollX(),0);
         invalidate();
     }
 

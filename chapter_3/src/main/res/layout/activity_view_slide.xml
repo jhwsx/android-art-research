@@ -1,61 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ll_parent"
-    android:orientation="vertical"
     tools:context="com.wzc.chapter_3.MainActivity">
 
-    <Button
-        android:id="@+id/btn_scrollto"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scroll to"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_scrollby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Scroll by"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="input scrollBy(x, y) params"/>
+        <Button
+            android:id="@+id/btn_scrollto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scroll to" />
 
-    <EditText
-        android:id="@+id/et_x"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="input x"
-        android:inputType="numberSigned"
-        android:imeOptions="actionNext"/>
+        <Button
+            android:id="@+id/btn_scrollby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scroll by" />
 
-    <EditText
-        android:id="@+id/et_y"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="input y"
-        android:imeOptions="actionDone"
-        android:inputType="numberSigned"/>
-    <ImageView
-        android:id="@+id/iv"
-        android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#440000ff"
-        android:src="@drawable/ad"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/result"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="input scrollBy(x, y) params" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="change layout params"
-        android:textAllCaps="false"
-        android:id="@+id/btn_layoutparams"/>
-</LinearLayout>
+        <EditText
+            android:id="@+id/et_x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="input x"
+            android:imeOptions="actionNext"
+            android:inputType="numberSigned" />
+
+        <EditText
+            android:id="@+id/et_y"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="input y"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#440000ff"
+            android:scaleType="fitXY"
+            android:src="@drawable/ad" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="input scrollTo(x, y) params" />
+
+        <EditText
+            android:id="@+id/et_x2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="input x"
+            android:imeOptions="actionNext"
+            android:inputType="numberSigned" />
+
+        <EditText
+            android:id="@+id/et_y2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="input y"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned" />
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#440000ff"
+            android:scaleType="fitXY"
+            android:src="@drawable/ad" />
+
+        <TextView
+            android:id="@+id/result2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_layoutparams"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="change layout params"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</ScrollView>

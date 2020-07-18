@@ -70,6 +70,30 @@ public class ViewSlideActivity extends Activity {
             }
         });
 
+        final ImageView iv2 = (ImageView) findViewById(R.id.iv2);
+        final EditText etX2 = (EditText) findViewById(R.id.et_x2);
+        final EditText etY2 = (EditText) findViewById(R.id.et_y2);
+        final TextView result2 = (TextView) findViewById(R.id.result2);
+        etY2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    try {
+                        int x = Integer.parseInt(etX2.getText().toString());
+                        int y = Integer.parseInt(etY2.getText().toString());
+                        iv2.scrollTo(x,y);
+                        result2.setText("iv2.getScrollX() = " + iv2.getScrollX() + ", iv2.getScrollY() = " + iv2.getScrollY());
+                        Log.d("MainActivity", "iv2.getScrollX() = " + iv2.getScrollX() + ", iv2.getScrollY() = " + iv2.getScrollY());
+                        return true;
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                        return false;
+                    }
+                }
+                return false;
+            }
+        });
+
         final Button btnLayoutParams = (Button) findViewById(R.id.btn_layoutparams);
         btnLayoutParams.setOnClickListener(new View.OnClickListener() {
             @Override
