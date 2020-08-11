@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--扩大左、右、上方的背景区域来隐藏shape的三边使得只有一边暴露出来-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="-2dp"
+    android:insetRight="-2dp"
+    android:insetTop="-2dp" >
+    <shape>
+        <solid android:color="#fff" />
+        <stroke
+            android:width="2dp"
+            android:color="#0f0" />
+    </shape>
+</inset>
