@@ -30,4 +30,17 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
+   <Button
+       android:text="PopupWindow"
+       android:textAllCaps="false"
+       android:onClick="popupwindow"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+   <Button
+       android:text="PopupMenu"
+       android:textAllCaps="false"
+       android:onClick="popupmenu"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
 </LinearLayout>
