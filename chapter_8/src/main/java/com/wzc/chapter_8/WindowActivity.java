@@ -53,9 +53,11 @@ public class WindowActivity extends Activity implements View.OnTouchListener {
         mLayoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
         // 如果不写下面这行，那么锁屏后竟然无法解锁了。
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL // 设置了这个标记，即便当前 Window 具有焦点，
+                // 也允许将当前 Window 区域以外的单击事件传递给底层的 Window；否则，当前窗口将消费所有的点击事件，不管点击事件是否在窗口之内。
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE // 表示 Window 不需要获取焦点，也不需要接收各种输入事件，
+                // 此标记会同时启用 FLAG_NOT_TOUCH_MODAL，最终事件会直接传递给下层的具有焦点的 Window
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED; // 让 Window 显示在锁屏的界面上。
         // 1，声明 SYSTEM_ALERT_WINDOW 权限，但不指定下面这行，会报错：Caused by: android.view.WindowManager$InvalidDisplayException:
         // Unable to add window android.view.ViewRootImpl$W@dda8c68 -- the specified window type is not valid
         // 2, 不声明 SYSTEM_ALERT_WINDOW 权限，但指定下面这行，会报错: Caused by: android.view.WindowManager$BadTokenException:
@@ -81,6 +83,7 @@ public class WindowActivity extends Activity implements View.OnTouchListener {
             case MotionEvent.ACTION_MOVE:
                 mLayoutParams.x = rawX;
                 mLayoutParams.y = rawY;
+                // 更新
                 mWindowManager.updateViewLayout(mFloatingButton, mLayoutParams);
                 break;
             default:
