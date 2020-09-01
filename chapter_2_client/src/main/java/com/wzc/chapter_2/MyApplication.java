@@ -7,6 +7,7 @@ import android.util.Log;
 import com.wzc.chapter_2.util.MyUtils;
 
 /**
+ * 多进程下，Application 类会多次创建
  * @author wzc
  * @date 2018/3/14
  */
@@ -19,6 +20,6 @@ public class MyApplication extends Application {
         super.onCreate();
         String processName = MyUtils.getProcessName(getApplicationContext(), Process.myPid());
 
-        Log.d(TAG, "application start, process name : " + processName);
+        Log.d(TAG, "application start, process name : " + processName + ", process id : " + Process.myPid());
     }
 }

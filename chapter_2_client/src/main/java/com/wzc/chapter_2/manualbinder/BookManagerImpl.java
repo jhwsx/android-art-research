@@ -15,7 +15,6 @@ import java.util.List;
 public class BookManagerImpl extends Binder implements IBookManager {
 
     public BookManagerImpl() {
-
         this.attachInterface(this, DESCRIPTOR);
     }
 
@@ -91,8 +90,8 @@ public class BookManagerImpl extends Binder implements IBookManager {
         public java.lang.String getInterfaceDescriptor() {
             return DESCRIPTOR;
         }
-// 从远程服务器获取图书列表
 
+        // 从远程服务器获取图书列表
         @Override
         public java.util.List<Book> getBookList() throws android.os.RemoteException {
             android.os.Parcel _data = android.os.Parcel.obtain();
@@ -109,8 +108,8 @@ public class BookManagerImpl extends Binder implements IBookManager {
             }
             return _result;
         }
-// 往图书列表中添加一本书
 
+        // 往图书列表中添加一本书
         @Override
         public void addBook(Book book) throws android.os.RemoteException {
             android.os.Parcel _data = android.os.Parcel.obtain();

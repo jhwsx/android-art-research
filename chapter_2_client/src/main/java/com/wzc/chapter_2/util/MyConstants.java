@@ -8,7 +8,8 @@ import android.os.Environment;
  */
 public interface MyConstants {
     String CHAPTER_2_PATH = Environment.getExternalStorageDirectory().getPath() + "/wzc/chapter_2/";
-    String CACHE_FILE_PATH = CHAPTER_2_PATH + "usercache";
+    String CACHE_SERIALIZABLE_FILE_PATH = CHAPTER_2_PATH + "usercache_serializable";
+    String CACHE_PARCELABLE_FILE_PATH = CHAPTER_2_PATH + "usercache_parcelable";
     String MSG = "msg";
     String REPLY = "reply";
     static final int MSG_FROM_CLIENT = 1;

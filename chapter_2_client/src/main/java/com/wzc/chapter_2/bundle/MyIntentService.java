@@ -2,6 +2,7 @@ package com.wzc.chapter_2.bundle;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.util.Log;
 
 /**
  * @author wzc
@@ -16,13 +17,17 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         // 计算1到100的和
-        int result = 0;
-        for (int i = 1; i <= 100; i++) {
-            result += i;
+        try {
+            int result = 0;
+            for (int i = 1; i <= 100; i++) {
+                result += i;
+            }
+            MySingleton.getInstance().result = result;
+            Intent intent1 = new Intent(MyIntentService.this, ThirdActivity.class);
+            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent1);
+        } catch (Exception e) {
+            Log.e(TAG, "onHandleIntent: ", e);
         }
-        MySingleton.getInstance().result = result;
-        Intent intent1 = new Intent(MyIntentService.this, ThirdActivity.class);
-        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent1);
     }
 }
