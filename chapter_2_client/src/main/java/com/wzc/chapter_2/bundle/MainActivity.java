@@ -2,8 +2,10 @@ package com.wzc.chapter_2.bundle;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Process;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class MainActivity extends Activity {
         TextView tv = (TextView) findViewById(R.id.tv);
         String processName = MyUtils.getProcessName(getApplicationContext(), Process.myPid());
         tv.setText("processName: " + processName);
+        // 静态成员
         UserManager.sUserId = 2;
         Log.d(TAG, "onCreate: UserManager.class=" + UserManager.class.hashCode());
         TextView tvUserId = (TextView) findViewById(R.id.tv_user_id);

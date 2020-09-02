@@ -62,8 +62,7 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
             mBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
             mBookManager = null;
 
-            Intent intent = new Intent();
-            intent.setComponent(new ComponentName("com.wzc.chapter_2.service", "com.wzc.chapter_2.service.BookManagerService"));
+            Intent intent = new Intent(BookManagerActivity.this, BookManagerService.class);
             bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
             mIsBound = true;
         }
@@ -144,8 +143,7 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.bind:
                 if (!mIsBound) {
-                    Intent intent = new Intent();
-                    intent.setComponent(new ComponentName("com.wzc.chapter_2.service", "com.wzc.chapter_2.service.BookManagerService"));
+                    Intent intent = new Intent(BookManagerActivity.this, BookManagerService.class);
                     bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
                     mIsBound = true;
                 }
