@@ -50,8 +50,9 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
             }
         }
     };
-
+    // 声明一个 DeathRecipient 对象
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
+        // 当 Binder 死亡的时候，系统就会回调 binderDied 方法
         @Override
         public void binderDied() {
             Log.d(TAG, "binderDied: currentThread = " + Thread.currentThread().getName()); // Binder:25808_2
@@ -59,9 +60,10 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
             if (mBookManager == null) {
                 return;
             }
+            // 移除之前设置的死亡代理
             mBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
             mBookManager = null;
-
+            // 重新绑定远程服务
             Intent intent = new Intent(BookManagerActivity.this, BookManagerService.class);
             bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
             mIsBound = true;
@@ -70,10 +72,17 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            // 跨进程时，这里回调的 IBinder service 对象 （打印：android.os.BinderProxy@a4991f4）
+            // 和 BookManagerService 里的 onBind 方法返回的 IBinder 对象
+            // （打印：com.wzc.chapter_2.aidl.BookManagerService$1@ecea4f7）不是一个对象。
+            // 不是跨进程时，这里回调的 IBinder service 对象和 BookManagerService 里的 onBind 方法返回的 IBinder 对象
+            // 是一个对象。
+            Log.d(TAG, "onServiceConnected: service = " + service);
             Log.d(TAG, "onServiceConnected: currentThread = " + Thread.currentThread().getName()); // main
             Toast.makeText(BookManagerActivity.this, "service is connected", Toast.LENGTH_SHORT).show();
             mBookManager = IBookManager.Stub.asInterface(service);
             try {
+                // 在客户端绑定远程服务成功后，给 binder 设置死亡代理。
                 mBookManager.asBinder().linkToDeath(mDeathRecipient, 0);
             } catch (RemoteException e) {
                 e.printStackTrace();

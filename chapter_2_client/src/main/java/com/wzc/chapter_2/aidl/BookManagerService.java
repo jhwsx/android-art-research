@@ -115,6 +115,7 @@ public class BookManagerService extends Service {
 //            Log.d(TAG, "onBind: permission denied");
 //            return null;
 //        }
+        Log.d(TAG, "onBind: mBinder = " + mBinder);
         return mBinder;
     }
 
