@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
@@ -33,6 +34,7 @@ public class MessengerActivity extends Activity {
     private static class MessengerHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
+            Log.d(TAG, "handleMessage: currThread=" + Thread.currentThread().getName());
             // 2-6, 处理从服务端返回的消息
             switch (msg.what) {
                 case MyConstants.MSG_FROM_SERVICE:
@@ -45,12 +47,13 @@ public class MessengerActivity extends Activity {
         }
     }
 
-    // 2-2, 创建处理服务端消息的Messenger
+    // 2-2, 创建处理服务端消息的 Messenger
     private Messenger mGetReplyMessenger = new Messenger(new MessengerHandler());
+
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            // 1-4, 使用返回过来的IBinder对象来初始化一个Messenger对象
+            // 1-4, 使用返回过来的 IBinder 对象来初始化一个 Messenger 对象
             mMessenger = new Messenger(service);
             mBound.set(true);
         }
@@ -79,10 +82,11 @@ public class MessengerActivity extends Activity {
                 Bundle bundle = new Bundle();
                 bundle.putString(MyConstants.MSG, "hello, this is client.");
                 sendMessage.setData(bundle);
-                // 2-3, 把处理服务端消息的Messenger,通过msg.replyTo,带给服务端
+                // 2-3, 把处理服务端消息的 Messenger ,通过msg.replyTo,带给服务端
+                Log.d(TAG, "mGetReplyMessenger=" + mGetReplyMessenger + ",looper="+ Looper.myLooper());
                 sendMessage.replyTo = mGetReplyMessenger;
                 try {
-                    // 1-5 向服务端发送消息
+                    // 1-5 向服务端发送消息, 发起远程调用
                     mMessenger.send(sendMessage);
                 } catch (RemoteException e) {
                     e.printStackTrace();

@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
@@ -20,16 +21,18 @@ import com.wzc.chapter_2.util.MyConstants;
 public class MessengerService extends Service {
     private static final String TAG = MessengerService.class.getSimpleName();
 
-    // 1-1, 服务端要持有一个Handler来处理来自客户端的调用
+    // 1-1, 服务端要持有一个 Handler 来处理来自客户端的调用
     private static class MessengerHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 // 1-6 处理来自客户端的消息
                 case MyConstants.MSG_FROM_CLIENT:
+                    Log.d(TAG, "handleMessage: currThread=" + Thread.currentThread().getName());
                     Log.d(TAG, "handleMessage: receive msg from client : " + msg.getData().getString(MyConstants.MSG));
-                    // 2-4, 从msg.replyTo中取出处理服务端消息的Messenger对象
+                    // 2-4, 从 msg.replyTo 中取出处理服务端消息的 Messenger 对象
                     Messenger replyMessenger = msg.replyTo;
+                    Log.d(TAG, "handleMessage: replyMessenger=" + replyMessenger);
 //                    Book book = (Book) msg.obj;
 //                    Log.d(TAG, "handleMessage: book : " + book);
                     Point point = (Point) msg.obj;
@@ -54,12 +57,12 @@ public class MessengerService extends Service {
         }
     }
 
-    // 1-2, 使用Handler来创建一个Messenger对象
+    // 1-2, 使用 Handler 来创建一个 Messenger 对象
     private Messenger mMessenger = new Messenger(new MessengerHandler());
 
     @Override
     public IBinder onBind(Intent intent) {
-        // 1-3, 返回Messenger对象所持有的Binder对象
+        // 1-3, 返回 Messenger 对象所持有的 Binder 对象
         return mMessenger.getBinder();
     }
 }

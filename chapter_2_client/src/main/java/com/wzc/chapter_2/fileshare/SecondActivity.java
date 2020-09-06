@@ -25,13 +25,13 @@ public class SecondActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recoverFromFileBySerializable();
-        recoverFromFileByParcelable();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        recoverFromFileBySerializable();
+        recoverFromFileByParcelable();
     }
 
     private void recoverFromFileBySerializable() {

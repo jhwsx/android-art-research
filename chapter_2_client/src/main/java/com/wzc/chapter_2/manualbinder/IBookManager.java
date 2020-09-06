@@ -1,20 +1,21 @@
 package com.wzc.chapter_2.manualbinder;
 
+import android.os.IBinder;
 import android.os.IInterface;
+import android.os.RemoteException;
+
+import java.util.List;
 
 /**
- * @author wzc
- * @date 2018/4/3
+ * @author wangzhichao
+ * @date 2020-9-3
  */
 public interface IBookManager extends IInterface {
-    String DESCRIPTOR = "com.wzc.chapter_2.aidl.IBookManager";
-    int TRANSACTION_getBookList = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
+    String DESCRIPTOR = "com.wzc.chapter_2.manualbinder2.IBookManager";
+    int TRANSACTION_addBook = IBinder.FIRST_CALL_TRANSACTION + 0;
+    int TRANSACTION_getBookList = IBinder.FIRST_CALL_TRANSACTION + 1;
 
-    int TRANSACTION_addBook = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
+    void addBook(Book book) throws RemoteException;
 
-    // 从远程服务器获取图书列表
-    java.util.List<Book> getBookList() throws android.os.RemoteException;
-
-    // 往图书列表中添加一本书
-    void addBook(Book book) throws android.os.RemoteException;
+    List<Book> getBookList() throws RemoteException;
 }

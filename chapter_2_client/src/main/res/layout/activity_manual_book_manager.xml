@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bind"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/unbind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unbind"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/add_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a book"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/get_booklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get bookList"
+        android:textAllCaps="false"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -63,11 +63,11 @@
         <activity
             android:name=".aidl.BookManagerActivity"
             android:label="BookManagerActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
+<!--            <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN"/>-->
 
-            <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
 
         <service
@@ -75,13 +75,29 @@
             android:process=":remote">
         </service>
 
+
+        <activity
+            android:name=".manualbinder.ManualBookManagerActivity"
+            android:label="ManualBookManagerActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <service
+            android:name=".manualbinder.ManualBookManagerService"
+            android:process=":remote">
+        </service>
+
         <activity
             android:name=".messenger.MessengerActivity"
             android:label="MessengerActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <service
