@@ -31,7 +31,7 @@ public class MessengerActivity extends Activity {
     private AtomicBoolean mBound = new AtomicBoolean(false);
     private Messenger mMessenger;
 
-    // 2-1, 创建处理来自服务端消息的Handler
+    // 3-1, 创建处理来自服务端消息的Handler
     private static class MessengerHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
@@ -48,13 +48,13 @@ public class MessengerActivity extends Activity {
         }
     }
 
-    // 2-2, 创建处理服务端消息的 Messenger
+    // 3-2, 创建处理服务端消息的 Messenger
     private Messenger mGetReplyMessenger = new Messenger(new MessengerHandler());
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            // 1-4, 使用返回过来的 IBinder 对象来初始化一个 Messenger 对象
+            // 2-2, 绑定成功后，使用服务端返回过来的 IBinder 对象来初始化一个 Messenger 对象
             mMessenger = new Messenger(service);
             mBound.set(true);
         }
@@ -83,7 +83,7 @@ public class MessengerActivity extends Activity {
                 Bundle bundle = new Bundle();
                 bundle.putString(MyConstants.MSG, "hello, this is client.");
                 sendMessage.setData(bundle);
-                // 2-3, 把处理服务端消息的 Messenger ,通过msg.replyTo,带给服务端
+                // 3-3, 把处理服务端消息的 Messenger ,通过msg.replyTo,带给服务端
                 Log.d(TAG, "mGetReplyMessenger=" + mGetReplyMessenger + ",looper="+ Looper.myLooper());
                 sendMessage.replyTo = mGetReplyMessenger;
                 try {
@@ -96,7 +96,7 @@ public class MessengerActivity extends Activity {
                 }
                 Log.d(TAG, "onClick: mGetReplyMessenger.getBinder()=" + mGetReplyMessenger.getBinder());
                 try {
-                    // 1-5 向服务端发送消息, 发起远程调用
+                    // 2-3 通过创建好的 Messenger 对象，向服务端发送消息, 发起远程调用
                     mMessenger.send(sendMessage);
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -108,6 +108,7 @@ public class MessengerActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        // 2-1, 在客户端进程中，首先要绑定服务端的 Service
         Intent service = new Intent(this, MessengerService.class);
         bindService(service, mConnection, Context.BIND_AUTO_CREATE);
     }

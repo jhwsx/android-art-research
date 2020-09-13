@@ -6,7 +6,6 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
@@ -20,19 +19,20 @@ import java.lang.reflect.Field;
  * @author wzc
  * @date 2018/4/4
  */
+// 1-1, 在服务端创建一个 Service，来处理客户端的连接请求
 public class MessengerService extends Service {
     private static final String TAG = MessengerService.class.getSimpleName();
 
-    // 1-1, 服务端要持有一个 Handler 来处理来自客户端的调用
+    // 服务端要持有一个 Handler 来处理来自客户端的调用
     private static class MessengerHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                // 1-6 处理来自客户端的消息
+                // 处理来自客户端的消息
                 case MyConstants.MSG_FROM_CLIENT:
                     Log.d(TAG, "handleMessage: currThread=" + Thread.currentThread().getName());
                     Log.d(TAG, "handleMessage: receive msg from client : " + msg.getData().getString(MyConstants.MSG));
-                    // 2-4, 从 msg.replyTo 中取出处理服务端消息的 Messenger 对象
+                    // 3-4, 从 msg.replyTo 中取出处理服务端消息的 Messenger 对象
                     Messenger replyMessenger = msg.replyTo;
                     Log.d(TAG, "handleMessage: replyMessenger=" + replyMessenger);
                     try {
@@ -52,7 +52,7 @@ public class MessengerService extends Service {
                     Bundle bundle = new Bundle();
                     bundle.putString(MyConstants.REPLY, "嗯, 你的消息我已经收到, 稍后会回复你.");
                     replyMessage.setData(bundle);
-                    // 2-5, 向客户端发送消息
+                    // 3-5, 向客户端发送消息
                     try {
                         replyMessenger.send(replyMessage);
                     } catch (RemoteException e) {
