@@ -50,6 +50,6 @@ public class Book implements Parcelable {
 
     @Override
     public String toString() {
-        return "bookId = " + bookId + ", bookName = " + bookName;
+        return "{bookId = " + bookId + ", bookName = " + bookName+"}";
     }
 }

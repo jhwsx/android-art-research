@@ -33,6 +33,11 @@ public class BookProvider extends ContentProvider {
     private Context mContext;
     private SQLiteDatabase mDb;
 
+    /**
+     * 根据 Uri 获取表名
+     * @param uri
+     * @return
+     */
     private String getTableName(Uri uri) {
         String tableName = null;
         int match = sUriMatcher.match(uri);
@@ -51,6 +56,7 @@ public class BookProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+        // 主线程
         Log.d(TAG, "onCreate: current thread:" + Thread.currentThread().getName());
 
         mContext = getContext();

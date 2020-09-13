@@ -14,6 +14,8 @@ import com.wzc.chapter_2.model.User;
 import com.wzc.chapter_2_common_lib.Book;
 
 /**
+ * 有些手机会禁止关联启动，需要手动打开。
+ *
  * @author wzc
  * @date 2018/4/12
  */

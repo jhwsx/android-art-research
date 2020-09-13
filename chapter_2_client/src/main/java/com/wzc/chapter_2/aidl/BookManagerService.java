@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.util.Log;
 
 import com.wzc.chapter_2_common_lib.Book;
@@ -27,14 +28,11 @@ public class BookManagerService extends Service {
     // 用来标记服务是否销毁的flag,默认是false,表示服务没有销毁
     private AtomicBoolean mIsServiceDestroyed = new AtomicBoolean(false);
     private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
+    // 这种方式解注册失败
 //    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
+    // 这种方式解注册成功
     private RemoteCallbackList<IOnNewBookArrivedListener> mListenerList = new RemoteCallbackList<>();
     private Binder mBinder = new IBookManager.Stub() {
-        @Override
-        public int calculate(int a, int b) throws RemoteException {
-            Log.d(TAG, "calculate: currentThread = " + Thread.currentThread().getName()); //  Binder:3584_1
-            return a + b;
-        }
 
         @Override
         public List<Book> getBookList() throws RemoteException {
@@ -56,6 +54,10 @@ public class BookManagerService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
+            // IOnNewBookArrivedListener 在注册与解注册是不同的，但是它们底层的 IBinder 是同一个。
+            Log.d(TAG, "registerListener: listener = " + listener); // com.wzc.chapter_2_common_lib.IOnNewBookArrivedListener$Stub$Proxy@249af64
+            Log.d(TAG, "registerListener: listener.asBinder() = " + listener.asBinder()); // android.os.BinderProxy@82855cd
+            // 这种方式解注册失败
 //            if (!mListenerList.contains(listener)) {
 //                mListenerList.add(listener);
 //                Log.d(TAG, "registerListener: success");
@@ -64,6 +66,7 @@ public class BookManagerService extends Service {
 //            }
 //            Log.d(TAG, "registerListener: mListenerList.size() = " + mListenerList.size());
 
+            // 这种方式解注册成功
             Log.d(TAG, "registerListener: currentThread = " + Thread.currentThread().getName()); // Binder:3584_1
             mListenerList.register(listener);
             Log.d(TAG, "registerListener: mListenerList.size() = " + mListenerList.beginBroadcast());
@@ -72,6 +75,9 @@ public class BookManagerService extends Service {
 
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
+            Log.d(TAG, "unregisterListener: listener = " + listener); // com.wzc.chapter_2_common_lib.IOnNewBookArrivedListener$Stub$Proxy@cdf2e82
+            Log.d(TAG, "unregisterListener: listener.asBinder() = " + listener.asBinder()); // android.os.BinderProxy@82855cd
+            // 这种方式解注册失败
 //            if (mListenerList.contains(listener)) {
 //                mListenerList.remove(listener);
 //                Log.d(TAG, "unregisterListener: success");
@@ -80,6 +86,7 @@ public class BookManagerService extends Service {
 //            }
 //            Log.d(TAG, "unregisterListener: mListenerList.size() = " + mListenerList.size());
 
+            // 这种方式解注册成功
             Log.d(TAG, "unregisterListener: currentThread = " + Thread.currentThread().getName()); //  Binder:3584_2
             mListenerList.unregister(listener);
             Log.d(TAG, "unregisterListener: mListenerList.size() = " + mListenerList.beginBroadcast());
@@ -138,6 +145,7 @@ public class BookManagerService extends Service {
 
         @Override
         public void run() {
+            Log.d(TAG, "run: currThread=" + Thread.currentThread().getName());
             // 每隔5s添加一本新书,并通知给注册了新书到达监听的客户端
             while (!mIsServiceDestroyed.get()) {
                 try {
@@ -148,7 +156,7 @@ public class BookManagerService extends Service {
                 int bookId = mBookList.size() + 1;
                 Book newBook = new Book(bookId, "new book#" + bookId);
                 try {
-                    onNewbookArrived(newBook);
+                    onNewBookArrived(newBook);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -156,15 +164,17 @@ public class BookManagerService extends Service {
         }
     }
 
-    private void onNewbookArrived(Book newBook) throws RemoteException{
-//        // 把新书添加进书的列表中
+    private void onNewBookArrived(Book newBook) throws RemoteException{
+        // 这种方式解注册失败
+        // 把新书添加进书的列表中
 //        mBookList.add(newBook);
-//        Log.d(TAG, "onNewbookArrived: notify how many listeners " + mListenerList.size());
+//        Log.d(TAG, "onNewBookArrived: notify how many listeners " + mListenerList.size());
 //        for (int i = 0; i < mListenerList.size(); i++) {
 //            IOnNewBookArrivedListener onNewBookArrivedListener = mListenerList.get(i);
 //            onNewBookArrivedListener.onNewBookArrived(newBook);
 //        }
 
+        // 这种方式解注册成功
         mBookList.add(newBook);
         final int n = mListenerList.beginBroadcast();
         for (int i = 0; i < n; i++) {

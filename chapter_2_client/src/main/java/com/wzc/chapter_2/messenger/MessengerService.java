@@ -14,6 +14,8 @@ import android.util.Log;
 
 import com.wzc.chapter_2.util.MyConstants;
 
+import java.lang.reflect.Field;
+
 /**
  * @author wzc
  * @date 2018/4/4
@@ -33,6 +35,15 @@ public class MessengerService extends Service {
                     // 2-4, 从 msg.replyTo 中取出处理服务端消息的 Messenger 对象
                     Messenger replyMessenger = msg.replyTo;
                     Log.d(TAG, "handleMessage: replyMessenger=" + replyMessenger);
+                    try {
+                        Field mTargetField = Messenger.class.getDeclaredField("mTarget");
+                        mTargetField.setAccessible(true);
+                        Object o = mTargetField.get(replyMessenger);
+                        Log.d(TAG, "handleMessage: mTarget=" + o);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Log.d(TAG, "handleMessage: replyMessenger.getBinder()=" + replyMessenger.getBinder());
 //                    Book book = (Book) msg.obj;
 //                    Log.d(TAG, "handleMessage: book : " + book);
                     Point point = (Point) msg.obj;

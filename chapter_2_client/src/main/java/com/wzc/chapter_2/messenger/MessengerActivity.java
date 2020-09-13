@@ -19,6 +19,7 @@ import android.view.View;
 import com.wzc.chapter_2.R;
 import com.wzc.chapter_2.util.MyConstants;
 
+import java.lang.reflect.Field;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -85,6 +86,15 @@ public class MessengerActivity extends Activity {
                 // 2-3, 把处理服务端消息的 Messenger ,通过msg.replyTo,带给服务端
                 Log.d(TAG, "mGetReplyMessenger=" + mGetReplyMessenger + ",looper="+ Looper.myLooper());
                 sendMessage.replyTo = mGetReplyMessenger;
+                try {
+                    Field mTargetField = Messenger.class.getDeclaredField("mTarget");
+                    mTargetField.setAccessible(true);
+                    Object o = mTargetField.get(mGetReplyMessenger);
+                    Log.d(TAG, "onClick: mTarget=" + o);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Log.d(TAG, "onClick: mGetReplyMessenger.getBinder()=" + mGetReplyMessenger.getBinder());
                 try {
                     // 1-5 向服务端发送消息, 发起远程调用
                     mMessenger.send(sendMessage);

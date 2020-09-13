@@ -8,6 +8,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author wangzhichao
@@ -16,7 +17,7 @@ import java.util.List;
 public class ManualBookManagerService extends Service {
 
     private static final String TAG = "ManualBookManagerServic";
-    private List<Book> bookList = new ArrayList<>();
+    private CopyOnWriteArrayList<Book> bookList = new CopyOnWriteArrayList<>();
 
     private IBinder binder = new Stub() {
         @Override

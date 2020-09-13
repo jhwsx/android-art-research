@@ -52,7 +52,7 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
     };
     // 声明一个 DeathRecipient 对象
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
-        // 当 Binder 死亡的时候，系统就会回调 binderDied 方法
+        // 当 Binder 死亡的时候，系统就会回调 binderDied 方法, 回调在客户端的 Binder 线程池里面
         @Override
         public void binderDied() {
             Log.d(TAG, "binderDied: currentThread = " + Thread.currentThread().getName()); // Binder:25808_2
@@ -81,6 +81,20 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
             Log.d(TAG, "onServiceConnected: currentThread = " + Thread.currentThread().getName()); // main
             Toast.makeText(BookManagerActivity.this, "service is connected", Toast.LENGTH_SHORT).show();
             mBookManager = IBookManager.Stub.asInterface(service);
+            // 演示在这里添加一本书，然后再获取，看是否正常
+            // --------------------------start---------------------------------
+//            try {
+//                List<Book> bookList = mBookManager.getBookList();
+//                Log.d(TAG, "onServiceConnected: query book list: " + bookList);
+//                Book newBook = new Book(3, "Android 开发艺术探索");
+//                mBookManager.addBook(newBook);
+//                Log.d(TAG, "onServiceConnected: add book:" + newBook);
+//                List<Book> newBookList = mBookManager.getBookList();
+//                Log.d(TAG, "onServiceConnected: query new book list: " + bookList);
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+            // -------------------------- end ---------------------------------
             try {
                 // 在客户端绑定远程服务成功后，给 binder 设置死亡代理。
                 mBookManager.asBinder().linkToDeath(mDeathRecipient, 0);
@@ -102,6 +116,7 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
     private IOnNewBookArrivedListener mOnNewBookArrivedListener = new IOnNewBookArrivedListener.Stub() {
         @Override
         public void onNewBookArrived(Book newBook) throws RemoteException {
+            // 这个方法是在客户端的 Binder 线程池里中执行的。
             Log.d(TAG, "onNewBookArrived: thread = " + Thread.currentThread().getName()); //  Binder:3347_3 Binder:3347_1 Binder:3347_2
             mHandler.obtainMessage(MESSAGE_NEW_BOOK_ARRIVED, newBook).sendToTarget();
         }
@@ -116,8 +131,6 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
         findViewById(R.id.bind).setOnClickListener(this);
 
         findViewById(R.id.unbind).setOnClickListener(this);
-
-        findViewById(R.id.calculate).setOnClickListener(this);
 
         findViewById(R.id.add_book).setOnClickListener(this);
 
@@ -164,16 +177,6 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
                     mBookManager = null;
                 }
                 break;
-            case R.id.calculate:
-                if (isBookManagerReady()) {
-                    try {
-                        int result = mBookManager.calculate(1, 2);
-                        Toast.makeText(this, "calculate 1 + 2, result = " + result, Toast.LENGTH_SHORT).show();
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
             case R.id.add_book:
                 if (isBookManagerReady()) {
                     Book book = new Book(3, "Android art research");
@@ -190,6 +193,7 @@ public class BookManagerActivity extends Activity implements View.OnClickListene
                 if (isBookManagerReady()) {
                     try {
                         List<Book> bookList = mBookManager.getBookList();
+                        // 这里打印的是 ArrayList，虽然在服务端用的是 CopyOnWriteArrayList
                         Log.d(TAG, "getBookList bookList ListType = " + bookList.getClass().getCanonicalName());
                         ArrayAdapter<Book> bookArrayAdapter = new ArrayAdapter<>(BookManagerActivity.this, android.R.layout.simple_list_item_1, bookList);
                         mListview.setAdapter(bookArrayAdapter);
