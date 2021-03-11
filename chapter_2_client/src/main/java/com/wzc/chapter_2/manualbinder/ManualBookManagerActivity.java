@@ -19,6 +19,7 @@ import com.wzc.chapter_2.R;
 import java.util.List;
 
 /**
+ * 查看日志时需要注意：过滤 tag 为 com.wzc.chapter_2， 并且选择 No Filters，这样可以一次看到所有进程的日志。
  * @author wzc
  * @date 2020/9/3
  */

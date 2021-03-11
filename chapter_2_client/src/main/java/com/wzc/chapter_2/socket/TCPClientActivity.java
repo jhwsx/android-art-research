@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -57,6 +59,17 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
             }
         }
     };
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +85,9 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
 
         Intent intent = new Intent();
         intent.setComponent(new ComponentName("com.wzc.chapter_2_socket_server", "com.wzc.chapter_2_socket_server.TCPServerService"));
-        startService(intent);
+//        startService(intent);
+        // 这里改为 bindService，修复在 Android 8.0 启动后台service 出错 IllegalStateException: Not allowed to start service Intent
+        bindService(intent, serviceConnection, BIND_AUTO_CREATE);
 
         new Thread(new Runnable() {
             @Override
@@ -143,7 +158,12 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
         if (v == mBtnSend) {
             final String msg = mEtMsg.getText().toString();
             if (!TextUtils.isEmpty(msg) && mPrintWriter != null) {
-                mPrintWriter.println(msg);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPrintWriter.println(msg);
+                    }
+                }).start();
                 mEtMsg.setText("");
                 String time = formatDateTime(System.currentTimeMillis());
                 final String showMsg = "self " + time + ": " + msg + "\n";
