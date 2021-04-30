@@ -87,4 +87,12 @@ public class MainActivity extends Activity {
     public void goSecondActivity(View view) {
         SecondActivity.start(this);
     }
+
+    public void goThirdActivity(View view) {
+        ThirdActivity.start(this);
+    }
+
+    public void goFourthActivity(View view) {
+        FourthActivity.start(this);
+    }
 }

@@ -50,4 +50,18 @@
        android:onClick="goSecondActivity"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
+
+   <Button
+       android:text="ThirdActivity"
+       android:textAllCaps="false"
+       android:onClick="goThirdActivity"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+   <Button
+       android:text="FourthActivity"
+       android:textAllCaps="false"
+       android:onClick="goFourthActivity"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
 </LinearLayout>
