@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_bind_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绑定服务"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_unbind_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解绑服务"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/btn_transIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="transIn 操作"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/btn_transOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="transOut 操作"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_transInOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="transInOut 操作"
+        android:textAllCaps="false" />
+
+</LinearLayout>
