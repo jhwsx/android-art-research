@@ -16,17 +16,16 @@
             android:configChanges="orientation|screenSize"
             android:label="ActivityA"
             android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".ActivityB"
-            android:label="ActivityB"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.wzc.my">
+            android:launchMode="singleInstance"
+            android:label="ActivityB">
             <intent-filter>
                 <action android:name="com.wzc.chapter_1.action.c" />
                 <action android:name="com.wzc.chapter_1.action.d" />
@@ -40,14 +39,13 @@
         </activity>
         <activity
             android:name=".ActivityC"
-            android:label="ActivityC"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.wzc.my"></activity>
+            android:label="ActivityC">
+        </activity>
         <activity
             android:name=".ActivityD"
             android:label="ActivityD"
             android:launchMode="singleTask"
-            android:taskAffinity="com.my"></activity>
+            android:taskAffinity="com.wzc.my"></activity>
 
         <activity android:name=".SplashActivity">
             <!--            <intent-filter>-->
@@ -69,10 +67,10 @@
             android:label="ThirdActivity" />
 
         <activity android:name=".activity36.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity

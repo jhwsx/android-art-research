@@ -1,4 +1,6 @@
 include ':chapter_1'
+include ':chapter_1_allowTaskReparenting_A'
+include ':chapter_1_allowTaskReparenting_B'
 include ':chapter_2_client'
 include ':chapter_2_service'
 include ':chapter_2_supplement_client'

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wzc.chapter_1">
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ActivityA"
+            android:configChanges="orientation|screenSize"
+            android:label="ActivityA"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityB"
+            android:launchMode="singleInstance"
+            android:label="ActivityB">
+            <intent-filter>
+                <action android:name="com.wzc.chapter_1.action.c" />
+                <action android:name="com.wzc.chapter_1.action.d" />
+
+                <category android:name="com.wzc.chapter_1.category.c" />
+                <category android:name="com.wzc.chapter_1.category.d" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityC"
+            android:label="ActivityC">
+        </activity>
+        <activity
+            android:name=".ActivityD"
+            android:label="ActivityD"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.wzc.my"></activity>
+    </application>
+
+</manifest>

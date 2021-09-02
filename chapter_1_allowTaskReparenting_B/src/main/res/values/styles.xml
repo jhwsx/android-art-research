@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="EnterExitAnim" parent="@android:style/Animation.Activity">
+        <!--从ActivityA打开ActivityB，ActivityB展示进入动画，ActivityB的进入动画。-->
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter</item>
+        <!--从ActivityA打开ActivityB，ActivityA展示退出动画，ActivityA的退出动画。-->
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_exit</item>
+        <!--从ActivityB回退到ActivityA，ActivityA展示进入动画，ActivityA的进入动画。-->
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter</item>
+        <!--从ActivityB回退到ActivityA，ActivityB展示退出动画，ActivityB的退出动画。-->
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_exit</item>
+    </style>
+
+    <style name="AppThemeAnim" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/EnterExitAnim</item>
+    </style>
+</resources>
