@@ -18,14 +18,6 @@ public class ActivityC extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c);
         Log.d(TAG, "onCreate: taskId = "+getTaskId());
-        findViewById (R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityC.this, ActivityB.class);
-                startActivity(intent);
-
-            }
-        });
 
     }
 

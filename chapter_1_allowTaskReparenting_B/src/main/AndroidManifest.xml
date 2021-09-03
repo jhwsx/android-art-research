@@ -12,40 +12,23 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ActivityA"
-            android:configChanges="orientation|screenSize"
-            android:label="ActivityA"
-            android:screenOrientation="portrait">
+            android:name=".ActivityB"
+            android:launchMode="singleInstance"
+            android:label="ActivityB">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!--android:exported="true" 必须加上，才可以被其他应用启动-->
         <activity
-            android:name=".ActivityB"
-            android:launchMode="singleInstance"
-            android:label="ActivityB">
-            <intent-filter>
-                <action android:name="com.wzc.chapter_1.action.c" />
-                <action android:name="com.wzc.chapter_1.action.d" />
-
-                <category android:name="com.wzc.chapter_1.category.c" />
-                <category android:name="com.wzc.chapter_1.category.d" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity>
-        <activity
+            android:exported="true"
             android:name=".ActivityC"
+            android:allowTaskReparenting="true"
             android:label="ActivityC">
         </activity>
-        <activity
-            android:name=".ActivityD"
-            android:label="ActivityD"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.wzc.my"></activity>
+
     </application>
 
 </manifest>

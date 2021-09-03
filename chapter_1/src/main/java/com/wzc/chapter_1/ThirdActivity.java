@@ -1,7 +1,9 @@
 package com.wzc.chapter_1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * @author wzc
@@ -12,5 +14,9 @@ public class ThirdActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
+    }
+
+    public void openMain(View view) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

@@ -19,16 +19,18 @@ public class ActivityA extends Activity {
         findViewById(R.id.btn_secondactivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityA.this, ActivityB.class);
+//                Intent intent = new Intent(ActivityA.this, ActivityB.class);
+                // 显式调用
 //                Intent intent = new Intent();
 //                intent.setComponent(new ComponentName("com.wzc.chapter_2", "com.wzc.chapter_2.ActivityC"));
-//                Intent intent = new Intent();
-//                intent.setAction("com.wzc.chapter_1.action.c");
-//                intent.addCategory("com.wzc.chapter_1.category.c");
+                // 隐式调用
+                Intent intent = new Intent();
+//                intent.setAction("com.wzc.chapter_1.action.d");
+                intent.addCategory("com.wzc.chapter_1.category.c");
 //                intent.addCategory("com.wzc.chapter_1.category.d");
+                // 这个系统会默认添加
 //                intent.addCategory("android.intent.category.DEFAULT");
-//                intent.setType("text/plain");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setType("text/plain");
                 startActivity(intent);
 //                openWifiSettings();
             }

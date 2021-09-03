@@ -1,6 +1,7 @@
 package com.wzc.chapter_1;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,28 +20,16 @@ public class ActivityA extends Activity {
         findViewById(R.id.btn_secondactivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityA.this, ActivityB.class);
-//                Intent intent = new Intent();
-//                intent.setComponent(new ComponentName("com.wzc.chapter_2", "com.wzc.chapter_2.ActivityC"));
-//                Intent intent = new Intent();
-//                intent.setAction("com.wzc.chapter_1.action.c");
-//                intent.addCategory("com.wzc.chapter_1.category.c");
-//                intent.addCategory("com.wzc.chapter_1.category.d");
-//                intent.addCategory("android.intent.category.DEFAULT");
-//                intent.setType("text/plain");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-//                openWifiSettings();
+                try {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName("com.wzc.chapter_1_allowTaskReparenting_B", "com.wzc.chapter_1.ActivityC"));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         Log.d(TAG, "onCreate: taskId = "+getTaskId() + ", " );
-    }
-
-    public void openWifiSettings() {
-        Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
     }
 
 

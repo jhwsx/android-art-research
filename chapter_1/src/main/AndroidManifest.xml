@@ -24,7 +24,6 @@
         </activity>
         <activity
             android:name=".ActivityB"
-            android:launchMode="singleInstance"
             android:label="ActivityB">
             <intent-filter>
                 <action android:name="com.wzc.chapter_1.action.c" />
@@ -56,15 +55,26 @@
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="standard">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+        </activity>
 
         <activity
             android:name=".SecondActivity"
-            android:label="SecondActivity" />
+            android:label="SecondActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.wzc.mytask"
+            />
 
         <activity
             android:name=".ThirdActivity"
-            android:label="ThirdActivity" />
+            android:label="ThirdActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.wzc.mytask"/>
 
         <activity android:name=".activity36.HomeActivity">
 <!--            <intent-filter>-->

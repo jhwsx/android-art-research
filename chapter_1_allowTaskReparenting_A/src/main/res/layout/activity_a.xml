@@ -11,12 +11,9 @@
 
     <Button
         android:id="@+id/btn_secondactivity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ActivityB"/>
+        android:text="打开B应用的 ActivityC"/>
 
-    <EditText
-        android:id="@+id/et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 </LinearLayout>
