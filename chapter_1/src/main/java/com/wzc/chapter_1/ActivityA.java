@@ -1,12 +1,20 @@
 package com.wzc.chapter_1;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+
+import java.util.List;
 
 public class ActivityA extends Activity {
     private static final String TAG = ActivityA.class.getSimpleName();
@@ -35,7 +43,71 @@ public class ActivityA extends Activity {
 //                openWifiSettings();
             }
         });
-        Log.d(TAG, "onCreate: taskId = "+getTaskId() + ", " );
+        findViewById(R.id.btn_share).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                //分享内容标题
+                intent.putExtra(Intent.EXTRA_SUBJECT, "分享标题");
+                //分享内容
+                intent.putExtra(Intent.EXTRA_TEXT, "分享内容");
+                // 可以选择默认分享
+//                if (getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+//                    startActivity(intent);
+//                }
+                // 不可以选择默认分享
+//                if (getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+//                    Intent chooser = Intent.createChooser(intent, "分享");
+//                    startActivity(chooser);
+//                }
+                // 指定分享到微信
+                List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                boolean matched = false;
+                for (int i = 0; i < list.size(); i++) {
+                    ResolveInfo resolveInfo = list.get(i);
+                    if ("com.tencent.mm.ui.tools.ShareImgUI".equals(resolveInfo.activityInfo.name)) {
+                        matched = true;
+                        intent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI"));
+                        startActivity(intent);
+                        break;
+                    }
+                }
+                if (!matched) {
+                    startActivity(intent);
+                }
+            }
+        });
+
+        findViewById(R.id.btn_packagemanager).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
+                    ActivityInfo[] activities = packageInfo.activities;
+                    if (activities != null) {
+                        for (ActivityInfo activity : activities) {
+                            Log.d(TAG, "onClick: " + activity.name);
+                        }
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_RECEIVERS);
+                    ActivityInfo[] activities = packageInfo.activities;
+                    if (activities != null) {
+                        for (ActivityInfo activity : activities) {
+                            Log.d(TAG, "onClick: " + activity.name);
+                        }
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Log.d(TAG, "onCreate: taskId = " + getTaskId() + ", ");
     }
 
     public void openWifiSettings() {
