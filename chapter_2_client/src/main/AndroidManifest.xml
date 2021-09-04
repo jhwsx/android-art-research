@@ -19,12 +19,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.wzc.chapter_2.bundle.MainActivity"
+            android:label="MainActivity"
             android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity
@@ -49,16 +50,18 @@
             android:process="com.wzc.chapter_2.remote"/>
 
 
-        <activity android:name=".fileshare.MainActivity">
-<!--            <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN"/>-->
+        <activity android:name=".fileshare.MainActivity"
+            android:label="MainActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
 
-<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".fileshare.SecondActivity"
+            android:label="SecondActivity"
             android:process=":remote"/>
         <activity
             android:name=".aidl.BookManagerActivity"

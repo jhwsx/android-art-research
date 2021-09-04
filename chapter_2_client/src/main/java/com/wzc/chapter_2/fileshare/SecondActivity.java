@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
 
+import com.wzc.chapter_2.model.Book;
 import com.wzc.chapter_2.model.Person;
 import com.wzc.chapter_2.model.User;
 import com.wzc.chapter_2.util.MyConstants;
@@ -20,11 +21,14 @@ import java.io.ObjectInputStream;
  * @date 2018/4/4
  */
 public class SecondActivity extends Activity {
+    public static final String ARGS_BOOK = "args_book";
     private static final String TAG = SecondActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Book book =  getIntent().getParcelableExtra(ARGS_BOOK);
+        Log.d(TAG, "onCreate: book=" + book);
     }
 
     @Override

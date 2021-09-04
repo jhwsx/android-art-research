@@ -1,5 +1,6 @@
 package com.wzc.chapter_2.model;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -34,6 +35,7 @@ public class Person implements Parcelable {
     }
 
     public static final Creator<Person> CREATOR = new Creator<Person>() {
+        // 反序列化
         @Override
         public Person createFromParcel(Parcel in) {
             return new Person(in);
@@ -50,6 +52,7 @@ public class Person implements Parcelable {
         return 0;
     }
 
+    // 序列化
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(userId);

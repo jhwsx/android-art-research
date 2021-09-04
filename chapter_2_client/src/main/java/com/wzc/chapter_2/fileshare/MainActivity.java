@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.wzc.chapter_2.R;
+import com.wzc.chapter_2.model.Book;
 import com.wzc.chapter_2.model.Person;
 import com.wzc.chapter_2.model.User;
 import com.wzc.chapter_2.util.MyConstants;
@@ -98,6 +99,10 @@ public class MainActivity extends Activity {
 
     public void secondActivity(View view) {
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        Book book = new Book();
+        book.setName("aar");
+        book.setPerson(new Person(1, "wzc", true));
+        intent.putExtra(SecondActivity.ARGS_BOOK, book);
         startActivity(intent);
     }
 }
