@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.wzc.chapter_2.R;
-import com.wzc.chapter_2_common_lib.binderpool.BinderPool;
-import com.wzc.chapter_2_common_lib.binderpool.ComputeImpl;
 import com.wzc.chapter_2_common_lib.binderpool.ICompute;
 import com.wzc.chapter_2_common_lib.binderpool.ISecurityCenter;
-import com.wzc.chapter_2_common_lib.binderpool.SecurityCenterImpl;
 
 /**
  * @author wzc
@@ -28,17 +25,16 @@ public class BinderPoolActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_binderpool);
 
-        findViewById(R.id.root).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                doWork();
-            }
-        }).start();
-//                doWork();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        doWork();
+                    }
+                }).start();
             }
         });
 

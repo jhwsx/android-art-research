@@ -1,4 +1,4 @@
-package com.wzc.chapter_2_common_lib.binderpool;
+package com.wzc.chapter_2.binderpool;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+
+import com.wzc.chapter_2_common_lib.binderpool.IBinderPool;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -48,7 +50,7 @@ public class BinderPool {
         mConnectBinderPoolCountDownLatch = new CountDownLatch(1);
 
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.wzc.chapter_2.service", "com.wzc.chapter_2.service.binderpool.BinderPoolService"));
+        intent.setComponent(new ComponentName("com.wzc.chapter_2", "com.wzc.chapter_2.binderpool.BinderPoolService"));
         mContext.bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
         try {
@@ -71,7 +73,7 @@ public class BinderPool {
         return binder;
     }
 
-    private ServiceConnection mServiceConnection = new ServiceConnection() {
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected: current thread = " + Thread.currentThread().getName());
@@ -94,6 +96,7 @@ public class BinderPool {
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
         @Override
         public void binderDied() {
+            Log.d(TAG, "binderDied: ");
             if (mBinderPool == null) {
                 return;
             }
@@ -103,4 +106,26 @@ public class BinderPool {
         }
     };
 
+    public static class BinderPoolImpl extends IBinderPool.Stub {
+
+        public BinderPoolImpl() {
+            super(); // 这个super不可以去掉
+        }
+
+        @Override
+        public IBinder queryBinder(int binderCode) throws RemoteException {
+            IBinder binder = null;
+            switch (binderCode) {
+                case BINDER_COMPUTE:
+                    binder = new ComputeImpl();
+                    break;
+                case BINDER_SECURITY_CENTER:
+                    binder = new SecurityCenterImpl();
+                    break;
+                default:
+                    break;
+            }
+            return binder;
+        }
+    }
 }

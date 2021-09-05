@@ -1,6 +1,8 @@
-package com.wzc.chapter_2_common_lib.binderpool;
+package com.wzc.chapter_2.binderpool;
 
 import android.os.RemoteException;
+
+import com.wzc.chapter_2_common_lib.binderpool.ISecurityCenter;
 
 /**
  * 相当于之前在 Service 中创建的 Binder 实例

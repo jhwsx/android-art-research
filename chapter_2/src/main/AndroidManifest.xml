@@ -120,21 +120,24 @@
         <activity
             android:name=".socket.TCPClientActivity"
             android:label="TCPClientActivity">
+<!--            <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN"/>-->
+
+<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".binderpool.BinderPoolActivity"
+            android:label="BinderPoolActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN"/>
 
             <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".binderpool.BinderPoolActivity"
-            android:label="BinderPoolActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-        </activity>
+        <service android:name=".binderpool.BinderPoolService"
+            android:process=":binderpool"/>
     </application>
 
 </manifest>
