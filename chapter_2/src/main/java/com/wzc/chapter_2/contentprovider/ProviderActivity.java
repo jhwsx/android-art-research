@@ -45,6 +45,8 @@ public class ProviderActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_delete_user).setOnClickListener(this);
         findViewById(R.id.btn_update_user).setOnClickListener(this);
         findViewById(R.id.btn_query_user).setOnClickListener(this);
+
+        findViewById(R.id.btn_custom_call).setOnClickListener(this);
     }
 
     @Override
@@ -135,6 +137,14 @@ public class ProviderActivity extends Activity implements View.OnClickListener {
                         userCursor.close();
                     }
                 }
+                break;
+            case R.id.btn_custom_call:
+                Bundle bundle = new Bundle();
+                bundle.putInt("num1", 1);
+                bundle.putInt("num2", 2);
+                Bundle b = getContentResolver().call(Uri.parse("content://com.wzc.chapter_2_provider.book.provider"), "add", null, bundle);
+                int result = b.getInt("result");
+                Log.d(TAG, "add result: " + result);
                 break;
             default:
                 break;

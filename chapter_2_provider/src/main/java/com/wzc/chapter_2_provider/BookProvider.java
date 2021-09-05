@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 /**
@@ -16,10 +17,6 @@ import android.util.Log;
 public class BookProvider extends ContentProvider {
     private static final String TAG = BookProvider.class.getSimpleName();
     public static final String AUTHORITY = "com.wzc.chapter_2_provider.book.provider";
-    public static final Uri BOOK_CONTENT_URI = Uri.parse("content://"
-            + AUTHORITY + "/book");
-    public static final Uri USER_CONTENT_URI = Uri.parse("content://"
-            + AUTHORITY + "/user");
     public static final int BOOK_URI_CODE = 0;
     public static final int USER_URI_CODE = 1;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -35,10 +32,12 @@ public class BookProvider extends ContentProvider {
 
     /**
      * 根据 Uri 获取表名
+     *
      * @param uri
      * @return
      */
     private String getTableName(Uri uri) {
+        Log.d(TAG, "getTableName: uri=" + uri);
         String tableName = null;
         int match = sUriMatcher.match(uri);
         switch (match) {
@@ -120,7 +119,7 @@ public class BookProvider extends ContentProvider {
         int delete = mDb.delete(tableName, selection, selectionArgs);
 
         if (delete > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            mContext.getContentResolver().notifyChange(uri, null);
         }
         return delete;
     }
@@ -136,8 +135,21 @@ public class BookProvider extends ContentProvider {
 
         int update = mDb.update(tableName, values, selection, selectionArgs);
         if (update > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            mContext.getContentResolver().notifyChange(uri, null);
         }
         return update;
+    }
+
+    @Override
+    public Bundle call(String method, String arg, Bundle extras) {
+        if ("add".equals(method)) {
+            int num1 = extras.getInt("num1");
+            int num2 = extras.getInt("num2");
+            int result = num1 + num2;
+            Bundle bundle = new Bundle();
+            bundle.putInt("result", result);
+            return bundle;
+        }
+        return super.call(method, arg, extras);
     }
 }
