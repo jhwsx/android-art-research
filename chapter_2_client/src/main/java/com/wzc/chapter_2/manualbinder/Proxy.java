@@ -2,8 +2,12 @@ package com.wzc.chapter_2.manualbinder;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import android.os.Process;
 import android.os.RemoteException;
 import android.util.Log;
+
+import com.wzc.chapter_2.MyApplication;
+import com.wzc.chapter_2.util.MyUtils;
 
 import java.util.List;
 
@@ -23,7 +27,7 @@ public class Proxy implements IBookManager {
     // 这个方法运行在客户端
     @Override
     public void addBook(Book book) throws RemoteException {
-        Log.d(TAG, "addBook: book=" + book + ", currThread=" + Thread.currentThread().getName());
+        Log.d(TAG, "addBook: book=" + book + ", currThread=" + Thread.currentThread().getName()+ ",processName=" + MyUtils.getProcessName(MyApplication.getContext(), Process.myPid()));
         // 输入型 Parcel 对象
         Parcel _data = Parcel.obtain();
         // 输出型 Parcel 对象

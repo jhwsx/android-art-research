@@ -37,6 +37,9 @@ public abstract class Stub extends Binder implements IBookManager {
     @Override
     protected boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
         switch (code) {
+            case INTERFACE_TRANSACTION:
+                reply.writeString(DESCRIPTOR);
+                return true;
             case TRANSACTION_addBook:
                 Log.d(TAG, "onTransact: TRANSACTION_addBook， currThread="
                         + Thread.currentThread().getName());

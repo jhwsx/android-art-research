@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Process;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wzc.chapter_2.R;
+import com.wzc.chapter_2.util.MyUtils;
 
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class ManualBookManagerActivity extends Activity implements View.OnClickL
             // 不是跨进程时，这里回调的 IBinder service 对象和 BookManagerService 里的 onBind 方法返回的 IBinder 对象
             // 是一个对象。
             Log.d(TAG, "onServiceConnected: service = " + service);
-            Log.d(TAG, "onServiceConnected: currentThread = " + Thread.currentThread().getName()); // main
+            Log.d(TAG, "onServiceConnected: currentThread = " + Thread.currentThread().getName() + ",processName=" + MyUtils.getProcessName(getApplicationContext(), Process.myPid())); // main
             Toast.makeText(ManualBookManagerActivity.this, "service is connected", Toast.LENGTH_SHORT).show();
             mBookManager = Stub.asInterface(service);
             try {
