@@ -46,7 +46,7 @@ public class BookManagerService extends Service {
         }
 
         @Override
-        public void addBook( Book book) throws RemoteException {
+        public void addBook(Book book) throws RemoteException {
             Log.d(TAG, "addBook: currentThread = " + Thread.currentThread().getName()); //  Binder:3584_2
 
             mBookList.add(book);
@@ -164,7 +164,7 @@ public class BookManagerService extends Service {
         }
     }
 
-    private void onNewBookArrived(Book newBook) throws RemoteException{
+    private void onNewBookArrived(Book newBook) throws RemoteException {
         // 这种方式解注册失败
         // 把新书添加进书的列表中
 //        mBookList.add(newBook);

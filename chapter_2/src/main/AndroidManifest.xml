@@ -66,11 +66,11 @@
         <activity
             android:name=".aidl.BookManagerActivity"
             android:label="BookManagerActivity">
-<!--            <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN"/>-->
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
 
-<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <service
@@ -97,10 +97,10 @@
         <activity
             android:name=".messenger.MessengerActivity"
             android:label="MessengerActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN"/>-->
+<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
 
         <service
