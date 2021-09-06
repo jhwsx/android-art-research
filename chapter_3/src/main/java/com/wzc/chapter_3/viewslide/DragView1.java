@@ -45,11 +45,16 @@ public class DragView1 extends TextView {
                 setTranslationX(newTranslationX);
                 setTranslationY(newTranslationY);
 
-                // 输出的值是不变化的， 没有改变 View 的位置参数。
+                // 没有改变 View 的位置参数: left，right，top，bottom。变化的只是 translationX 和 translationY，x 和 y。
                 Log.d(TAG, "onTouchEvent: getLeft() = " + getLeft()
                         +", getTop() = " + getTop()
                         +", getRight() = " + getRight()
-                        +", getBottom() = " + getBottom());
+                        +", getBottom() = " + getBottom()
+                        +", getTranslationX() = " + getTranslationX()
+                        +", getTranslationY() = " + getTranslationY()
+                        +", getX() = " + getX()
+                        +", getY() = " + getY()
+                );
 
                 mLastX = x;
                 mLastY = y;
@@ -63,3 +68,10 @@ public class DragView1 extends TextView {
         return true;
     }
 }
+
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 1.0, getTranslationY() = 0.0, getX() = 1.0, getY() = 0.0
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 6.0, getTranslationY() = 1.0, getX() = 6.0, getY() = 1.0
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 13.0, getTranslationY() = 4.0, getX() = 13.0, getY() = 4.0
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 20.0, getTranslationY() = 7.0, getX() = 20.0, getY() = 7.0
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 28.0, getTranslationY() = 11.0, getX() = 28.0, getY() = 11.0
+//D/DragView1: onTouchEvent: getLeft() = 0, getTop() = 0, getRight() = 275, getBottom() = 275, getTranslationX() = 36.0, getTranslationY() = 15.0, getX() = 36.0, getY() = 15.0

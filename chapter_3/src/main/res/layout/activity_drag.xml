@@ -5,6 +5,7 @@
               android:orientation="vertical">
 
     <com.wzc.chapter_3.viewslide.DragView1
+        android:id="@+id/drag_view_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#44ff0000"
@@ -12,6 +13,7 @@
         android:text="setTranslation"/>
 
     <com.wzc.chapter_3.viewslide.DragView2
+        android:id="@+id/drag_view_2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#4400ff00"
@@ -19,6 +21,7 @@
         android:text="layout()"/>
 
     <com.wzc.chapter_3.viewslide.DragView3
+        android:id="@+id/drag_view_3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#440000ff"
@@ -26,6 +29,7 @@
         android:text="scrollBy"/>
 
     <com.wzc.chapter_3.viewslide.DragView4
+        android:id="@+id/drag_view_4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#44ffff00"
