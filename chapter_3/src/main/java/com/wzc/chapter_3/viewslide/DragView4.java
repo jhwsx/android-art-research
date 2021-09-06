@@ -2,6 +2,7 @@ package com.wzc.chapter_3.viewslide;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
  * @date 2018/11/11
  */
 public class DragView4 extends TextView {
+    private static final String TAG = "DragView4";
     public DragView4(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -34,6 +36,15 @@ public class DragView4 extends TextView {
                 params.leftMargin += offsetX;
                 params.topMargin += offsetY;
                 setLayoutParams(params);
+                Log.d(TAG, "onTouchEvent: getLeft() = " + getLeft()
+                        + ", getTop() = " + getTop()
+                        + ", getRight() = " + getRight()
+                        + ", getBottom() = " + getBottom()
+                        + ", getTranslationX() = " + getTranslationX()
+                        + ", getTranslationY() = " + getTranslationY()
+                        + ", getX() = " + getX()
+                        + ", getY() = " + getY()
+                );
                 mLastX = x;
                 mLastY = y;
                 break;

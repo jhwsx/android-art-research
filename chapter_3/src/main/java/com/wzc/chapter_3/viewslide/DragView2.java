@@ -2,11 +2,14 @@ package com.wzc.chapter_3.viewslide;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -39,7 +42,6 @@ public class DragView2 extends TextView {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-
         Log.d(TAG, "onLayout: ");
     }
 
@@ -101,29 +103,55 @@ public class DragView2 extends TextView {
 
     @Override
     public void onRestoreInstanceState(Parcelable state) {
-        Bundle bundle = (Bundle) state;
-        Parcelable superState = bundle.getParcelable("superState");
-        left = bundle.getInt("left");
-        top = bundle.getInt("top");
-        right = bundle.getInt("right");
-        bottom = bundle.getInt("bottom");
-        super.onRestoreInstanceState(superState);
-
-        Log.d(TAG, "onRestoreInstanceState: left=" + left + ",top=" + top + ",right=" + right + ",bottom=" + bottom);
+        Log.d(TAG, "onRestoreInstanceState: ");
+        SavedState savedState = (SavedState) state;
+        super.onRestoreInstanceState(savedState.getSuperState());
+        Rect rect = savedState.rect;
+        Log.d(TAG, "onRestoreInstanceState: rect=" + rect);
+        layout(rect.left, rect.top, rect.right, rect.bottom);
+        requestLayout();
     }
 
     @Override
     public Parcelable onSaveInstanceState() {
-        Log.d(TAG, "onSaveInstanceState: ");
-        Bundle bundle = new Bundle();
+        Log.d(TAG, "onSaveInstanceState: left=" + getLeft() + ",top=" + getTop() + ",right=" + getRight() + ",bottom=" + getBottom());
         Parcelable superState = super.onSaveInstanceState();
-        bundle.putParcelable("superState", superState);
+        SavedState savedState = new SavedState(superState);
+        savedState.rect = new Rect(getLeft(), getTop(), getRight(), getBottom());
+        return savedState;
+    }
 
-        bundle.putInt("left", getLeft());
-        bundle.putInt("top", getTop());
-        bundle.putInt("right", getRight());
-        bundle.putInt("bottom", getBottom());
-        return bundle;
+    static class SavedState extends BaseSavedState {
+
+        Rect rect;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        private SavedState(Parcel in) {
+            super(in);
+            rect = in.readParcelable(SavedState.class.getClassLoader());
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeParcelable(rect, flags);
+        }
+
+        @SuppressWarnings("UnusedDeclaration")
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 }
 //D/DragView2: onTouchEvent: getLeft() = 2, getTop() = 275, getRight() = 277, getBottom() = 550, getTranslationX() = 0.0, getTranslationY() = 0.0, getX() = 2.0, getY() = 275.0
