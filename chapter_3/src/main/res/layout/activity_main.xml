@@ -10,6 +10,13 @@
     tools:context="com.wzc.chapter_3.MainActivity">
 
     <Button
+        android:id="@+id/btn_velocity_tracker"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VelocityTrackerActivity"/>
+
+    <Button
         android:id="@+id/btn_view_slide"
         android:textAllCaps="false"
         android:layout_width="match_parent"

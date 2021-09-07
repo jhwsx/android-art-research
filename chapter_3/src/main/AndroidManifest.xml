@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wzc.chapter_3">
+    package="com.wzc.chapter_3">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -12,19 +12,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".viewslide.ViewSlideActivity"/>
-        <activity android:name=".viewslide.DragActivity"/>
-        <activity android:name=".elasticslide.ElasticSlideActivity"/>
-        <activity android:name=".eventdispatch.EventDispatchActivity"/>
-        <activity android:name=".eventdispatch.EventDispatchInterviewActivity"/>
-        <activity android:name=".slideconflict.type1.external.SlideConflictExActivity"/>
-        <activity android:name=".slideconflict.type1.internal.SlideConflictInActivity"/>
+        <activity
+            android:name=".velocitytracker_gesturedetector_scroller.VelocityTrackerActivity"
+            android:label="VelocityTrackerActivity" />
+        <activity android:name=".viewslide.ViewSlideActivity" />
+        <activity android:name=".viewslide.DragActivity" />
+        <activity android:name=".elasticslide.ElasticSlideActivity" />
+        <activity android:name=".eventdispatch.EventDispatchActivity" />
+        <activity android:name=".eventdispatch.EventDispatchInterviewActivity" />
+        <activity android:name=".slideconflict.type1.external.SlideConflictExActivity" />
+        <activity android:name=".slideconflict.type1.internal.SlideConflictInActivity" />
     </application>
 
 </manifest>

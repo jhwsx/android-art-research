@@ -11,6 +11,7 @@ import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchInterviewActivity;
 import com.wzc.chapter_3.slideconflict.type1.internal.SlideConflictInActivity;
 import com.wzc.chapter_3.slideconflict.type1.external.SlideConflictExActivity;
+import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.VelocityTrackerActivity;
 import com.wzc.chapter_3.viewslide.DragActivity;
 import com.wzc.chapter_3.viewslide.ViewSlideActivity;
 
@@ -21,6 +22,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ImageView iv = (ImageView) findViewById(R.id.iv);
+        findViewById(R.id.btn_velocity_tracker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, VelocityTrackerActivity.class));
+            }
+        });
+
          findViewById(R.id.btn_view_slide).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
