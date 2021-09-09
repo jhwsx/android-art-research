@@ -20,6 +20,12 @@
         <activity
             android:name=".velocitytracker_gesturedetector_scroller.VelocityTrackerActivity"
             android:label="VelocityTrackerActivity" />
+        <activity
+            android:name=".velocitytracker_gesturedetector_scroller.GestureDetectorActivity"
+            android:label="GestureDetectorActivity" />
+        <activity
+            android:name=".velocitytracker_gesturedetector_scroller.ScrollerActivity"
+            android:label="ScrollerActivity" />
         <activity android:name=".viewslide.ViewSlideActivity" />
         <activity android:name=".viewslide.DragActivity" />
         <activity android:name=".elasticslide.ElasticSlideActivity" />

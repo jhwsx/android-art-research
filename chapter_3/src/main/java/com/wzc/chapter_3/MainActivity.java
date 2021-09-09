@@ -11,6 +11,8 @@ import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchInterviewActivity;
 import com.wzc.chapter_3.slideconflict.type1.internal.SlideConflictInActivity;
 import com.wzc.chapter_3.slideconflict.type1.external.SlideConflictExActivity;
+import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.GestureDetectorActivity;
+import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.ScrollerActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.VelocityTrackerActivity;
 import com.wzc.chapter_3.viewslide.DragActivity;
 import com.wzc.chapter_3.viewslide.ViewSlideActivity;
@@ -26,6 +28,20 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, VelocityTrackerActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_gesture_detector).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GestureDetectorActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_scroller).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ScrollerActivity.class));
             }
         });
 

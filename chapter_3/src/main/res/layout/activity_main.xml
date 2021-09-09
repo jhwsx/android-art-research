@@ -17,6 +17,19 @@
         android:text="VelocityTrackerActivity"/>
 
     <Button
+        android:id="@+id/btn_gesture_detector"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GestureDetectorActivity"/>
+    <Button
+        android:id="@+id/btn_scroller"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ScrollerActivity"/>
+
+    <Button
         android:id="@+id/btn_view_slide"
         android:textAllCaps="false"
         android:layout_width="match_parent"
