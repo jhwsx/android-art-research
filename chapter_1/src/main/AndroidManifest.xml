@@ -16,11 +16,11 @@
             android:configChanges="orientation|screenSize"
             android:label="ActivityA"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ActivityB"
@@ -75,6 +75,18 @@
             android:label="ThirdActivity"
             android:launchMode="singleTask"
             android:taskAffinity="com.wzc.mytask"/>
+
+        <activity android:name=".AActivity"
+            android:label="AActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".BActivity"
+            android:label="BActivity"/>
 
         <activity android:name=".activity36.HomeActivity">
 <!--            <intent-filter>-->
