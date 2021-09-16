@@ -38,17 +38,24 @@ public class VelocityTrackerActivity extends Activity {
                 } else {
                     velocityTracker.clear();
                 }
+                // 1, 把用户的动作添加给 VelocityTracker 对象
                 velocityTracker.addMovement(event);
                 break;
             case MotionEvent.ACTION_MOVE:
+                // 把用户的动作添加给 VelocityTracker 对象
                 velocityTracker.addMovement(event);
+                // 2, 获取当前的滑动速度
+                // 2.1, 获取速度之前必须先计算速度
+                // 传入 1000，表示在 1000ms 内手指所滑过的像素数。
                 velocityTracker.computeCurrentVelocity(1000);
+                // 2.2 获取计算出来的速度
                 float xVelocity = velocityTracker.getXVelocity();
                 float yVelocity = velocityTracker.getYVelocity();
                 tv.setText("xVelocity:"+xVelocity+",\nyVelocity:"+yVelocity);
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                // 3, 调用 clear 方法来重置并回收内存
                 velocityTracker.recycle();
                 velocityTracker = null;
                 break;

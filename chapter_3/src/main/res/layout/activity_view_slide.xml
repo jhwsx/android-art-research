@@ -16,13 +16,19 @@
             android:id="@+id/btn_scrollto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scroll to" />
+            android:text="scrollTo(-50,-50)" />
 
         <Button
-            android:id="@+id/btn_scrollby"
+            android:id="@+id/btn_scrollby1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scroll by" />
+            android:text="scrollBy(-50,-50)" />
+
+        <Button
+            android:id="@+id/btn_scrollby2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scrollBy(50,50)" />
 
         <TextView
             android:layout_width="match_parent"
@@ -91,6 +97,22 @@
             android:id="@+id/result2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_anim"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="view anim"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_anim2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="prop anim"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btn_layoutparams"
