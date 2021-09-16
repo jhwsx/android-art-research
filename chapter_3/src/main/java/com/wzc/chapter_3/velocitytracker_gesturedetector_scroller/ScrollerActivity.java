@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Scroller;
 
 import com.wzc.chapter_3.R;
-
+// https://stackoverflow.com/questions/5495855/android-scroller-animation/6219382#6219382
 public class ScrollerActivity extends Activity {
 
     private VelocityTracker velocityTracker;

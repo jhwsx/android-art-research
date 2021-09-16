@@ -36,4 +36,14 @@
         android:background="#44ffff00"
         android:gravity="center"
         android:text="layoutParams" />
+
+    <com.wzc.chapter_3.viewslide.SimpleScrollableTextView
+        android:layout_width="100dp"
+        android:background="#44ff00ff"
+        android:layout_height="100dp" />
+
+    <com.wzc.chapter_3.viewslide.SimpleScrollableFlingTextView
+        android:layout_width="100dp"
+        android:background="#4400ffff"
+        android:layout_height="100dp" />
 </LinearLayout>
