@@ -1,7 +1,6 @@
 package com.wzc.chapter_3.velocitytracker_gesturedetector_scroller;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +24,15 @@ public class ScrollerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroller);
         view = findViewById(R.id.ll);
+        final MarqueeTextView marqueeTextView = (MarqueeTextView) findViewById(R.id.mtv);
+        final MarqueeTextView2 marqueTextView2 = (MarqueeTextView2) findViewById(R.id.mtv2);
+        marqueeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                marqueeTextView.startScroll();
+                marqueTextView2.startScroll();
+            }
+        });
     }
 
     @Override

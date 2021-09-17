@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000">
 
     <TextView
@@ -28,4 +29,30 @@
             android:layout_gravity="center"
             android:background="#4400ff00" />
     </FrameLayout>
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView
+        android:id="@+id/mtv"
+        android:text="祝大家中秋节快乐"
+        android:background="#44ff00ff"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:padding="8dp"
+        app:scrollInterval="3000"
+        app:scrollDirection="right"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView2
+        android:id="@+id/mtv2"
+        android:text="祝大家中秋节快乐"
+        android:background="#44ff00ff"
+        android:textSize="24sp"
+        android:layout_marginTop="100dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:padding="8dp"
+        app:scroll_first_delay="0"
+        app:scroll_interval="3000"
+        app:scroll_mode="mode_forever"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
 </FrameLayout>
