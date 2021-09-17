@@ -26,12 +26,19 @@
         <activity
             android:name=".velocitytracker_gesturedetector_scroller.ScrollerActivity"
             android:label="ScrollerActivity" />
-        <activity android:name=".viewslide.ViewSlideActivity"
-            android:label="ViewSlideActivity"/>
-        <activity android:name=".viewslide.DragActivity"
-            android:label="DragActivity"/>
-        <activity android:name=".elasticslide.ElasticSlideActivity"
-            android:label="ElasticSlideActivity"/>
+
+        <activity
+            android:name=".velocitytracker_gesturedetector_scroller.MarqueeTextViewActivity"
+            android:label="MarqueeTextViewActivity" />
+        <activity
+            android:name=".viewslide.ViewSlideActivity"
+            android:label="ViewSlideActivity" />
+        <activity
+            android:name=".viewslide.DragActivity"
+            android:label="DragActivity" />
+        <activity
+            android:name=".elasticslide.ElasticSlideActivity"
+            android:label="ElasticSlideActivity" />
         <activity android:name=".eventdispatch.EventDispatchActivity" />
         <activity android:name=".eventdispatch.EventDispatchInterviewActivity" />
         <activity android:name=".slideconflict.type1.external.SlideConflictExActivity" />

@@ -24,15 +24,6 @@ public class ScrollerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroller);
         view = findViewById(R.id.ll);
-        final MarqueeTextView marqueeTextView = (MarqueeTextView) findViewById(R.id.mtv);
-        final MarqueeTextView2 marqueTextView2 = (MarqueeTextView2) findViewById(R.id.mtv2);
-        marqueeTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                marqueeTextView.startScroll();
-                marqueTextView2.startScroll();
-            }
-        });
     }
 
     @Override

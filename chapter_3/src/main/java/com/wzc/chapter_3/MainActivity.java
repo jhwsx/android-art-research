@@ -12,6 +12,7 @@ import com.wzc.chapter_3.eventdispatch.EventDispatchInterviewActivity;
 import com.wzc.chapter_3.slideconflict.type1.internal.SlideConflictInActivity;
 import com.wzc.chapter_3.slideconflict.type1.external.SlideConflictExActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.GestureDetectorActivity;
+import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextViewActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.ScrollerActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.VelocityTrackerActivity;
 import com.wzc.chapter_3.viewslide.DragActivity;
@@ -42,6 +43,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ScrollerActivity.class));
+            }
+        });
+        findViewById(R.id.btn_marquee_textview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MarqueeTextViewActivity.class));
             }
         });
 

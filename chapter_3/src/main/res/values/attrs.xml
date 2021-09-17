@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="MarqueeTextView2">
-        <attr name="scroll_interval" format="integer" />
-        <attr name="scroll_first_delay" format="integer" />
-        <attr name="scroll_mode">
-            <enum name="mode_forever" value="100" />
-            <enum name="mode_once" value="101" />
-        </attr>
-    </declare-styleable>
 
     <declare-styleable name="MarqueeTextView">
         <attr name="scrollInterval" format="integer" />

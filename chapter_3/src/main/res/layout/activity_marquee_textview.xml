@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView
+        android:id="@+id/mtv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#44ff00ff"
+        android:padding="8dp"
+        android:text="祝大家中秋节快乐"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        app:scrollDirection="right"
+        app:scrollInterval="2000" />
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView
+        android:id="@+id/mtv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#44ff00ff"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:text="祝大家国庆节快乐"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        app:scrollDirection="left"
+        app:scrollInterval="2000" />
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView
+        android:id="@+id/mtv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#44ff00ff"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:text="祝大家天天都快乐"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        app:scrollDirection="left"
+        app:scrollFirstDelay="1000"
+        app:scrollInterval="3000" />
+
+    <com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextView
+        android:id="@+id/mtv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#44ff00ff"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:text="我只滚动一次"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        app:scrollMode="oneshot"
+        app:scrollDirection="left"
+        app:scrollFirstDelay="1000"
+        app:scrollInterval="3000" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_start_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="startScroll"
+            android:text="开始滚动" />
+
+
+        <Button
+            android:id="@+id/btn_pause_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="pauseScroll"
+            android:text="暂停滚动" />
+
+
+        <Button
+            android:id="@+id/btn_resume_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="resumeScroll"
+            android:text="继续滚动" />
+
+        <Button
+            android:id="@+id/btn_stop_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="stopScroll"
+            android:text="停止滚动" />
+    </LinearLayout>
+
+
+</LinearLayout>

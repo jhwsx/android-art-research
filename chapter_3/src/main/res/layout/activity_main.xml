@@ -28,6 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ScrollerActivity"/>
+    <Button
+        android:id="@+id/btn_marquee_textview"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MarqueeTextViewActivity"/>
 
     <Button
         android:id="@+id/btn_view_slide"

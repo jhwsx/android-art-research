@@ -28,10 +28,10 @@ public class MarqueeTextView extends TextView {
      */
     private boolean firstScroll = true;
 
-    private int scrollInterval;
-    private int scrollMode;
-    private int scrollFirstDelay;
-    private int scrollDirection;
+    private final int scrollInterval;
+    private final int scrollMode;
+    private final int scrollFirstDelay;
+    private final int scrollDirection;
 
     public static final int SCROLL_MODE_FOREVER = 0;
     public static final int SCROLL_MODE_ONESHOT = 1;
