@@ -40,6 +40,8 @@
             android:name=".elasticslide.ElasticSlideActivity"
             android:label="ElasticSlideActivity" />
         <activity android:name=".eventdispatch.EventDispatchActivity" />
+        <activity android:name=".eventdispatch.ViewEventDispatchActivity"
+            android:label="ViewEventDispatchActivity"/>
         <activity android:name=".eventdispatch.EventDispatchInterviewActivity" />
         <activity android:name=".slideconflict.type1.external.SlideConflictExActivity" />
         <activity android:name=".slideconflict.type1.internal.SlideConflictInActivity" />
