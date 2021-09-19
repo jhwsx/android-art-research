@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.wzc.chapter_3.R;
 
@@ -12,13 +13,18 @@ import com.wzc.chapter_3.R;
  * Created by wzc on 2018/5/25.
  */
 
-public class EventDispatchActivity extends Activity {
-    public static final String TAG = EventDispatchActivity.class.getSimpleName();
+public class ActivityEventDispatchActivity extends Activity {
+    public static final String TAG = "ActivityEventDispatch";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_dispatch);
+        setContentView(R.layout.activity_activity_event_dispatch);
+        View decorView = getWindow().getDecorView();
+        Log.d(TAG, "onCreate: decorView=" + decorView.toString());
+        ViewGroup content = (ViewGroup) decorView.findViewById(android.R.id.content);
+        View contentView = content.getChildAt(0);
+        Log.d(TAG, "onCreate: contentView=" + contentView);
     }
 
     @Override

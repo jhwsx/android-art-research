@@ -12,19 +12,11 @@ import android.widget.Button;
 
 public class MyButton extends Button {
 
-
-    public MyButton(Context context) {
-        super(context);
-    }
-
     public MyButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setEnabled(false);
+        setClickable(false);
     }
-
-    public MyButton(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -32,46 +24,46 @@ public class MyButton extends Button {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(EventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_DOWN");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(EventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_MOVE");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(EventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_UP");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(EventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_CANCEL");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:onTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;
         }
-        Log.d(EventDispatchActivity.TAG, "MyButton:onTouchEvent: handled = " + handled);
+        Log.d(ActivityEventDispatchActivity.TAG, "MyButton:onTouchEvent: handled = " + handled);
         return handled;
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: start");
+        Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: start");
         boolean handled = super.dispatchTouchEvent(event);
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_DOWN");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_MOVE");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_UP");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_CANCEL");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;
         }
-        Log.d(EventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: handled = " + handled);
+        Log.d(ActivityEventDispatchActivity.TAG, "MyButton:dispatchTouchEvent: end handled = " + handled);
         return handled;
     }
 }

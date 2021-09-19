@@ -7,9 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.wzc.chapter_3.elasticslide.ElasticSlideActivity;
-import com.wzc.chapter_3.eventdispatch.EventDispatchActivity;
+import com.wzc.chapter_3.eventdispatch.ActivityEventDispatchActivity;
 import com.wzc.chapter_3.eventdispatch.EventDispatchInterviewActivity;
 import com.wzc.chapter_3.eventdispatch.ViewEventDispatchActivity;
+import com.wzc.chapter_3.eventdispatch.ViewGroupEventDispatchActivity;
 import com.wzc.chapter_3.slideconflict.type1.internal.SlideConflictInActivity;
 import com.wzc.chapter_3.slideconflict.type1.external.SlideConflictExActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.GestureDetectorActivity;
@@ -71,16 +72,22 @@ public class MainActivity extends Activity {
                  startActivity(new Intent(MainActivity.this, ElasticSlideActivity.class));
              }
          });
-         findViewById(R.id.btn_event_dispatch).setOnClickListener(new View.OnClickListener() {
+         findViewById(R.id.btn_activity_event_dispatch).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(MainActivity.this, EventDispatchActivity.class));
+                 startActivity(new Intent(MainActivity.this, ActivityEventDispatchActivity.class));
              }
          });
          findViewById(R.id.btn_view_event_dispatch).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  startActivity(new Intent(MainActivity.this, ViewEventDispatchActivity.class));
+             }
+         });
+         findViewById(R.id.btn_viewgroup_event_dispatch).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, ViewGroupEventDispatchActivity.class));
              }
          });
          findViewById(R.id.btn_event_dispatch_interview).setOnClickListener(new View.OnClickListener() {

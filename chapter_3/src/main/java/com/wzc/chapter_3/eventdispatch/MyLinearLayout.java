@@ -27,69 +27,74 @@ public class MyLinearLayout extends LinearLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: start");
+        boolean handled = super.dispatchTouchEvent(ev);
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_DOWN");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_MOVE");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_UP");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: ACTION_UP");
                 break;
             default:
                 break;
         }
-        return super.dispatchTouchEvent(ev);
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:dispatchTouchEvent: end handled="+handled);
+        return handled;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: start");
         boolean intercepted = super.onInterceptTouchEvent(ev);
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_DOWN");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_MOVE");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_UP");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: ACTION_UP");
                 break;
             default:
                 break;
         }
-        Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: intercepted = " + intercepted);
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onInterceptTouchEvent: end intercepted = " + intercepted);
         return intercepted;
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: start");
         boolean handled = super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_DOWN");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_MOVE");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_UP");
+                Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: ACTION_UP");
                 break;
             default:
                 break;
 
         }
-        Log.d(EventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: handled = " + handled);
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:onTouchEvent: end handled = " + handled);
         return handled;
     }
 
     @Override
     public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-        Log.d(EventDispatchActivity.TAG, "MyLinearLayout:requestDisallowInterceptTouchEvent: " +
+        Log.d(ActivityEventDispatchActivity.TAG, "MyLinearLayout:requestDisallowInterceptTouchEvent: " +
                 "disallowIntercept = " + disallowIntercept);
         super.requestDisallowInterceptTouchEvent(disallowIntercept);
     }

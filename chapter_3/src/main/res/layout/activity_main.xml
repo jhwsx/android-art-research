@@ -1,95 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/ll_parent"
-    android:orientation="vertical"
-    tools:context="com.wzc.chapter_3.MainActivity">
-
-    <Button
-        android:id="@+id/btn_velocity_tracker"
-        android:textAllCaps="false"
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VelocityTrackerActivity"/>
+        android:id="@+id/ll_parent"
+        android:orientation="vertical"
+        tools:context="com.wzc.chapter_3.MainActivity">
 
-    <Button
-        android:id="@+id/btn_gesture_detector"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="GestureDetectorActivity"/>
-    <Button
-        android:id="@+id/btn_scroller"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ScrollerActivity"/>
-    <Button
-        android:id="@+id/btn_marquee_textview"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MarqueeTextViewActivity"/>
+        <Button
+            android:id="@+id/btn_velocity_tracker"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VelocityTrackerActivity"/>
 
-    <Button
-        android:id="@+id/btn_view_slide"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ViewSlideActivity"/>
+        <Button
+            android:id="@+id/btn_gesture_detector"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GestureDetectorActivity"/>
+        <Button
+            android:id="@+id/btn_scroller"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ScrollerActivity"/>
+        <Button
+            android:id="@+id/btn_marquee_textview"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MarqueeTextViewActivity"/>
 
-    <Button
-        android:id="@+id/btn_drag"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DragActivity"/>
+        <Button
+            android:id="@+id/btn_view_slide"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewSlideActivity"/>
 
-    <Button
-        android:id="@+id/btn_elasticslide"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Elastic Slide"/>
+        <Button
+            android:id="@+id/btn_drag"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DragActivity"/>
 
-    <Button
-        android:id="@+id/btn_event_dispatch"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Event Dispatch"/>
+        <Button
+            android:id="@+id/btn_elasticslide"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elastic Slide"/>
 
-    <Button
-        android:id="@+id/btn_view_event_dispatch"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Event Dispatch"/>
+        <Button
+            android:id="@+id/btn_activity_event_dispatch"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activity Event Dispatch"/>
 
-    <Button
-        android:id="@+id/btn_event_dispatch_interview"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Event Dispatch Interview"/>
+        <Button
+            android:id="@+id/btn_view_event_dispatch"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Event Dispatch"/>
 
-    <Button
-        android:id="@+id/btn_slide_conflit_1_ex"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SlideConflict1-ExternalIntercept"/>
+        <Button
+            android:id="@+id/btn_viewgroup_event_dispatch"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewGroup Event Dispatch"/>
 
-    <Button
-        android:id="@+id/btn_slide_conflict_1_in"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SlideConflict1-InternalIntercept"/>
+        <Button
+            android:id="@+id/btn_event_dispatch_interview"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Dispatch Interview"/>
+
+        <Button
+            android:id="@+id/btn_slide_conflit_1_ex"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SlideConflict1-ExternalIntercept"/>
+
+        <Button
+            android:id="@+id/btn_slide_conflict_1_in"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SlideConflict1-InternalIntercept"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
