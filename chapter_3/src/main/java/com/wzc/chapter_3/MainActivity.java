@@ -13,6 +13,7 @@ import com.wzc.chapter_3.eventdispatch.ViewEventDispatchActivity;
 import com.wzc.chapter_3.eventdispatch.ViewGroupEventDispatchActivity;
 import com.wzc.chapter_3.slideconflict.type1.internal.SlideConflictInActivity;
 import com.wzc.chapter_3.slideconflict.type1.external.SlideConflictExActivity;
+import com.wzc.chapter_3.slideconflict.type2.external.SlideConflict2ExActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.GestureDetectorActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.MarqueeTextViewActivity;
 import com.wzc.chapter_3.velocitytracker_gesturedetector_scroller.ScrollerActivity;
@@ -108,5 +109,11 @@ public class MainActivity extends Activity {
                  startActivity(new Intent(MainActivity.this, SlideConflictInActivity.class));
              }
          });
+        findViewById(R.id.btn_slide_conflit_2_ex).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SlideConflict2ExActivity.class));
+            }
+        });
     }
 }

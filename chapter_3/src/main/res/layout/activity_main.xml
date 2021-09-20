@@ -101,7 +101,12 @@
             android:layout_height="wrap_content"
             android:text="SlideConflict1-InternalIntercept"/>
 
-
+        <Button
+            android:id="@+id/btn_slide_conflit_2_ex"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SlideConflict2-ExternalIntercept"/>
     </LinearLayout>
 
 </ScrollView>

@@ -47,6 +47,7 @@
         <activity android:name=".eventdispatch.EventDispatchInterviewActivity" />
         <activity android:name=".slideconflict.type1.external.SlideConflictExActivity" />
         <activity android:name=".slideconflict.type1.internal.SlideConflictInActivity" />
+        <activity android:name=".slideconflict.type2.external.SlideConflict2ExActivity" />
     </application>
 
 </manifest>

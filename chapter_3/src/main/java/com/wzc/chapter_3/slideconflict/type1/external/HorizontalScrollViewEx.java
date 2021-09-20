@@ -90,7 +90,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
         mLastInterceptY = y;
         mLastX = x;
         mLastY = y;
-        Log.d(TAG, "onInterceptHoverEvent: intercepted = " + intercepted);
+        Log.d(TAG, "onInterceptTouchEvent: intercepted = " + intercepted);
         return intercepted;
     }
 
