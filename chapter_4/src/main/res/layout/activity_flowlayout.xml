@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.wzc.chapter_4.FlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Android"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Activity"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Service"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Broadcast Receiver"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Content Provider"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Custom View"
+            style="@style/ItemStyle" />
+
+        <TextView
+            android:text="Process"
+            style="@style/ItemStyle" />
+    </com.wzc.chapter_4.FlowLayout>
+</ScrollView>
