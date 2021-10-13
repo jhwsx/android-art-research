@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
     }
 
     public void standard_notification(View view) {
-        Notification notification = new Notification();
+        /*Notification notification = new Notification();
         notification.icon = R.mipmap.ic_launcher;
         notification.tickerText = "hello world";
         notification.when = System.currentTimeMillis();
@@ -75,8 +75,22 @@ public class MainActivity extends Activity {
         string = TextUtils.isEmpty(string) ? "0" : string;
         NotificationManager manager
                 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(Integer.parseInt(string), notification);
+        manager.notify(Integer.parseInt(string), notification);*/
 
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setWhen(System.currentTimeMillis())
+                .setShowWhen(true)
+                .setContentTitle("通知标题")
+                .setContentText("这就是通知的内容")
+                .setStyle(new Notification.BigTextStyle().bigText("这就是通知的内容1这就是通知的内容2这就是通知的内容3这就是通知的内容4"))
+                .setPriority(Notification.PRIORITY_DEFAULT);
+        String string = mEtId.getText().toString();
+        string = TextUtils.isEmpty(string) ? "0" : string;
+        NotificationManager manager
+                = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = builder.build();
+        manager.notify(Integer.parseInt(string), notification);
     }
 
     int count;
