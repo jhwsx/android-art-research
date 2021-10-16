@@ -41,10 +41,10 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
                         float degree = (i * 10) % 360;
                         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
                         remoteViews.setImageViewBitmap(R.id.imageView1, rotateBitmap(bitmap, degree));
-                        Intent in = new Intent();
-                        in.setAction(CLICK_ACTION);
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, in, 0);
-                        remoteViews.setOnClickPendingIntent(R.id.imageView1, pendingIntent);
+//                        Intent in = new Intent();
+//                        in.setAction(CLICK_ACTION);
+//                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, in, 0);
+//                        remoteViews.setOnClickPendingIntent(R.id.imageView1, pendingIntent);
                         appWidgetManager.updateAppWidget(new ComponentName(context, MyAppWidgetProvider.class), remoteViews);
                         SystemClock.sleep(30);
                     }

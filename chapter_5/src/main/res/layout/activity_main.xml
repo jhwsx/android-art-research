@@ -16,6 +16,12 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:inputType="number"
+       android:hint="Input requestCode"
+       android:id="@+id/et_request_code"/>
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:inputType="number"
        android:hint="Input Extra number"
        android:id="@+id/et_extra_num"/>
    <EditText

@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
     private Spinner mSpinner;
     private int flag = PendingIntent.FLAG_ONE_SHOT;
     private EditText mEtId;
+    private EditText mEtRequestCode;
     private EditText mEtExtraNum;
     private MyReceiver mMyReceiver;
     private FrameLayout mFl;
@@ -32,6 +33,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mEtId = (EditText) findViewById(R.id.et_id);
+        mEtRequestCode = (EditText) findViewById(R.id.et_request_code);
         mEtExtraNum = (EditText) findViewById(R.id.et_extra_num);
         mSpinner = (Spinner) findViewById(R.id.spinner);
         mSpinner.setSelection(0, true);
@@ -67,8 +69,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, Demo1Activity.class);
         Log.d(TAG, "send intent = " + intent.hashCode());
         intent.putExtra(Demo1Activity.EXTRA_TEXT, "text " + mEtExtraNum.getText().toString());
+        String requestCodeStr = mEtRequestCode.getText().toString();
+        int requestCode = Integer.parseInt(TextUtils.isEmpty(requestCodeStr) ? "0" : requestCodeStr);
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,
-                0, intent, flag);
+                requestCode, intent, flag);
         notification.setLatestEventInfo(MainActivity.this,
                 "chapter_5", "this is notification " + mEtExtraNum.getText().toString(), pendingIntent);
         String string = mEtId.getText().toString();
