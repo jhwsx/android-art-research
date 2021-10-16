@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">chapter_5</string>
+    <string name="app_name">第5章 理解 RemoteViews</string>
     <string-array name="pendingintent_flags">
         <item>FlAG_ONE_SHOT</item>
         <item>FLAT_CANCEL_CURRENT</item>
