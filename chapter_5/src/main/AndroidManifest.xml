@@ -15,9 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Demo1Activity">
+        <activity android:name=".Demo1Activity"
+            android:exported="true">
         </activity>
-        <activity android:name=".Demo2Activity">
+        <activity android:name=".Demo2Activity"
+            android:process=":remote">
         </activity>
         <receiver android:name=".MyAppWidgetProvider">
             <intent-filter>
@@ -29,6 +31,20 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info"/>
         </receiver>
+
+        <receiver android:name=".MyListAppWidgetProvider">
+            <intent-filter>
+                <!--这个 action 是必须声明的-->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.wzc.chapter_5.click_list_action"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info_list"/>
+        </receiver>
+        <service
+            android:name=".ListService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

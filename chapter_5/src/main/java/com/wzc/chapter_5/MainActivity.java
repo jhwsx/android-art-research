@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RemoteViews;
 import android.widget.Spinner;
-
+// A
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Spinner mSpinner;
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
     }
 
     public void standard_notification(View view) {
-        /*Notification notification = new Notification();
+        Notification notification = new Notification();
         notification.icon = R.mipmap.ic_launcher;
         notification.tickerText = "hello world";
         notification.when = System.currentTimeMillis();
@@ -79,9 +79,9 @@ public class MainActivity extends Activity {
         string = TextUtils.isEmpty(string) ? "0" : string;
         NotificationManager manager
                 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(Integer.parseInt(string), notification);*/
+        manager.notify(Integer.parseInt(string), notification);
 
-        Notification.Builder builder = new Notification.Builder(this)
+        /*Notification.Builder builder = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setWhen(System.currentTimeMillis())
                 .setShowWhen(true)
@@ -94,10 +94,11 @@ public class MainActivity extends Activity {
         NotificationManager manager
                 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = builder.build();
-        manager.notify(Integer.parseInt(string), notification);
+        manager.notify(Integer.parseInt(string), notification);*/
     }
 
     int count;
+
     public void custom_notification(View view) {
         count++;
         Notification notification = new Notification();
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,
                 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification);
-        remoteViews.setTextViewText(R.id.tv_title, "chapter_5 "+count);
+        remoteViews.setTextViewText(R.id.tv_title, "chapter_5 " + count);
         remoteViews.setImageViewResource(R.id.iv, R.drawable.icon);
         PendingIntent openActivity2PendingIntent = PendingIntent.getActivity(MainActivity.this, 2,
                 new Intent(MainActivity.this, Demo2Activity.class),
@@ -140,10 +141,17 @@ public class MainActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             if (Constants.REMOTE_ACTION.equals(intent.getAction())) {
                 RemoteViews remoteViews = intent.getParcelableExtra(Constants.EXTRA_REMOTEVIEWS);
-                View view = remoteViews.apply(context, mFl);
-                mFl.addView(view);
+                updateUI(context, remoteViews);
             }
         }
+
+        private void updateUI(Context context, RemoteViews remoteViews) {
+            // 加载布局并执行更新操作
+            View view = remoteViews.apply(context, mFl);
+            mFl.addView(view);
+        }
     }
+
+
 
 }
