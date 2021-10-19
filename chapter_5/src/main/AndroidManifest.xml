@@ -19,7 +19,8 @@
             android:exported="true">
         </activity>
         <activity android:name=".Demo2Activity"
-            android:process=":remote">
+            android:process=":remote"
+            android:exported="true">
         </activity>
         <receiver android:name=".MyAppWidgetProvider">
             <intent-filter>

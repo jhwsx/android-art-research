@@ -15,6 +15,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv"
         android:layout_alignParentRight="true"
         android:gravity="center_vertical|end"
         android:orientation="vertical">
@@ -22,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
+            android:maxLines="2"
             android:id="@+id/tv_title"
             tools:text="chapter_5"/>
 
@@ -29,7 +31,6 @@
             android:id="@+id/open_activity2"
             android:text="open activity2"
             android:gravity="end"
-            android:padding="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

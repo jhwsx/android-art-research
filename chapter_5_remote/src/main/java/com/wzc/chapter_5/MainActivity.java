@@ -52,9 +52,10 @@ public class MainActivity extends Activity {
         }
 
         private void updateUI(Context context, RemoteViews remoteViews) {
-            int layoutId = getResources().getIdentifier("layout_simulated_notification", "layout", getPackageName());
-            View view = getLayoutInflater().inflate(layoutId, mFl, false);
-            remoteViews.reapply(context, view);
+            mFl.removeAllViews();
+//            int layoutId = getResources().getIdentifier("layout_simulated_notification", "layout", getPackageName());
+//            View view = getLayoutInflater().inflate(layoutId, mFl, false);
+            View view = remoteViews.apply(context, mFl);
             mFl.addView(view);
         }
     }

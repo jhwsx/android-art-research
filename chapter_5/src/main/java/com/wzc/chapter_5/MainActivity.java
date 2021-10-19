@@ -146,6 +146,7 @@ public class MainActivity extends Activity {
         }
 
         private void updateUI(Context context, RemoteViews remoteViews) {
+            mFl.removeAllViews();
             // 加载布局并执行更新操作
             View view = remoteViews.apply(context, mFl);
             mFl.addView(view);
