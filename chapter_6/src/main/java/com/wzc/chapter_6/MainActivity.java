@@ -1,16 +1,35 @@
 package com.wzc.chapter_6;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.android);
+        Log.d(TAG, "onCreate: bitmap width=" + bitmap.getWidth() + ", height=" + bitmap.getHeight());
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+        int intrinsicHeight = bitmapDrawable.getIntrinsicHeight();
+        int intrinsicWidth = bitmapDrawable.getIntrinsicWidth();
+        Log.d(TAG, "onCreate:bitmapDrawable intrinsicWidth=" + intrinsicWidth + ",intrinsicHeight=" + intrinsicHeight);
+        Drawable drawable = getDrawable(R.drawable.shape_drawable_rectangle);
+        int intrinsicWidth1 = drawable.getIntrinsicWidth();
+        int intrinsicHeight1 = drawable.getIntrinsicHeight();
+        Log.d(TAG, "onCreate: " + drawable.getClass().getSimpleName() + " intrinsicWidth1=" + intrinsicWidth1 + ", intrinsicHeight1=" + intrinsicHeight1);
         Button btnBitmapDrawable = (Button) findViewById(R.id.btn_bitmapdrawable);
         Button btn_layerdrawable = (Button) findViewById(R.id.btn_layerdrawable);
         Button btn_statelistdrawable = (Button) findViewById(R.id.btn_statelistdrawable);
@@ -84,5 +103,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 default:
                     break;
         }
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
     }
 }

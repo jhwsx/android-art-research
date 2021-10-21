@@ -7,6 +7,14 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/shape_drawable_rectangle"
-        android:background="#00ff00"/>
+        android:src="@drawable/shape_drawable_rectangle" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/shape_drawable_gradient" />
 </LinearLayout>

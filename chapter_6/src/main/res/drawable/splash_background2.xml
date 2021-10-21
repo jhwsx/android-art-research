@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+    <item
+        android:bottom="120dp">
+        <!--需要注意的是这里使用 bitmap 标签是为了保证图标不被拉伸-->
+        <bitmap
+            android:gravity="bottom|center_horizontal"
+            android:src="@drawable/splash_logo"/>
+    </item>
+
+</layer-list>

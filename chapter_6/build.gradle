@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.wzc.chapter_6"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"

@@ -8,13 +8,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".BitmapDrawableActivity"/>
         <activity android:name=".LayerDrawableActivity"/>
         <activity android:name=".StateListDrawableActivity"/>
@@ -29,6 +31,9 @@
         <activity android:name=".CircleProgressDrawableActivity"/>
         <activity android:name=".CircleProgressDrawable2Activity"/>
         <activity android:name=".RoundBitmapActivity"/>
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
     </application>
 
 </manifest>

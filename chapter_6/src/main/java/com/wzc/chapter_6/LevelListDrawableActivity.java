@@ -14,6 +14,7 @@ import android.widget.ImageView;
 public class LevelListDrawableActivity extends Activity {
 
     private ImageView mImageView;
+    private ImageView mImageView2;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, LevelListDrawableActivity.class);

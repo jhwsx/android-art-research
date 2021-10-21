@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">chapter_6</string>
+    <string name="app_name" translatable="false">第6章 Android 的 Drawable</string>
     <string name="button_style_1_text" translatable="false">Indeterminate + Center fill</string>
     <string name="button_style_2_text" translatable="false">Coloured fill</string>
     <string name="button_style_3_text" translatable="false">Sling empty</string>
