@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -31,13 +32,16 @@ public class CircleImageDrawableActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_image_drawable);
         ImageView iv = (ImageView) findViewById(R.id.iv);
+        ImageView iv2 = (ImageView) findViewById(R.id.iv2);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
         iv.setImageDrawable(new CircleImageDrawable(bitmap));
+
+        iv2.setImageDrawable(new CustomDrawable(Color.parseColor("#000000")));
     }
 
     class CircleImageDrawable extends Drawable {
         private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private RectF mRectF = new RectF();
+//        private RectF mRectF = new RectF();
         private int mWidth;
         public CircleImageDrawable(Bitmap bitmap) {
             BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP,
@@ -74,7 +78,7 @@ public class CircleImageDrawableActivity extends Activity {
         @Override
         public void setBounds(int left, int top, int right, int bottom) {
             super.setBounds(left, top, right, bottom);
-            mRectF.set(left, top, right, bottom);
+//            mRectF.set(left, top, right, bottom);
         }
 
         @Override

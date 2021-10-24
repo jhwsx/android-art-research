@@ -13,8 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/clip_drawable"/>
+
+    <ProgressBar
+        android:id="@+id/pb2"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/clip_progress_drawable"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <SeekBar
+        android:layout_marginTop="16dp"
         android:id="@+id/sb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

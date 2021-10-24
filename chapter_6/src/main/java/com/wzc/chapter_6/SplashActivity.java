@@ -13,7 +13,6 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainActivity.start(this);
-        SystemClock.sleep(2000);
         finish();
     }
 }

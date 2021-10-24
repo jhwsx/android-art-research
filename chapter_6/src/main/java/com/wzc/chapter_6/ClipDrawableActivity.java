@@ -28,6 +28,7 @@ public class ClipDrawableActivity extends Activity {
         final SeekBar sb = (SeekBar) findViewById(R.id.sb);
         final TextView tv = (TextView) findViewById(R.id.tv);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.pb);
+        final ProgressBar progressBar2 = (ProgressBar) findViewById(R.id.pb2);
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -37,6 +38,7 @@ public class ClipDrawableActivity extends Activity {
                 clipDrawable.setLevel((int) (percent * 10000f));
                 tv.setText(Integer.toString(progress));
                 progressBar.setProgress(progress);
+                progressBar2.setProgress(progress);
             }
 
             @Override

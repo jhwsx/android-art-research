@@ -7,13 +7,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, WZC"
+        android:text="Hello, World"
         android:textSize="24dp"
         android:textColor="#0f0"/>
 
     <TextView
         android:background="@drawable/inset_drawable_2"
         android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_width="100dp"
+        android:text="只有底边有绿线的效果"
         android:layout_height="100dp" />
 </LinearLayout>
