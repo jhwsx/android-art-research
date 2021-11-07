@@ -2,11 +2,15 @@ package com.wzc.chapter_7;
 
 import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.PointFEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -23,6 +27,8 @@ public class PropertyAnimationActivity extends Activity {
     private Button mBtn2;
     private Button mBtn3;
     private Button mBtn4;
+    private MyButton mBtn5;
+    private MyButton mBtn6;
     private IntEvaluator mIntValuator = new IntEvaluator();
 
     public static void start(Context context) {
@@ -57,7 +63,7 @@ public class PropertyAnimationActivity extends Activity {
             @Override
             public void onClick(View v) {
                 ViewWrapper viewWrapper = new ViewWrapper(mBtn3);
-                ObjectAnimator.ofInt(viewWrapper, "width", mBtn3.getWidth(), 500).setDuration(2000).start();
+                ObjectAnimator.ofInt(viewWrapper, "breadth", mBtn3.getWidth(), 500).setDuration(2000).start();
             }
         });
         mBtn4 = (Button) findViewById(R.id.btn4);
@@ -83,6 +89,21 @@ public class PropertyAnimationActivity extends Activity {
                 valueAnimator.start();
             }
         });
+        mBtn5 = (MyButton) findViewById(R.id.btn5);
+        mBtn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofInt(mBtn5, "breadth", 500).setDuration(2000).start();
+            }
+        });
+
+        mBtn6 = (MyButton) findViewById(R.id.btn6);
+        mBtn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofObject(mBtn6, "size", new PointFEvaluator(), new PointF(500F,500F)).setDuration(2000).start();
+            }
+        });
     }
 
     private static class ViewWrapper {
@@ -92,13 +113,11 @@ public class PropertyAnimationActivity extends Activity {
             mTarget = target;
         }
 
-        public int getWidth() {
-            Log.d("ViewWrapper", "getWidth()");
+        public int getBreadth() {
             return mTarget.getLayoutParams().width;
         }
 
-        public void setWidth(int width) {
-            Log.d("ViewWrapper", "setWidth() width=" + width);
+        public void setBreadth(int width) {
             mTarget.getLayoutParams().width = width;
             mTarget.requestLayout();
         }
