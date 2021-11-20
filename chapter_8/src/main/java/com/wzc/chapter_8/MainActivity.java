@@ -41,6 +41,8 @@ public class MainActivity extends Activity {
         // Honor6 6.0 不加报错；加了不报错
         // Dialog: show mWindowManager.addView RuntimeException
         dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ERROR);
+        // 使用 type_toast，在redmi note9 pro android 11 上测试，不在清单中添加权限，也是可以弹出对话框的。但是这个对话框会自动消失。
+//        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
         dialog.show();
     }
 
