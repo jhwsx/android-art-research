@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
+
 public class MainActivity extends Activity {
+
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +53,20 @@ public class MainActivity extends Activity {
 
     public void toast(View view) {
 //        for (int i = 0; i < 100; i++) {
-            Toast toast = new Toast(getApplicationContext());
-            View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.toast_content, null);
+        if (toast == null) {
+            toast = new Toast(getApplicationContext());
+        }
+        try {
+            Field sServiceField = Toast.class.getDeclaredField("sService");
+            sServiceField.setAccessible(true);
+            Object o = sServiceField.get(null);
+            Log.d("TAG", "toast: ");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.toast_content, null);
             TextView textView = (TextView) inflate.findViewById(R.id.tv);
             textView.setText("This is a toast " + 0);
             toast.setView(inflate);
