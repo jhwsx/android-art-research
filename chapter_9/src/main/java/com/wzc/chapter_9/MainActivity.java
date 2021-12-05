@@ -43,4 +43,19 @@ public class MainActivity extends Activity {
         starter.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
+
+    public void openSecondActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
+
+    public void startService(View view) {
+        Intent intent = new Intent(MainActivity.this, MyService.class);
+        startService(intent);
+    }
+
+    public void stopService(View view) {
+        Intent intent = new Intent(MainActivity.this, MyService.class);
+        stopService(intent);
+    }
 }

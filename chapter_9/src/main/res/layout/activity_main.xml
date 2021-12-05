@@ -4,12 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <Button
+        android:onClick="openSecondActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开SecondActivity"/>
 
     <Button
         android:onClick="openWindow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="打开悬浮窗"/>
+
+    <Button
+        android:onClick="startService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启服务"/>
+
+    <Button
+        android:onClick="stopService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止服务"/>
 
 </LinearLayout>
