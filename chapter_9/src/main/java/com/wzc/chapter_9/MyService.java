@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class MyService extends Service {
 
-    private static final String TAG = "MyStartService";
+    private static final String TAG = "MyService";
     public MyService() {
     }
 
