@@ -1,15 +1,23 @@
 package com.wzc.chapter_9;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.os.Process;
 
 public class MainActivity extends Activity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +35,8 @@ public class MainActivity extends Activity {
             }
         });
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT,
-                0,0, PixelFormat.TRANSPARENT);
+                WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT,
+                0, 0, PixelFormat.TRANSPARENT);
         layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
         layoutParams.gravity = Gravity.CENTER;
         layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
@@ -58,4 +66,33 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, MyService.class);
         stopService(intent);
     }
+
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "onServiceConnected: ");
+            ICompute iCompute = ICompute.Stub.asInterface(service);
+            try {
+                int result = iCompute.add(1, 1);
+                Log.d(TAG, "onServiceConnected: result=" + result + ", processName=" + MyUtils.getProcessName(MainActivity.this, Process.myPid()));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "onServiceDisconnected: ");
+        }
+    };
+
+    public void bindService(View view) {
+        Intent intent = new Intent(MainActivity.this, RemoteBindService.class);
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    public void unbindService(View view) {
+        unbindService(serviceConnection);
+    }
+
 }
