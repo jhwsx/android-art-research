@@ -1,9 +1,12 @@
 package com.wzc.chapter_9;
 
+import static com.wzc.chapter_9.MyDynamicReceiver.ACTION_LAUNCH_DYNAMIC;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
@@ -95,4 +98,26 @@ public class MainActivity extends Activity {
         unbindService(serviceConnection);
     }
 
+    private MyDynamicReceiver receiver;
+    public void registerReceiver(View view) {
+        if (null == receiver) {
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(ACTION_LAUNCH_DYNAMIC);
+            receiver = new MyDynamicReceiver();
+            registerReceiver(receiver, intentFilter);
+        }
+    }
+
+    public void unregisterReceiver(View view) {
+        if (null != receiver) {
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+    }
+
+    public void sendBroadcast(View view) {
+        Intent intent = new Intent();
+        intent.setAction(ACTION_LAUNCH_DYNAMIC);
+        sendBroadcast(intent);
+    }
 }

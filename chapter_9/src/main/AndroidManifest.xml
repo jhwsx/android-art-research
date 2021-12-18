@@ -29,6 +29,13 @@
         <service
             android:name=".RemoteBindService"
             android:process="com.wzc.chapter_9.remote" />
+
+        <receiver android:name=".MyStaticReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wzc.receiver.LAUNCH_STATIC" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

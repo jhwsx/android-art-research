@@ -1,46 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <Button
-        android:onClick="openSecondActivity"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="打开SecondActivity"/>
+        android:orientation="vertical">
 
-    <Button
-        android:onClick="openWindow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="打开悬浮窗"/>
+        <Button
+            android:onClick="openSecondActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开SecondActivity"/>
 
-    <Button
-        android:onClick="startService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="开启服务"/>
+        <Button
+            android:onClick="openWindow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开悬浮窗"/>
 
-    <Button
-        android:onClick="stopService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="停止服务"/>
+        <Button
+            android:onClick="startService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启服务"/>
 
-    <Button
-        android:onClick="bindService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="绑定服务"/>
+        <Button
+            android:onClick="stopService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止服务"/>
 
-    <Button
-        android:onClick="unbindService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="解绑服务"/>
+        <Button
+            android:onClick="bindService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定服务"/>
 
-</LinearLayout>
+        <Button
+            android:onClick="unbindService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="解绑服务"/>
+
+        <Button
+            android:onClick="registerReceiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动态注册广播"/>
+
+        <Button
+            android:onClick="unregisterReceiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动态注销广播"/>
+
+        <Button
+            android:onClick="sendBroadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送广播"/>
+
+    </LinearLayout>
+</ScrollView>
