@@ -50,13 +50,13 @@
             android:onClick="registerReceiver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="动态注册广播"/>
+            android:text="动态注册广播接收者"/>
 
         <Button
             android:onClick="unregisterReceiver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="动态注销广播"/>
+            android:text="动态注销广播接收者"/>
 
         <Button
             android:onClick="sendBroadcast"
