@@ -12,6 +12,7 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.UserHandle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -26,6 +27,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UserHandle userHandle = Process.myUserHandle();
+        Intent intent = new Intent();
+        intent.setAction(ACTION_LAUNCH_DYNAMIC);
+        String resolvedType = intent.resolveTypeIfNeeded(getContentResolver());
+        Log.d(TAG, "onCreate: ");
     }
 
     public void openWindow(View view) {
@@ -77,7 +83,7 @@ public class MainActivity extends Activity {
             ICompute iCompute = ICompute.Stub.asInterface(service);
             try {
                 int result = iCompute.add(1, 1);
-                Log.d(TAG, "onServiceConnected: result=" + result + ", processName=" + MyUtils.getProcessName(MainActivity.this, Process.myPid()));
+                Log.d(TAG, "onServiceConnected: result=" + result + ", processName=" + MyUtils.getProcessName(MainActivity.this, Process.myPid()) + ", threadName=" + Thread.currentThread().getName());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
