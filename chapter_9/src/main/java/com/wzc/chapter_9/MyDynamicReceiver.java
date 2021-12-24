@@ -14,6 +14,7 @@ public class MyDynamicReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         Log.d(TAG, "onReceive: receive action = " + action);
         i++;
+        Log.d(TAG, "onReceive: this=" + this);
         Log.d(TAG, "onReceive: i = " + i);
         if (ACTION_LAUNCH_DYNAMIC.equals(action)) {
             Log.d(TAG, "onReceive: do launch work...");

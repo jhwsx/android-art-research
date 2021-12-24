@@ -110,11 +110,11 @@
         <activity
             android:name=".contentprovider.ProviderActivity"
             android:label="ProviderActivity">
-<!--            <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN"/>-->
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
 
-<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity
@@ -129,11 +129,11 @@
         <activity
             android:name=".binderpool.BinderPoolActivity"
             android:label="BinderPoolActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
+<!--            <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN"/>-->
 
-            <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--            <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
 
         <service android:name=".binderpool.BinderPoolService"

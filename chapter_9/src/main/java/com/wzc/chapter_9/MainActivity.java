@@ -1,6 +1,7 @@
 package com.wzc.chapter_9;
 
 import static com.wzc.chapter_9.MyDynamicReceiver.ACTION_LAUNCH_DYNAMIC;
+import static com.wzc.chapter_9.MyStaticReceiver.ACTION_LAUNCH_STATIC;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -123,7 +124,7 @@ public class MainActivity extends Activity {
 
     public void sendBroadcast(View view) {
         Intent intent = new Intent();
-        intent.setAction(ACTION_LAUNCH_DYNAMIC);
+        intent.setAction(ACTION_LAUNCH_STATIC);
         sendBroadcast(intent);
     }
 }
