@@ -5,15 +5,18 @@ import static com.wzc.chapter_9.MyStaticReceiver.ACTION_LAUNCH_STATIC;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.PixelFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.provider.UserDictionary;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -32,7 +35,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(ACTION_LAUNCH_DYNAMIC);
         String resolvedType = intent.resolveTypeIfNeeded(getContentResolver());
-        Log.d(TAG, "onCreate: ");
+        Uri uri = ContentUris.withAppendedId(UserDictionary.Words.CONTENT_URI, 4);
+        uri = ContentUris.appendId(new Uri.Builder().scheme("content").authority(UserDictionary.AUTHORITY).path("words"), 4).build();
+        long id = ContentUris.parseId(uri);
+        Log.d(TAG, "onCreate: uri = " + uri + ", id = " + id);
     }
 
     public void openWindow(View view) {
@@ -126,5 +132,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(ACTION_LAUNCH_STATIC);
         sendBroadcast(intent);
+    }
+
+    public void openUserDictionary(View view) {
+        UserDictionaryActivity.start(this);
     }
 }

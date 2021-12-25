@@ -64,5 +64,12 @@
             android:layout_height="wrap_content"
             android:text="发送广播"/>
 
+
+        <Button
+            android:onClick="openUserDictionary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户词典页面"/>
+
     </LinearLayout>
 </ScrollView>
