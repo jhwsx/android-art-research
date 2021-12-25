@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -40,6 +41,14 @@
 
         <activity android:name=".UserDictionaryActivity"
             android:label="用户词典"/>
+
+        <provider
+            android:process="com.wzc.chapter_9.provider"
+            android:authorities="${applicationId}.bookprovider"
+            android:name=".provider.BookProvider" />
+
+        <activity android:name=".BookProviderActivity"
+            android:label="BookProvider"/>
     </application>
 
 </manifest>

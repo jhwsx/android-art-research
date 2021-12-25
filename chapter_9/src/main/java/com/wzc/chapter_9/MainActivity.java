@@ -137,4 +137,8 @@ public class MainActivity extends Activity {
     public void openUserDictionary(View view) {
         UserDictionaryActivity.start(this);
     }
+
+    public void openBookProvider(View view) {
+        BookProviderActivity.start(this);
+    }
 }
