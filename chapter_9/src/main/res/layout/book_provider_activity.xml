@@ -10,6 +10,12 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:onClick="queryById"
+        android:text="查询新插入的数据"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:onClick="insert"
         android:text="插入"
         android:layout_width="wrap_content"
@@ -17,13 +23,13 @@
 
     <Button
         android:onClick="update"
-        android:text="更新"
+        android:text="更新新插入的数据"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:onClick="delete"
-        android:text="删除"
+        android:onClick="deleteById"
+        android:text="删除新插入的数据"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
