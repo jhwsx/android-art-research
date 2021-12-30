@@ -14,7 +14,7 @@ public class App extends Application {
         context = this;
         String processName = MyUtils.getProcessName(getApplicationContext(), Process.myPid());
 
-        Log.d(TAG, "application start, process name : " + processName + ", process id : " + Process.myPid());
+        Log.d(TAG, "application start, process name : " + processName + ", process id : " + Process.myPid() + ", uid = " + Process.myUid());
     }
     public static Context getContext() {
         return context;

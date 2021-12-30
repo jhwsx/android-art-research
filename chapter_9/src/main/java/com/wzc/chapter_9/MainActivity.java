@@ -10,6 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +25,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.os.Process;
+
+import com.wzc.chapter_9.provider.BookStore;
 
 public class MainActivity extends Activity {
 
@@ -38,7 +43,15 @@ public class MainActivity extends Activity {
         Uri uri = ContentUris.withAppendedId(UserDictionary.Words.CONTENT_URI, 4);
         uri = ContentUris.appendId(new Uri.Builder().scheme("content").authority(UserDictionary.AUTHORITY).path("words"), 4).build();
         long id = ContentUris.parseId(uri);
-        Log.d(TAG, "onCreate: uri = " + uri + ", id = " + id);
+        try {
+            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), 0);
+            ProviderInfo providerInfo = getPackageManager().resolveContentProvider(BookStore.AUTHORITY, 0);
+            String string = new ComponentName(providerInfo.applicationInfo.packageName,
+                    providerInfo.name).flattenToShortString();
+            Log.d(TAG, "onCreate: uri = " + uri + ", id = " + id);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openWindow(View view) {
