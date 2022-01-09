@@ -22,8 +22,6 @@ import java.lang.reflect.Field;
 // 系统源码 jni 实现包：E:\android-5.1.1_r1\frameworks\base\core\jni
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    // define a ThreadLocal object
-    private ThreadLocal<Boolean> mBooleanThreadLocal = new ThreadLocal<>();
     // 四种构造
     private Handler mainHandler1 = new Handler();
     private Handler mainHandler2 = new Handler(Looper.getMainLooper());
@@ -70,25 +68,6 @@ public class MainActivity extends Activity {
         }
         MyClass myClass = new MyClass();
         MyHandler myHandler = new MyHandler();
-        mBooleanThreadLocal.set(true);
-        log();
-
-        new Thread("Thread#1") {
-            @Override
-            public void run() {
-                super.run();
-                mBooleanThreadLocal.set(false);
-                log();
-            }
-        }.start();
-
-        new Thread("Thread#2"){
-            @Override
-            public void run() {
-                super.run();
-                log();
-            }
-        }.start();
         handlerThread = new HandlerThread("wzc");
         handlerThread.start();
 //        handlerThread.getLooper().setMessageLogging(new PrintWriterPrinter(new PrintWriter(new OutputStreamWriter(System.out))));
@@ -163,6 +142,69 @@ public class MainActivity extends Activity {
         workThreadHandler.sendMessage(workThreadHandler.obtainMessage(what, obj));
     }
 
+    // define a ThreadLocal object
+    private static ThreadLocal<Boolean> sBooleanThreadLocal = new ThreadLocal<>();
+    private static ThreadLocal<String> sStringThreadLocal = new ThreadLocal<>();
+    public void threadLocal_basic(View view) {
+        sBooleanThreadLocal.set(true);
+        log();
+
+        new Thread("Thread#1") {
+            @Override
+            public void run() {
+                super.run();
+                sBooleanThreadLocal.set(false);
+                sStringThreadLocal.set(Thread.currentThread().getName());
+                log();
+            }
+        }.start();
+
+        new Thread("Thread#2"){
+            @Override
+            public void run() {
+                super.run();
+                sStringThreadLocal.set(Thread.currentThread().getName());
+                log();
+            }
+        }.start();
+    }
+    private void log() {
+        Log.d(TAG, "["+ Thread.currentThread().getName() +"]"+ "sBooleanThreadLocal.get()=" + sBooleanThreadLocal.get());
+        Log.d(TAG, "["+ Thread.currentThread().getName() +"]"+ "sStringThreadLocal.get()=" + sStringThreadLocal.get());
+    }
+
+    private static ThreadLocal<Runnable> runnableThreadLocal = new ThreadLocal<>();
+    public void threadLocalargs(View view) {
+       new Thread("thread1") {
+           @Override
+           public void run() {
+               task();
+           }
+       }.start();
+       new Thread("thread2") {
+           @Override
+           public void run() {
+               task();
+           }
+       }.start();
+    }
+    private void task() {
+        Runnable runnable = () -> Log.d(TAG, "run: " + Thread.currentThread().getName());
+        runnableThreadLocal.set(runnable);
+        method1();
+    }
+
+    private void method1() {
+        method2();
+    }
+
+    private void method2() {
+        method3();
+    }
+
+    private void method3() {
+        runnableThreadLocal.get().run();
+    }
 
     public void openCheckThreadNotWorkingActivity(View view) {
         CheckThreadNotWorkingActivity.start(this);
@@ -208,14 +250,6 @@ public class MainActivity extends Activity {
     public void sendMessageUsingHandlerThread(View view) {
         handler.obtainMessage(1, "wzc").sendToTarget();
        // Message.obtain(handler, 1, "wzc").sendToTarget();
-    }
-
-    private void log() {
-        Log.d(TAG, "["+ getCurrThread() +"]"+ "mBooleanThreadLocal.get()=" + mBooleanThreadLocal.get());
-    }
-
-    private String getCurrThread() {
-        return Thread.currentThread().getName();
     }
 
     @Override

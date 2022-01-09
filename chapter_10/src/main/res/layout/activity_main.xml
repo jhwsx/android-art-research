@@ -34,12 +34,23 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:onClick="sendMessageUsingHandlerThread"
-        android:text="使用 HandlerThread 发送消息"
+        android:onClick="threadLocal_basic"
+        android:text="ThreadLocal_Basic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 
+    <Button
+        android:onClick="threadLocalargs"
+        android:text="使用ThreadLocal来进行复杂逻辑下的对象传递"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="sendMessageUsingHandlerThread"
+        android:text="使用 HandlerThread 发送消息"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
         android:onClick="openIdleHandlerActivity"
