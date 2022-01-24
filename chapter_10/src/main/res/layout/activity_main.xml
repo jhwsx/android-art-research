@@ -57,4 +57,10 @@
         android:text="演示IdleHandler页面"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="openActivityANRTestActivity"
+        android:text="Activity ANR 测试"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

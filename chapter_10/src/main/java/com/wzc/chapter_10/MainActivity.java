@@ -252,6 +252,10 @@ public class MainActivity extends Activity {
        // Message.obtain(handler, 1, "wzc").sendToTarget();
     }
 
+    public void openActivityANRTestActivity(View view) {
+        ActivityANRTestActivity.start(this);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -23,6 +23,9 @@
 
         <activity android:name=".idlehandler.IdleHandlerActivity"
             android:label="演示IdleHandler页面"/>
+
+        <activity android:name=".ActivityANRTestActivity"
+            android:label="Activity ANR 测试"/>
 <!--        <activity android:name=".MyActivity">-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN"/>-->
