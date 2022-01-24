@@ -24,8 +24,7 @@ import java.util.Date;
  */
 public class AsyncTaskActivity extends Activity {
     private static final String TAG = AsyncTaskActivity.class.getSimpleName();
-    private static final String url = "https://github.com/jhwsx/android-art-research/raw/"
-            + "f6257e9f1e46848400f7ff2635991fd5a850d4f8/chapter_11/app-debug.apk";
+    private static final String url = "http://127.0.0.1:8080/app-debug.apk";
     private TextView mTvProgress;
     private TextView mTvLength;
     private DownloadTask mDownloadTask;
@@ -96,6 +95,7 @@ public class AsyncTaskActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
             mProgressDialog = new ProgressDialog(AsyncTaskActivity.this);
             mProgressDialog.setTitle("下载");
             mProgressDialog.setMessage("获取数据中...");
@@ -124,6 +124,8 @@ public class AsyncTaskActivity extends Activity {
             try {
                 URL url = new URL(urls[0]);
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(30 * 1000);
+                connection.setReadTimeout(30 * 1000);
                 connection.connect();
                 if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                     return -1L;

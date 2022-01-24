@@ -1,4 +1,4 @@
-package com.wzc.chapter_11.study;
+package com.example.chapter_11_lib.study;
 
 /**
  * @author wzc

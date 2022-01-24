@@ -1,4 +1,4 @@
-package com.wzc.chapter_11.study;
+package com.example.chapter_11_lib.study;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 串行执行器
+ *
  * @author wzc
  * @date 2018/8/26
  */
