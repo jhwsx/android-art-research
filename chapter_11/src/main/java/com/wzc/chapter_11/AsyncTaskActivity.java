@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -24,9 +25,10 @@ import java.util.Date;
  */
 public class AsyncTaskActivity extends Activity {
     private static final String TAG = AsyncTaskActivity.class.getSimpleName();
-    private static final String url = "http://127.0.0.1:8080/app-debug.apk";
-    private TextView mTvProgress;
-    private TextView mTvLength;
+    private static final String url = "https://github.com/jhwsx/android-art-research/raw/"
+            + "f6257e9f1e46848400f7ff2635991fd5a850d4f8/chapter_11/app-debug.apk";
+    TextView mTvProgress;
+    TextView mTvLength;
     private DownloadTask mDownloadTask;
 
     @Override
@@ -41,7 +43,7 @@ public class AsyncTaskActivity extends Activity {
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDownloadTask = new DownloadTask();
+                mDownloadTask = new DownloadTask(AsyncTaskActivity.this);
                 mDownloadTask.execute(url);
             }
         });
@@ -88,15 +90,18 @@ public class AsyncTaskActivity extends Activity {
             Log.d(TAG, s + " finished at " + simpleDateFormat.format(new Date()));
         }
     }
-    public class DownloadTask extends AsyncTask<String, Integer, Long> {
-
+    public static class DownloadTask extends AsyncTask<String, Integer, Long> {
+        private WeakReference<AsyncTaskActivity> weakReference;
         private ProgressDialog mProgressDialog;
 
+        public DownloadTask(AsyncTaskActivity activity) {
+            weakReference = new WeakReference<>(activity);
+        }
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            mProgressDialog = new ProgressDialog(AsyncTaskActivity.this);
+            mProgressDialog = new ProgressDialog(weakReference.get());
             mProgressDialog.setTitle("下载");
             mProgressDialog.setMessage("获取数据中...");
             mProgressDialog.show();
@@ -111,7 +116,11 @@ public class AsyncTaskActivity extends Activity {
                 mProgressDialog = null;
             }
             Log.d(TAG, "onProgressUpdate: progress=" + values[0] + ", threadName=" + Thread.currentThread().getName());
-            mTvProgress.setText("下载进度: " + values[0] + "%");
+            AsyncTaskActivity asyncTaskActivity = weakReference.get();
+            if (asyncTaskActivity != null) {
+                asyncTaskActivity.mTvProgress.setText("下载进度: " + values[0] + "%");
+            }
+
         }
 
         @Override
@@ -132,7 +141,7 @@ public class AsyncTaskActivity extends Activity {
                 }
                 contentLength = connection.getContentLength();
                 inputStream = connection.getInputStream();
-                outputStream = new FileOutputStream(new File(getExternalFilesDir(null), "download.apk"));
+                outputStream = new FileOutputStream(new File(weakReference.get().getExternalFilesDir(null), "download.apk"));
                 byte[] buffer = new byte[4 * 1024];
                 int total = 0;
                 int length;
@@ -160,16 +169,22 @@ public class AsyncTaskActivity extends Activity {
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
             Log.d(TAG, "onPostExecute: threadName=" + Thread.currentThread().getName());
-            mTvLength.setText("下载字节数: " + aLong);
-            mTvLength.setVisibility(View.VISIBLE);
+            AsyncTaskActivity asyncTaskActivity = weakReference.get();
+            if (asyncTaskActivity != null) {
+                asyncTaskActivity.mTvLength.setText("下载字节数: " + aLong);
+                asyncTaskActivity.mTvLength.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
         protected void onCancelled() {
             super.onCancelled();
             Log.d(TAG, "onCancelled: " + Thread.currentThread().getName());
-            mTvLength.setVisibility(View.VISIBLE);
-            mTvLength.setText("任务已取消");
+            AsyncTaskActivity asyncTaskActivity = weakReference.get();
+            if (asyncTaskActivity != null) {
+                asyncTaskActivity.mTvLength.setVisibility(View.VISIBLE);
+                asyncTaskActivity.mTvLength.setText("任务已取消");
+            }
         }
     }
 }
