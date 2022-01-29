@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +46,20 @@ public class AsyncTaskActivity extends Activity {
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDownloadTask = new DownloadTask(AsyncTaskActivity.this);
+                Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        // 可以在主线程创建 AsyncTask。
+                        mDownloadTask = new DownloadTask(AsyncTaskActivity.this);
+                    }
+                };
+                thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 mDownloadTask.execute(url);
             }
         });
@@ -186,5 +202,13 @@ public class AsyncTaskActivity extends Activity {
                 asyncTaskActivity.mTvLength.setText("任务已取消");
             }
         }
+    }
+
+
+    public void parallel_execute(View view) {
+        new MyAsyncTask("AsyncTask#1").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
+        new MyAsyncTask("AsyncTask#2").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
+        new MyAsyncTask("AsyncTask#3").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
+        new MyAsyncTask("AsyncTask#4").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
     }
 }

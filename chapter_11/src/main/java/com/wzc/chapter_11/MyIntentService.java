@@ -23,22 +23,28 @@ public class MyIntentService extends IntentService {
     }
 
     @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.d(TAG, "onStart: startId = " + startId);
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "startId:" + startId);
+        Log.d(TAG, "onStartCommand startId:" + startId);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
         String task = intent.getStringExtra(EXTRA_TASK);
-        Log.d(TAG, task + " start");
+        Log.d(TAG, "onHandleIntent: " + task + " start");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.d(TAG, task + " finish");
-        stopSelfResult(1);
+        Log.d(TAG, "onHandleIntent: " + task + " finish");
+//        stopSelfResult(1);
     }
 
     @Override
