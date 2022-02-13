@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         Intent service = new Intent(MainActivity.this, MyIntentService.class);
         for (int i = 0; i < 5; i++) {
             service.putExtra(MyIntentService.EXTRA_TASK, "task " + i);
+            Log.d(TAG, "startService: task " + i);
             startService(service);
         }
     }
