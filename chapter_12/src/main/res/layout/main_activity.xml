@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_bitmap_compress"
+        android:text="Bitmap压缩"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_drawable_test"
+        android:text="测试Drawable页面"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_original_load"
+        android:text="原始加载图片"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_sample_load"
+        android:text="采样加载图片"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:background="#4400ff00"
+        android:layout_width="200dp"
+        android:layout_height="200dp"/>
+
+    <Button
+        android:id="@+id/btn_memory_cache_put"
+        android:text="添加内存缓存"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_memory_cache_get"
+        android:text="使用内存缓存"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_memory_cache_show"
+        android:text="展示内存缓存"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_disk_cache_put"
+        android:text="添加硬盘缓存"
+        android:onClick="putDiskCache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_disk_cache_get"
+        android:text="使用硬盘缓存"
+        android:onClick="getDiskCache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_disk_cache_remove"
+        android:text="删除硬盘缓存"
+        android:onClick="removeDiskCache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_use_image_loader"
+        android:text="使用ImageLoader加载图片"
+        android:onClick="useImageLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
