@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="子线程直接更新准确尺寸的TextView的UI"
+        android:onClick="workThreadUpdateUIImmediatelyExactlyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="子线程休眠2s更新准确尺寸的TextView的UI"
+        android:onClick="workThreadUpdateUISleep2sExactlyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="点击后在子线程更新准确尺寸的TextView的UI"
+        android:onClick="workThreadUpdateUIOnClickExactlyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="子线程直接更新wrap_content的TextView的UI"
+        android:onClick="workThreadUpdateUIImmediatelyWrapContentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="点击后在子线程更新wrap_content的TextView的UI"
+        android:onClick="workThreadUpdateUIOnClickWrapContentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="点击后先调用requestLayout再在子线程更新wrap_content的TextView的UI"
+        android:onClick="workThreadUpdateUIOnClickRequestLayoutWrapContentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

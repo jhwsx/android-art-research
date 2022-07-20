@@ -206,8 +206,8 @@ public class MainActivity extends Activity {
         runnableThreadLocal.get().run();
     }
 
-    public void openCheckThreadNotWorkingActivity(View view) {
-        CheckThreadNotWorkingActivity.start(this);
+    public void openCheckThreadActivity(View view) {
+        CheckThreadActivity.start(this);
     }
 
     public void createUIInWorkThread(View view) {

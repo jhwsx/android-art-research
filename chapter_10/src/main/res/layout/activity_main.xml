@@ -1,66 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:onClick="sendMessage2UIThread"
+            android:text="子线程向主线程发送消息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="sendMessage2WorkThread"
+            android:text="主线程向子线程发送消息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="openCheckThreadActivity"
+            android:text="演示checkThread页面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="createUIInWorkThread"
+            android:text="演示在子线程中添加UI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="threadLocal_basic"
+            android:text="ThreadLocal_Basic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
-    <Button
-        android:onClick="sendMessage2UIThread"
-        android:text="子线程向主线程发送消息"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:onClick="threadLocalargs"
+            android:text="使用ThreadLocal来进行复杂逻辑下的对象传递"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:onClick="sendMessage2WorkThread"
-        android:text="主线程向子线程发送消息"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:onClick="sendMessageUsingHandlerThread"
+            android:text="使用 HandlerThread 发送消息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:onClick="openCheckThreadNotWorkingActivity"
-        android:text="演示checkThread没有起作用页面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:onClick="openIdleHandlerActivity"
+            android:text="演示IdleHandler页面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:onClick="createUIInWorkThread"
-        android:text="演示在子线程中添加UI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:onClick="threadLocal_basic"
-        android:text="ThreadLocal_Basic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <Button
-        android:onClick="threadLocalargs"
-        android:text="使用ThreadLocal来进行复杂逻辑下的对象传递"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:onClick="sendMessageUsingHandlerThread"
-        android:text="使用 HandlerThread 发送消息"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:onClick="openIdleHandlerActivity"
-        android:text="演示IdleHandler页面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:onClick="openActivityANRTestActivity"
-        android:text="Activity ANR 测试"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <Button
+            android:onClick="openActivityANRTestActivity"
+            android:text="Activity ANR 测试"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

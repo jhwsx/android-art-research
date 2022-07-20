@@ -18,8 +18,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CheckThreadNotWorkingActivity"
-            android:label="checkThread没有起作用页面"/>
+        <activity android:name=".CheckThreadActivity"
+            android:label="checkThread页面"/>
+
+        <activity
+            android:name=".checkthread.WorkThreadUpdateUIImmediatelyExactlyTextViewActivity"
+            android:label="子线程直接更新准确尺寸的TextView的UI" />
+
+        <activity android:name=".checkthread.WorkThreadUpdateUISleep2sExactlyTextViewActivity"
+            android:label="子线程休眠2s更新准确尺寸的TextView的UI"/>
+
+
+        <activity android:name=".checkthread.WorkThreadUpdateUIOnClickExactlyTextViewActivity"
+            android:label="点击后在子线程更新准确尺寸的TextView的UI"/>
+
+        <activity
+            android:name=".checkthread.WorkThreadUpdateUIImmediatelyWrapContentTextViewActivity"
+            android:label="子线程直接更新wrap_content的TextView的UI" />
+
+        <activity android:name=".checkthread.WorkThreadUpdateUIOnClickWrapContentTextViewActivity"
+            android:label="点击后在子线程更新wrap_content的TextView的UI"/>
+
+        <activity android:name=".checkthread.WorkThreadUpdateUIOnClickRequestLayoutWrapContentTextViewActivity"
+            android:label="点击后先调用requestLayout再在子线程更新wrap_content的TextView的UI"/>
 
         <activity android:name=".idlehandler.IdleHandlerActivity"
             android:label="演示IdleHandler页面"/>
